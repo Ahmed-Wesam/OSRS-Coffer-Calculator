@@ -1,5 +1,9 @@
 import { readCache, writeCache } from './cache'
 import type { OsrsMappingItem } from './types'
+import {
+  INELIGIBLE_NAMES_CACHE_TTL_MS,
+  WIKI_API_BASE,
+} from './constants'
 
 function normalizeName(s: string): string {
   return s.trim().toLowerCase().replace(/\s+/g, ' ')
@@ -37,7 +41,7 @@ async function fetchAllPageLinks(pageTitle: string): Promise<string[]> {
     })
     if (plcontinue) params.set('plcontinue', plcontinue)
 
-    const url = `https://oldschool.runescape.wiki/api.php?${params.toString()}`
+    const url = `${WIKI_API_BASE}?${params.toString()}`
     const res = await fetch(url, {
       headers: {
         Accept: 'application/json',
@@ -47,8 +51,14 @@ async function fetchAllPageLinks(pageTitle: string): Promise<string[]> {
       throw new Error(`Wiki api.php failed: HTTP ${res.status}`)
     }
 
-    const text = await res.text().catch(() => '')
-    const data = JSON.parse(text) as MediaWikiQueryLinksResponse
+    const text = await res.text().catch(() => { return '' })
+    const data: MediaWikiQueryLinksResponse = ((): MediaWikiQueryLinksResponse => {
+      try {
+        return JSON.parse(text) as MediaWikiQueryLinksResponse
+      } catch {
+        throw new Error(`Invalid JSON from Wiki api.php: ${text.slice(0, 200)}`)
+      }
+    })()
 
     const pages = data.query?.pages ?? {}
     for (const p of Object.values(pages)) {
@@ -66,8 +76,11 @@ async function fetchAllPageLinks(pageTitle: string): Promise<string[]> {
   return out
 }
 
-export async function getDeathsCofferIneligibleNames(mapping: OsrsMappingItem[], opts?: { ttlMs?: number }): Promise<Set<string>> {
-  const ttlMs = opts?.ttlMs ?? 24 * 60 * 60 * 1000
+export async function getDeathsCofferIneligibleNames(
+  mapping: OsrsMappingItem[],
+  opts?: { ttlMs?: number }
+): Promise<Set<string>> {
+  const ttlMs = opts?.ttlMs ?? INELIGIBLE_NAMES_CACHE_TTL_MS
   const cacheKey = 'osrs:deathscoffer:ineligibleNames:v1'
 
   const cached = readCache<string[]>(cacheKey, ttlMs)

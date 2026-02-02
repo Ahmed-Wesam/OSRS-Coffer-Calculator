@@ -1,9 +1,18 @@
 import { readCache, writeCache } from './cache'
 import type { OsrsLatestResponse, OsrsMappingItem } from './types'
-
-const PRICES_BASE = 'https://prices.runescape.wiki/api/v1/osrs'
+import {
+  DEFAULT_RATE_LIMIT_MS,
+  DEFAULT_BACKOFF_MS,
+  DEFAULT_RETRIES,
+  ITEMDB_RETRIES,
+  MAPPING_CACHE_TTL_MS,
+  LATEST_CACHE_TTL_MS,
+  ITEMDB_CACHE_TTL_MS,
+  OSRS_PRICES_BASE as PRICES_BASE,
+} from './constants'
 
 let lastFetchAt = 0
+let fetchQueue: Promise<unknown> = Promise.resolve()
 
 function parseItemdbPrice(price: unknown): number {
   const s = String(price ?? '').trim().toLowerCase()
@@ -34,19 +43,22 @@ type ItemdbDetailResponse = {
   }
 }
 
-async function rateLimitedFetch(input: RequestInfo | URL, init?: RequestInit, minIntervalMs = 150) {
-  const now = Date.now()
-  const waitMs = Math.max(0, lastFetchAt + minIntervalMs - now)
-  if (waitMs > 0) {
-    await new Promise((r) => setTimeout(r, waitMs))
-  }
-  lastFetchAt = Date.now()
-  return fetch(input, init)
+async function rateLimitedFetch(input: RequestInfo | URL, init?: RequestInit, minIntervalMs = DEFAULT_RATE_LIMIT_MS): Promise<Response> {
+  // Chain requests to ensure proper rate limiting without race conditions
+  return (fetchQueue = fetchQueue.then(async (): Promise<Response> => {
+    const now = Date.now()
+    const waitMs = Math.max(0, lastFetchAt + minIntervalMs - now)
+    if (waitMs > 0) {
+      await new Promise((r) => setTimeout(r, waitMs))
+    }
+    lastFetchAt = Date.now()
+    return fetch(input, init)
+  }) as Promise<Response>)
 }
 
-async function fetchJsonWithRetry<T>(url: string, retries = 3): Promise<T> {
+async function fetchJsonWithRetry<T>(url: string, retries = DEFAULT_RETRIES): Promise<T> {
   let attempt = 0
-  let backoffMs = 400
+  let backoffMs = DEFAULT_BACKOFF_MS
 
   while (true) {
     const res = await rateLimitedFetch(url, {
@@ -55,7 +67,7 @@ async function fetchJsonWithRetry<T>(url: string, retries = 3): Promise<T> {
       },
     })
 
-    const text = await res.text().catch(() => '')
+    const text = await res.text().catch(() => { return '' })
 
     if (res.ok) {
       try {
@@ -83,7 +95,7 @@ async function fetchJsonWithRetry<T>(url: string, retries = 3): Promise<T> {
 }
 
 export async function getOsrsMapping(opts?: { ttlMs?: number }): Promise<OsrsMappingItem[]> {
-  const ttlMs = opts?.ttlMs ?? 15 * 60 * 1000
+  const ttlMs = opts?.ttlMs ?? MAPPING_CACHE_TTL_MS
   const cacheKey = 'osrs:mapping:v1'
   const cached = readCache<OsrsMappingItem[]>(cacheKey, ttlMs)
   if (cached) return cached
@@ -95,7 +107,7 @@ export async function getOsrsMapping(opts?: { ttlMs?: number }): Promise<OsrsMap
 }
 
 export async function getOsrsLatest(opts?: { ttlMs?: number }): Promise<OsrsLatestResponse> {
-  const ttlMs = opts?.ttlMs ?? 60 * 1000
+  const ttlMs = opts?.ttlMs ?? LATEST_CACHE_TTL_MS
   const cacheKey = 'osrs:latest:v1'
   const cached = readCache<OsrsLatestResponse>(cacheKey, ttlMs)
   if (cached) return cached
@@ -107,14 +119,14 @@ export async function getOsrsLatest(opts?: { ttlMs?: number }): Promise<OsrsLate
 }
 
 export async function getOsrsOfficialGuidePrice(itemId: number, opts?: { ttlMs?: number }): Promise<number> {
-  const ttlMs = opts?.ttlMs ?? 24 * 60 * 60 * 1000
+  const ttlMs = opts?.ttlMs ?? ITEMDB_CACHE_TTL_MS
   const cacheKey = `osrs:itemdb:detail:${itemId}`
   const cached = readCache<number>(cacheKey, ttlMs)
   if (typeof cached === 'number' && Number.isFinite(cached)) return cached
 
   const url = `/itemdb/m=itemdb_oldschool/api/catalogue/detail.json?item=${itemId}`
   try {
-    const data = await fetchJsonWithRetry<ItemdbDetailResponse>(url, 5)
+    const data = await fetchJsonWithRetry<ItemdbDetailResponse>(url, ITEMDB_RETRIES)
     const n = parseItemdbPrice(data?.item?.current?.price)
     if (!Number.isFinite(n)) {
       return NaN

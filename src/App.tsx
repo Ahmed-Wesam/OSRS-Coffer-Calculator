@@ -4,6 +4,7 @@ import type { DeathCofferRow } from './lib/types'
 import { fetchGeTrackerDeathsCofferRows } from './lib/geTracker'
 import { getOsrsMapping } from './lib/api'
 import { getDeathsCofferIneligibleNames } from './lib/deathsCofferIneligible'
+import { MIN_OFFICIAL_GE_PRICE } from './lib/constants'
 
 function formatInt(n: number): string {
   return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(n)
@@ -74,7 +75,7 @@ function App() {
             roi: r.roiPct / 100,
           }))
           .filter((r) => r.roi > 0)
-          .filter((r) => r.officialGePrice >= 10_000)
+          .filter((r) => r.officialGePrice >= MIN_OFFICIAL_GE_PRICE)
           // Must be tradable on the Grand Exchange (has a GE buy limit in mapping).
           .filter((r) => {
             const m = mappingById.get(r.id)
@@ -91,9 +92,17 @@ function App() {
             return true
           })
 
-        computed.sort((a, b) => b.roi - a.roi)
+        // GE Tracker can include duplicate rows for the same item id.
+        // Keep the highest ROI row per id to avoid React duplicate key warnings.
+        const byId = new Map<number, DeathCofferRow>()
+        for (const r of computed) {
+          const prev = byId.get(r.id)
+          if (!prev || r.roi > prev.roi) byId.set(r.id, r)
+        }
+        const deduped = Array.from(byId.values())
+        deduped.sort((a, b) => b.roi - a.roi)
 
-        if (!cancelled) setRows(computed)
+        if (!cancelled) setRows(deduped)
       } catch (e) {
         if (!cancelled) {
           setError(e instanceof Error ? e.message : String(e))
@@ -118,14 +127,13 @@ function App() {
     const minBuy = parsePriceInput(minBuyPrice)
     const maxBuy = parsePriceInput(maxBuyPrice)
 
-    const result = rows
-      .filter((r) => r.roi >= minRoi)
+    let result = rows.filter((r) => r.roi >= minRoi)
 
     if (typeof minBuy === 'number') {
-      result.splice(0, result.length, ...result.filter((r) => r.buyPrice >= minBuy))
+      result = result.filter((r) => r.buyPrice >= minBuy)
     }
     if (typeof maxBuy === 'number') {
-      result.splice(0, result.length, ...result.filter((r) => r.buyPrice <= maxBuy))
+      result = result.filter((r) => r.buyPrice <= maxBuy)
     }
 
     return result
