@@ -142,25 +142,9 @@ function App() {
   return (
     <div className="app">
       <div className="header">
-        <div>
-          <h1 className="title">OSRS Death&apos;s Coffer ROI Calculator</h1>
-          <p className="subtitle muted">
-            Data: GE Tracker deaths-coffer list
-          </p>
-        </div>
+        <h1 className="title">OSRS Death&apos;s Coffer ROI Calculator</h1>
 
         <div className="controls">
-          <div className="control">
-            <label htmlFor="minRoi">Min ROI (%)</label>
-            <input
-              id="minRoi"
-              value={minRoiPct}
-              onChange={(e) => setMinRoiPct(e.target.value)}
-              inputMode="decimal"
-              placeholder="0"
-            />
-          </div>
-
           <div className="control">
             <label htmlFor="minBuy">Min buy price</label>
             <input
@@ -178,6 +162,17 @@ function App() {
               value={maxBuyPrice}
               onChange={(e) => setMaxBuyPrice(e.target.value)}
               placeholder="e.g. 2m"
+            />
+          </div>
+
+          <div className="control">
+            <label htmlFor="minRoi">Min ROI (%)</label>
+            <input
+              id="minRoi"
+              value={minRoiPct}
+              onChange={(e) => setMinRoiPct(e.target.value)}
+              inputMode="decimal"
+              placeholder="0"
             />
           </div>
 
