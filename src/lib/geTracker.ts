@@ -26,31 +26,76 @@ export function parseGeTrackerDeathsCofferHtml(html: string): GeTrackerDeathCoff
   const out: GeTrackerDeathCofferRow[] = []
 
   for (const tr of rows) {
-    const idAttr = tr.getAttribute('data-item-id')
-    const id = idAttr ? Number(idAttr) : NaN
-    if (!Number.isFinite(id)) continue
+    try {
+      const idAttr = tr.getAttribute('data-item-id')
+      const id = idAttr ? Number(idAttr) : NaN
+      if (!Number.isFinite(id)) continue
 
-    const nameEl = tr.querySelector('a.row-item-name')
-    const name = nameEl?.textContent?.trim() ?? ''
+      const nameEl = tr.querySelector('a.row-item-name')
+      const name = nameEl?.textContent?.trim() ?? ''
+      if (!name) continue
 
-    const tds = Array.from(tr.querySelectorAll('td'))
-    if (tds.length < 5) continue
+      const tds = Array.from(tr.querySelectorAll('td'))
+      if (tds.length < 8) { // Increased from 5 to 8 for better structure validation
+        console.warn(`Insufficient table cells for item ${name}: ${tds.length} cells found`)
+        continue
+      }
 
-    const offerPrice = parseNumber(tds[1]?.textContent ?? '')
-    const officialGePrice = parseNumber(tds[2]?.textContent ?? '')
-    const cofferValue = parseNumber(tds[3]?.textContent ?? '')
-    const roiPct = parsePercent(tds[7]?.textContent ?? '')
+      // Defensive parsing with better error messages
+      const offerPrice = parseNumber(tds[1]?.textContent ?? '')
+      if (!Number.isFinite(offerPrice)) {
+        console.warn(`Invalid offer price for item ${name}: ${tds[1]?.textContent}`)
+        continue
+      }
 
-    if (![offerPrice, officialGePrice, cofferValue, roiPct].every((v) => Number.isFinite(v))) continue
+      const officialGePrice = parseNumber(tds[2]?.textContent ?? '')
+      if (!Number.isFinite(officialGePrice)) {
+        console.warn(`Invalid GE price for item ${name}: ${tds[2]?.textContent}`)
+        continue
+      }
 
-    out.push({
-      id,
-      name,
-      offerPrice,
-      officialGePrice,
-      cofferValue,
-      roiPct,
-    })
+      const cofferValue = parseNumber(tds[3]?.textContent ?? '')
+      if (!Number.isFinite(cofferValue)) {
+        console.warn(`Invalid coffer value for item ${name}: ${tds[3]?.textContent}`)
+        continue
+      }
+
+      // ROI is typically in column 7, but add fallback logic
+      let roiPct = parsePercent(tds[7]?.textContent ?? '')
+      if (!Number.isFinite(roiPct)) {
+        // Try other common columns if 7 doesn't work
+        roiPct = parsePercent(tds[6]?.textContent ?? '') || 
+                 parsePercent(tds[5]?.textContent ?? '') ||
+                 parsePercent(tds[4]?.textContent ?? '')
+        
+        if (!Number.isFinite(roiPct)) {
+          console.warn(`Invalid ROI for item ${name}: ${tds[7]?.textContent}`)
+          continue
+        }
+      }
+
+      // Additional validation
+      if (offerPrice <= 0 || officialGePrice <= 0 || cofferValue <= 0) {
+        console.warn(`Non-positive values for item ${name}: offer=${offerPrice}, ge=${officialGePrice}, coffer=${cofferValue}`)
+        continue
+      }
+
+      out.push({
+        id,
+        name,
+        offerPrice,
+        officialGePrice,
+        cofferValue,
+        roiPct,
+      })
+    } catch (error) {
+      console.error(`Error parsing row for item:`, error, tr)
+      continue
+    }
+  }
+
+  if (out.length === 0) {
+    console.warn('No valid items parsed from GE Tracker HTML. Structure may have changed.')
   }
 
   return out

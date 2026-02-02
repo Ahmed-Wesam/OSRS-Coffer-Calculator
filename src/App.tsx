@@ -22,7 +22,23 @@ function normalizeName(s: string): string {
   return s.trim().toLowerCase().replace(/\s+/g, ' ')
 }
 
-function parsePriceInput(raw: string): number | null {
+export function parseRoiInput(raw: string): number | null {
+  const s0 = raw.trim()
+  if (!s0) return null
+
+  const s = s0.toLowerCase().replace(/,/g, '')
+  const n = Number(s)
+  
+  // Validate it's a finite number
+  if (!Number.isFinite(n)) return null
+  
+  // Bounds checking: ROI should be between 0% and 1000%
+  if (n < 0 || n > 1000) return null
+  
+  return n
+}
+
+export function parsePriceInput(raw: string): number | null {
   const s0 = raw.trim()
   if (!s0) return null
 
@@ -121,13 +137,13 @@ function App() {
   }, [])
 
   const filtered = useMemo(() => {
-    const minPct = Number(minRoiPct)
-    const minRoi = Number.isFinite(minPct) ? minPct / 100 : 0
+    const minRoi = parseRoiInput(minRoiPct)
+    const minRoiDecimal = (minRoi ?? 0) / 100
 
     const minBuy = parsePriceInput(minBuyPrice)
     const maxBuy = parsePriceInput(maxBuyPrice)
 
-    let result = rows.filter((r) => r.roi >= minRoi)
+    let result = rows.filter((r) => r.roi >= minRoiDecimal)
 
     if (typeof minBuy === 'number') {
       result = result.filter((r) => r.buyPrice >= minBuy)
