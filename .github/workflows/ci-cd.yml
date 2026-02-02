@@ -2,7 +2,7 @@ name: CI/CD
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, vercel-deploy]
   pull_request:
     branches: [main, master]
 
@@ -27,11 +27,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Netlify
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-        uses: netlify/actions/cli@master
+      - name: Deploy to Vercel
+        if: github.ref == 'refs/heads/vercel-deploy'
+        uses: amondnet/vercel-action@v25
         with:
-          args: deploy --dir=./dist --prod
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'

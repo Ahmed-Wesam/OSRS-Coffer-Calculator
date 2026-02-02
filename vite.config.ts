@@ -11,11 +11,6 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/itemdb/, ''),
       },
-      '/ge-tracker': {
-        target: 'https://www.ge-tracker.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/ge-tracker/, ''),
-      },
     },
   },
 })

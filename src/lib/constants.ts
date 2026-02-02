@@ -14,11 +14,6 @@ export const INELIGIBLE_NAMES_CACHE_TTL_MS = 24 * 60 * 60 * 1000 // 24 hours
 export const OSRS_PRICES_BASE = 'https://prices.runescape.wiki/api/v1/osrs'
 export const WIKI_API_BASE = 'https://oldschool.runescape.wiki/api.php'
 
-// CORS proxy for production (cors-anywhere.herokuapp.com)
-// Used when the app is deployed (not in dev where Vite proxy handles it)
-export const CORS_PROXY_BASE = 'https://cors-anywhere.herokuapp.com/'
-export const ITEMDB_BASE = 'https://secure.runescape.com/m=itemdb_oldschool'
-
 // Death's Coffer filtering
 export const MIN_OFFICIAL_GE_PRICE = 10_000
 export const MIN_ROI = 1 // 1% minimum ROI to show
