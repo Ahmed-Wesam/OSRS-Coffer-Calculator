@@ -21,4 +21,12 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+# Build artifacts
+*.min.js
+api.*.js
+system.*.js
+vendor.*.js
+
+# Temporary reference files
+_*.js
+_*.txt
