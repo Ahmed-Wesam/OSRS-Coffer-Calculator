@@ -63,7 +63,7 @@ export async function fetchGeTrackerDeathsCofferRows(): Promise<GeTrackerDeathCo
   const geTrackerUrl = 'https://www.ge-tracker.com/deaths-coffer'
   const url = import.meta.env.DEV
     ? '/ge-tracker/deaths-coffer'
-    : `${CORS_PROXY_BASE}${encodeURIComponent(geTrackerUrl)}`
+    : `${CORS_PROXY_BASE}${geTrackerUrl}`
   
   const res = await fetch(url, {
     headers: {
