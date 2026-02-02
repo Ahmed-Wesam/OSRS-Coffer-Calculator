@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import type { DeathCofferRow } from './lib/types'
 import { fetchGeTrackerDeathsCofferRows } from './lib/geTracker'
+import { getOsrsMapping } from './lib/api'
+import { getDeathsCofferIneligibleNames } from './lib/deathsCofferIneligible'
 
 function formatInt(n: number): string {
   return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(n)
@@ -13,6 +15,10 @@ function formatPct(p: number): string {
 
 function itemUrl(id: number): string {
   return `https://prices.runescape.wiki/osrs/item/${id}`
+}
+
+function normalizeName(s: string): string {
+  return s.trim().toLowerCase().replace(/\s+/g, ' ')
 }
 
 function parsePriceInput(raw: string): number | null {
@@ -53,7 +59,10 @@ function App() {
         setError(null)
         setRows([])
 
-        const ge = await fetchGeTrackerDeathsCofferRows()
+        const [ge, mapping] = await Promise.all([fetchGeTrackerDeathsCofferRows(), getOsrsMapping()])
+        const mappingById = new Map(mapping.map((m) => [m.id, m]))
+
+        const ineligibleNames = await getDeathsCofferIneligibleNames(mapping)
 
         const computed: DeathCofferRow[] = ge
           .map((r) => ({
@@ -66,6 +75,21 @@ function App() {
           }))
           .filter((r) => r.roi > 0)
           .filter((r) => r.officialGePrice >= 10_000)
+          // Must be tradable on the Grand Exchange (has a GE buy limit in mapping).
+          .filter((r) => {
+            const m = mappingById.get(r.id)
+            return !!(m && typeof m.limit === 'number' && m.limit > 0)
+          })
+          // Exclude known-ineligible groups/items as best-effort.
+          .filter((r) => {
+            const n = normalizeName(r.name)
+            if (ineligibleNames.has(n)) return false
+            if (n.includes(' bond')) return false
+            if (n.endsWith(' bond')) return false
+            // Leagues reward tiers commonly use a (t1)/(t2)/(t3) suffix.
+            if (/\(t\d+\)$/.test(n)) return false
+            return true
+          })
 
         computed.sort((a, b) => b.roi - a.roi)
 
@@ -111,9 +135,9 @@ function App() {
     <div className="app">
       <div className="header">
         <div>
-          <h1 className="title">OSRS Death&apos;s Coffer ROI</h1>
+          <h1 className="title">OSRS Death&apos;s Coffer ROI Calculator</h1>
           <p className="subtitle muted">
-            Data: GE Tracker deaths-coffer list. Showing only ROI &gt; 0.
+            Data: GE Tracker deaths-coffer list
           </p>
         </div>
 

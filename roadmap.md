@@ -100,3 +100,91 @@ Authoritative eligibility rules are complex (tradeable, not certain excluded gro
 - Min/max buy price filters work with `k`/`m` and commas.
 - Search and sort controls removed.
 - Reset button renamed and clears min ROI + min/max price filters.
+
+---
+
+# Caching design (future)
+
+This section documents a future caching architecture so we can safely switch from GE Tracker parsing to “real API” sources without performance or throttling issues.
+
+## Goals
+- Keep the UI fast (initial table render in seconds).
+- Avoid being throttled by upstream providers.
+- Be resilient to transient failures (empty bodies, 429s, 5xx).
+- Make data freshness explicit (timestamps + TTL).
+
+## What to cache
+
+### A) OSRS Wiki Prices API
+- **/mapping** (item metadata: id/name/icon/buy limit)
+  - **TTL:** 24 hours
+  - **Why:** changes rarely, large payload, used for eligibility (GE limit > 0) and display metadata.
+- **/latest** (real-time prices)
+  - **TTL:** 60 seconds
+  - **Why:** high-frequency, used for “buy price” if we move to Wiki prices.
+- **/5m** (smoothed prices + volume)
+  - **TTL:** 5 minutes
+  - **Why:** optional smoothing for more stable “offer price” or sanity filtering.
+
+### B) Official GE guide price (for true Death’s Coffer value)
+**Preferred:** server-side cached snapshot.
+- **Source:** Jagex itemdb endpoints.
+- **Cache shape:** map of `{ itemId: officialGuidePrice }`.
+- **TTL:** 6–24 hours (guide price doesn’t need 60s updates).
+- **Fallback behavior:** if a fetch fails, serve last-known-good cached snapshot.
+
+### C) Death’s Coffer eligibility list
+We need a machine-readable eligibility set to accurately exclude:
+- untradeables
+- tradeables not offerable on GE
+- bonds
+- leagues/grid/deadman rewards
+- specific exclusions (e.g. Sailing-related)
+
+**Preferred:** server-side cached “eligible item ids” set.
+- **Source options:** OSRS Wiki (category/Cargo/SMW) if available; otherwise curated list + periodic refresh.
+- **TTL:** 24 hours
+
+## Where to cache
+
+### Phase 1 (client-side only)
+- `localStorage` cache for:
+  - OSRS Wiki `/mapping`
+  - OSRS Wiki `/latest` (short TTL)
+
+**Pros:** simple.
+**Cons:** doesn’t solve Jagex throttling for official guide prices.
+
+### Phase 2 (recommended for production)
+- Add a small server layer (Node/Express or serverless function) that:
+  - fetches upstream data
+  - caches it (in memory + persisted file/kv store)
+  - serves it to the React frontend via a single endpoint
+
+**Cache tiers:**
+- **In-memory**: fastest for repeated requests
+- **Persistent**: file (JSON) or KV store so restarts don’t wipe the cache
+
+## Cache envelope & invalidation
+- Each cached entry should include:
+  - `value`
+  - `fetchedAt`
+  - `maxAgeMs`
+  - optional `etag`/`lastModified`
+
+Invalidation strategy:
+- Time-based expiry (TTL)
+- Manual “refresh” button (optional)
+- If refresh fails, continue serving stale-but-recent data (stale-while-revalidate)
+
+## Rate limiting / backoff
+- Global request throttling per upstream host.
+- Retry with exponential backoff for:
+  - `429`
+  - `5xx`
+  - empty/invalid JSON bodies
+
+## Success criteria (when we revisit)
+- Switching to OSRS Wiki + official guide price does not degrade load time.
+- No more than a small bounded number of upstream requests per page load.
+- The app works even if Jagex/Wiki temporarily rate-limits.
