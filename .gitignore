@@ -21,6 +21,7 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
+
 # Build artifacts
 *.min.js
 api.*.js
@@ -30,3 +31,7 @@ vendor.*.js
 # Temporary reference files
 _*.js
 _*.txt
+
+# Markdown files (except README.md)
+*.md
+!README.md
