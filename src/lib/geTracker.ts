@@ -102,10 +102,19 @@ export function parseGeTrackerDeathsCofferHtml(html: string): GeTrackerDeathCoff
 }
 
 export async function fetchGeTrackerDeathsCofferRows(): Promise<GeTrackerDeathCofferRow[]> {
-  // Use Netlify function in production, Vite proxy in development
-  const url = import.meta.env.DEV
-    ? '/ge-tracker/deaths-coffer'
-    : '/.netlify/functions/ge-tracker'
+  // Dev: use Vite proxy. Prod: choose platform endpoint.
+  const url = (() => {
+    if (import.meta.env.DEV) return '/ge-tracker/deaths-coffer'
+
+    const host = window.location.hostname
+    // Vercel deployments: route via /api.
+    if (host.endsWith('.vercel.app')) return '/api/ge-tracker'
+    // Netlify deployments: route via Netlify Functions.
+    if (host.endsWith('.netlify.app')) return '/.netlify/functions/ge-tracker'
+
+    // Default to Vercel-style API route for custom domains on Vercel.
+    return '/api/ge-tracker'
+  })()
   
   const res = await fetch(url, {
     headers: {

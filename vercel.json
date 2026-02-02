@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/ge-tracker.js": {
+      "maxDuration": 10
+    }
+  }
+}
