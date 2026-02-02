@@ -1,5 +1,3 @@
-import { CORS_PROXY_BASE } from './constants'
-
 export type GeTrackerDeathCofferRow = {
   id: number
   name: string
@@ -59,11 +57,10 @@ export function parseGeTrackerDeathsCofferHtml(html: string): GeTrackerDeathCoff
 }
 
 export async function fetchGeTrackerDeathsCofferRows(): Promise<GeTrackerDeathCofferRow[]> {
-  // Use CORS proxy in production, Vite proxy in development
-  const geTrackerUrl = 'https://www.ge-tracker.com/deaths-coffer'
+  // Use Netlify function in production, Vite proxy in development
   const url = import.meta.env.DEV
     ? '/ge-tracker/deaths-coffer'
-    : `${CORS_PROXY_BASE}${geTrackerUrl}`
+    : '/.netlify/functions/ge-tracker'
   
   const res = await fetch(url, {
     headers: {
