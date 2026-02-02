@@ -1,0 +1,5954 @@
+[
+  {
+    "id": 30414,
+    "name": "Raging echoes top (t2)",
+    "offerPrice": 70000,
+    "officialGePrice": 425485,
+    "cofferValue": 446759,
+    "roiPct": 538.2271428571428
+  },
+  {
+    "id": 26445,
+    "name": "Shattered trousers (t2)",
+    "offerPrice": 32000,
+    "officialGePrice": 190223,
+    "cofferValue": 199734,
+    "roiPct": 524.16875
+  },
+  {
+    "id": 30416,
+    "name": "Raging echoes robeskirt (t2)",
+    "offerPrice": 100000,
+    "officialGePrice": 416050,
+    "cofferValue": 436852,
+    "roiPct": 336.85200000000003
+  },
+  {
+    "id": 31187,
+    "name": "Grid master tabard (p)",
+    "offerPrice": 14000,
+    "officialGePrice": 57770,
+    "cofferValue": 60658,
+    "roiPct": 333.2714285714286
+  },
+  {
+    "id": 31184,
+    "name": "Grid master tabard (b)",
+    "offerPrice": 15157,
+    "officialGePrice": 58164,
+    "cofferValue": 61072,
+    "roiPct": 302.92933957907235
+  },
+  {
+    "id": 26430,
+    "name": "Shattered top (t1)",
+    "offerPrice": 25921,
+    "officialGePrice": 87620,
+    "cofferValue": 92001,
+    "roiPct": 254.92843640291656
+  },
+  {
+    "id": 24401,
+    "name": "Twisted trousers (t2)",
+    "offerPrice": 31000,
+    "officialGePrice": 94436,
+    "cofferValue": 99157,
+    "roiPct": 219.86129032258063
+  },
+  {
+    "id": 26448,
+    "name": "Shattered boots (t2)",
+    "offerPrice": 73000,
+    "officialGePrice": 193515,
+    "cofferValue": 203190,
+    "roiPct": 178.34246575342465
+  },
+  {
+    "id": 28733,
+    "name": "Trailblazer reloaded boots (t2)",
+    "offerPrice": 81000,
+    "officialGePrice": 195515,
+    "cofferValue": 205290,
+    "roiPct": 153.44444444444446
+  },
+  {
+    "id": 24395,
+    "name": "Twisted cane",
+    "offerPrice": 2437500,
+    "officialGePrice": 5844860,
+    "cofferValue": 6137103,
+    "roiPct": 151.77858461538463
+  },
+  {
+    "id": 22737,
+    "name": "Dragon hasta(p+)",
+    "offerPrice": 26541,
+    "officialGePrice": 57277,
+    "cofferValue": 60140,
+    "roiPct": 126.59281865792546
+  },
+  {
+    "id": 7445,
+    "name": "Rolling pin",
+    "offerPrice": 10000,
+    "officialGePrice": 21071,
+    "cofferValue": 22124,
+    "roiPct": 121.24
+  },
+  {
+    "id": 9847,
+    "name": "Marble cape rack",
+    "offerPrice": 180388,
+    "officialGePrice": 369885,
+    "cofferValue": 388379,
+    "roiPct": 115.30201565514335
+  },
+  {
+    "id": 31202,
+    "name": "Swords and emblem (g)",
+    "offerPrice": 31000,
+    "officialGePrice": 62874,
+    "cofferValue": 66017,
+    "roiPct": 112.95806451612904
+  },
+  {
+    "id": 11417,
+    "name": "Rune hasta(p+)",
+    "offerPrice": 11000,
+    "officialGePrice": 20835,
+    "cofferValue": 21876,
+    "roiPct": 98.87272727272727
+  },
+  {
+    "id": 21736,
+    "name": "Granite gloves",
+    "offerPrice": 91005,
+    "officialGePrice": 171627,
+    "cofferValue": 180208,
+    "roiPct": 98.01988901708697
+  },
+  {
+    "id": 24403,
+    "name": "Twisted boots (t2)",
+    "offerPrice": 55000,
+    "officialGePrice": 103645,
+    "cofferValue": 108827,
+    "roiPct": 97.86727272727272
+  },
+  {
+    "id": 25087,
+    "name": "Trailblazer teleport scroll",
+    "offerPrice": 355999,
+    "officialGePrice": 650401,
+    "cofferValue": 682921,
+    "roiPct": 91.83228042775401
+  },
+  {
+    "id": 12387,
+    "name": "Black d&#039;hide chaps (t)",
+    "offerPrice": 22020,
+    "officialGePrice": 39418,
+    "cofferValue": 41388,
+    "roiPct": 87.95640326975477
+  },
+  {
+    "id": 10374,
+    "name": "Zamorak coif",
+    "offerPrice": 56644,
+    "officialGePrice": 99886,
+    "cofferValue": 104880,
+    "roiPct": 85.15641550737942
+  },
+  {
+    "id": 20038,
+    "name": "Samurai shirt",
+    "offerPrice": 16000,
+    "officialGePrice": 28148,
+    "cofferValue": 29555,
+    "roiPct": 84.71875
+  },
+  {
+    "id": 19979,
+    "name": "Light trousers",
+    "offerPrice": 150666,
+    "officialGePrice": 259388,
+    "cofferValue": 272357,
+    "roiPct": 80.76872021557617
+  },
+  {
+    "id": 13016,
+    "name": "Adamant trimmed set (lg)",
+    "offerPrice": 24819,
+    "officialGePrice": 41706,
+    "cofferValue": 43791,
+    "roiPct": 76.4414359966155
+  },
+  {
+    "id": 9670,
+    "name": "Proselyte harness f",
+    "offerPrice": 14588,
+    "officialGePrice": 24484,
+    "cofferValue": 25708,
+    "roiPct": 76.2270359199342
+  },
+  {
+    "id": 25096,
+    "name": "Trailblazer rug",
+    "offerPrice": 2042050,
+    "officialGePrice": 3346831,
+    "cofferValue": 3514172,
+    "roiPct": 72.09039935359075
+  },
+  {
+    "id": 30410,
+    "name": "Raging echoes boots (t1)",
+    "offerPrice": 11451,
+    "officialGePrice": 18443,
+    "cofferValue": 19365,
+    "roiPct": 69.11186795913021
+  },
+  {
+    "id": 10564,
+    "name": "Granite body",
+    "offerPrice": 87750,
+    "officialGePrice": 141168,
+    "cofferValue": 148226,
+    "roiPct": 68.91851851851852
+  },
+  {
+    "id": 23285,
+    "name": "Mole slippers",
+    "offerPrice": 259227,
+    "officialGePrice": 413140,
+    "cofferValue": 433797,
+    "roiPct": 67.34252219097547
+  },
+  {
+    "id": 8441,
+    "name": "Small box hedge",
+    "offerPrice": 10000,
+    "officialGePrice": 15884,
+    "cofferValue": 16678,
+    "roiPct": 66.78
+  },
+  {
+    "id": 11280,
+    "name": "Cavalier mask",
+    "offerPrice": 82300,
+    "officialGePrice": 130428,
+    "cofferValue": 136949,
+    "roiPct": 66.40218712029161
+  },
+  {
+    "id": 11908,
+    "name": "Uncharged trident",
+    "offerPrice": 41650,
+    "officialGePrice": 65371,
+    "cofferValue": 68639,
+    "roiPct": 64.79951980792316
+  },
+  {
+    "id": 7386,
+    "name": "Blue skirt (g)",
+    "offerPrice": 37543,
+    "officialGePrice": 57351,
+    "cofferValue": 60218,
+    "roiPct": 60.39741096875583
+  },
+  {
+    "id": 20080,
+    "name": "Mummy&#039;s head",
+    "offerPrice": 1034000,
+    "officialGePrice": 1573027,
+    "cofferValue": 1651678,
+    "roiPct": 59.736750483559
+  },
+  {
+    "id": 31024,
+    "name": "Greenman carving",
+    "offerPrice": 48085,
+    "officialGePrice": 72842,
+    "cofferValue": 76484,
+    "roiPct": 59.05999792034938
+  },
+  {
+    "id": 5714,
+    "name": "Rune spear(p+)",
+    "offerPrice": 13000,
+    "officialGePrice": 19658,
+    "cofferValue": 20640,
+    "roiPct": 58.769230769230774
+  },
+  {
+    "id": 11419,
+    "name": "Rune hasta(p++)",
+    "offerPrice": 11300,
+    "officialGePrice": 16989,
+    "cofferValue": 17838,
+    "roiPct": 57.858407079646014
+  },
+  {
+    "id": 12455,
+    "name": "Black wizard hat (t)",
+    "offerPrice": 135000,
+    "officialGePrice": 202263,
+    "cofferValue": 212376,
+    "roiPct": 57.315555555555555
+  },
+  {
+    "id": 10460,
+    "name": "Zamorak robe top",
+    "offerPrice": 72164,
+    "officialGePrice": 107528,
+    "cofferValue": 112904,
+    "roiPct": 56.45474197660884
+  },
+  {
+    "id": 12992,
+    "name": "Black trimmed set (lg)",
+    "offerPrice": 73376,
+    "officialGePrice": 109293,
+    "cofferValue": 114757,
+    "roiPct": 56.39582424771042
+  },
+  {
+    "id": 13004,
+    "name": "Mithril trimmed set (lg)",
+    "offerPrice": 16700,
+    "officialGePrice": 24846,
+    "cofferValue": 26088,
+    "roiPct": 56.21556886227545
+  },
+  {
+    "id": 32077,
+    "name": "Large ironwood hull parts",
+    "offerPrice": 38100,
+    "officialGePrice": 56630,
+    "cofferValue": 59461,
+    "roiPct": 56.06561679790026
+  },
+  {
+    "id": 24389,
+    "name": "Twisted coat (t3)",
+    "offerPrice": 871293,
+    "officialGePrice": 1294860,
+    "cofferValue": 1359603,
+    "roiPct": 56.04429279243607
+  },
+  {
+    "id": 22246,
+    "name": "Anguish ornament kit",
+    "offerPrice": 4746759,
+    "officialGePrice": 7025936,
+    "cofferValue": 7377232,
+    "roiPct": 55.41619028899508
+  },
+  {
+    "id": 31160,
+    "name": "Swampbark armour set",
+    "offerPrice": 260795,
+    "officialGePrice": 385366,
+    "cofferValue": 404634,
+    "roiPct": 55.15404819877682
+  },
+  {
+    "id": 21745,
+    "name": "Jar of stone",
+    "offerPrice": 1000000,
+    "officialGePrice": 1472553,
+    "cofferValue": 1546180,
+    "roiPct": 54.618
+  },
+  {
+    "id": 5785,
+    "name": "Asgarnian ale(4)",
+    "offerPrice": 26000,
+    "officialGePrice": 38116,
+    "cofferValue": 40021,
+    "roiPct": 53.926923076923075
+  },
+  {
+    "id": 12885,
+    "name": "Jar of sand",
+    "offerPrice": 520104,
+    "officialGePrice": 760675,
+    "cofferValue": 798708,
+    "roiPct": 53.56697891190992
+  },
+  {
+    "id": 31027,
+    "name": "Greenman statue",
+    "offerPrice": 46000,
+    "officialGePrice": 66860,
+    "cofferValue": 70203,
+    "roiPct": 52.61521739130435
+  },
+  {
+    "id": 20379,
+    "name": "Steel trimmed set (sk)",
+    "offerPrice": 38000,
+    "officialGePrice": 55216,
+    "cofferValue": 57976,
+    "roiPct": 52.56842105263158
+  },
+  {
+    "id": 24387,
+    "name": "Twisted hat (t3)",
+    "offerPrice": 524170,
+    "officialGePrice": 755699,
+    "cofferValue": 793483,
+    "roiPct": 51.37894194631512
+  },
+  {
+    "id": 24411,
+    "name": "Twisted boots (t1)",
+    "offerPrice": 30000,
+    "officialGePrice": 43020,
+    "cofferValue": 45171,
+    "roiPct": 50.57000000000001
+  },
+  {
+    "id": 6910,
+    "name": "Apprentice wand",
+    "offerPrice": 500000,
+    "officialGePrice": 716034,
+    "cofferValue": 751835,
+    "roiPct": 50.367
+  },
+  {
+    "id": 1989,
+    "name": "Half full wine jug",
+    "offerPrice": 12000,
+    "officialGePrice": 17168,
+    "cofferValue": 18026,
+    "roiPct": 50.21666666666667
+  },
+  {
+    "id": 12964,
+    "name": "Bronze trimmed set (lg)",
+    "offerPrice": 30000,
+    "officialGePrice": 42896,
+    "cofferValue": 45040,
+    "roiPct": 50.13333333333333
+  },
+  {
+    "id": 23249,
+    "name": "Rangers&#039; tights",
+    "offerPrice": 878585,
+    "officialGePrice": 1249267,
+    "cofferValue": 1311730,
+    "roiPct": 49.30029536129117
+  },
+  {
+    "id": 20044,
+    "name": "Samurai greaves",
+    "offerPrice": 17500,
+    "officialGePrice": 24845,
+    "cofferValue": 26087,
+    "roiPct": 49.06857142857143
+  },
+  {
+    "id": 22557,
+    "name": "Amulet of avarice",
+    "offerPrice": 765630,
+    "officialGePrice": 1086945,
+    "cofferValue": 1141292,
+    "roiPct": 49.065736713556156
+  },
+  {
+    "id": 12970,
+    "name": "Bronze gold-trimmed set (sk)",
+    "offerPrice": 103491,
+    "officialGePrice": 146778,
+    "cofferValue": 154116,
+    "roiPct": 48.91729715627446
+  },
+  {
+    "id": 20053,
+    "name": "Half moon spectacles",
+    "offerPrice": 20123,
+    "officialGePrice": 28503,
+    "cofferValue": 29928,
+    "roiPct": 48.725339164140536
+  },
+  {
+    "id": 10390,
+    "name": "Saradomin coif",
+    "offerPrice": 68536,
+    "officialGePrice": 96798,
+    "cofferValue": 101637,
+    "roiPct": 48.29724524337574
+  },
+  {
+    "id": 13389,
+    "name": "Xerician robe",
+    "offerPrice": 10034,
+    "officialGePrice": 14165,
+    "cofferValue": 14873,
+    "roiPct": 48.22603149292406
+  },
+  {
+    "id": 9475,
+    "name": "Mint cake",
+    "offerPrice": 60000,
+    "officialGePrice": 84697,
+    "cofferValue": 88931,
+    "roiPct": 48.218333333333334
+  },
+  {
+    "id": 23194,
+    "name": "Zamorak d&#039;hide shield",
+    "offerPrice": 459750,
+    "officialGePrice": 648884,
+    "cofferValue": 681328,
+    "roiPct": 48.19532354540511
+  },
+  {
+    "id": 10450,
+    "name": "Zamorak cloak",
+    "offerPrice": 10000,
+    "officialGePrice": 14079,
+    "cofferValue": 14782,
+    "roiPct": 47.82
+  },
+  {
+    "id": 19967,
+    "name": "Dark tuxedo shoes",
+    "offerPrice": 500000,
+    "officialGePrice": 702259,
+    "cofferValue": 737371,
+    "roiPct": 47.474199999999996
+  },
+  {
+    "id": 22740,
+    "name": "Dragon hasta(p++)",
+    "offerPrice": 34000,
+    "officialGePrice": 47602,
+    "cofferValue": 49982,
+    "roiPct": 47.00588235294118
+  },
+  {
+    "id": 20158,
+    "name": "Gilded spear",
+    "offerPrice": 1380000,
+    "officialGePrice": 1913541,
+    "cofferValue": 2009218,
+    "roiPct": 45.59550724637681
+  },
+  {
+    "id": 25395,
+    "name": "Swampbark boots",
+    "offerPrice": 28210,
+    "officialGePrice": 39020,
+    "cofferValue": 40971,
+    "roiPct": 45.235732009925556
+  },
+  {
+    "id": 21009,
+    "name": "Dragon sword",
+    "offerPrice": 445400,
+    "officialGePrice": 613798,
+    "cofferValue": 644487,
+    "roiPct": 44.69847328244275
+  },
+  {
+    "id": 4745,
+    "name": "Torag&#039;s helm",
+    "offerPrice": 162663,
+    "officialGePrice": 222586,
+    "cofferValue": 233715,
+    "roiPct": 43.680492797993395
+  },
+  {
+    "id": 25407,
+    "name": "Bloodbark gauntlets",
+    "offerPrice": 28053,
+    "officialGePrice": 38166,
+    "cofferValue": 40074,
+    "roiPct": 42.85103197518982
+  },
+  {
+    "id": 20137,
+    "name": "Robe bottom of darkness",
+    "offerPrice": 60001,
+    "officialGePrice": 81608,
+    "cofferValue": 85688,
+    "roiPct": 42.810953150780826
+  },
+  {
+    "id": 29628,
+    "name": "Armageddon cape fabric",
+    "offerPrice": 76571296,
+    "officialGePrice": 103675650,
+    "cofferValue": 108859432,
+    "roiPct": 42.167414797315175
+  },
+  {
+    "id": 13387,
+    "name": "Xerician top",
+    "offerPrice": 12345,
+    "officialGePrice": 16695,
+    "cofferValue": 17529,
+    "roiPct": 41.99270959902795
+  },
+  {
+    "id": 12994,
+    "name": "Black trimmed set (sk)",
+    "offerPrice": 71000,
+    "officialGePrice": 95765,
+    "cofferValue": 100553,
+    "roiPct": 41.62394366197183
+  },
+  {
+    "id": 19982,
+    "name": "Light tuxedo shoes",
+    "offerPrice": 509000,
+    "officialGePrice": 686383,
+    "cofferValue": 720702,
+    "roiPct": 41.59174852652259
+  },
+  {
+    "id": 13054,
+    "name": "Armadyl rune armour set (sk)",
+    "offerPrice": 168815,
+    "officialGePrice": 227491,
+    "cofferValue": 238865,
+    "roiPct": 41.495127802624175
+  },
+  {
+    "id": 5549,
+    "name": "Blood tiara",
+    "offerPrice": 100000,
+    "officialGePrice": 134684,
+    "cofferValue": 141418,
+    "roiPct": 41.418
+  },
+  {
+    "id": 32115,
+    "name": "Dragon cannon barrel",
+    "offerPrice": 5076272,
+    "officialGePrice": 6834729,
+    "cofferValue": 7176465,
+    "roiPct": 41.37274361972723
+  },
+  {
+    "id": 5753,
+    "name": "Axeman&#039;s folly(m)",
+    "offerPrice": 35300,
+    "officialGePrice": 47402,
+    "cofferValue": 49772,
+    "roiPct": 40.9971671388102
+  },
+  {
+    "id": 11130,
+    "name": "Onyx bracelet",
+    "offerPrice": 1700000,
+    "officialGePrice": 2265334,
+    "cofferValue": 2378600,
+    "roiPct": 39.91764705882353
+  },
+  {
+    "id": 3140,
+    "name": "Dragon chainbody",
+    "offerPrice": 358796,
+    "officialGePrice": 477650,
+    "cofferValue": 501532,
+    "roiPct": 39.78193736830956
+  },
+  {
+    "id": 13267,
+    "name": "Abyssal dagger (p)",
+    "offerPrice": 2220000,
+    "officialGePrice": 2954484,
+    "cofferValue": 3102208,
+    "roiPct": 39.7390990990991
+  },
+  {
+    "id": 19994,
+    "name": "Ranger gloves",
+    "offerPrice": 744024,
+    "officialGePrice": 989331,
+    "cofferValue": 1038797,
+    "roiPct": 39.61874885756374
+  },
+  {
+    "id": 13161,
+    "name": "Zamorak dragonhide set",
+    "offerPrice": 625024,
+    "officialGePrice": 830485,
+    "cofferValue": 872009,
+    "roiPct": 39.51608258242884
+  },
+  {
+    "id": 6317,
+    "name": "Red topaz machete",
+    "offerPrice": 11427,
+    "officialGePrice": 15175,
+    "cofferValue": 15933,
+    "roiPct": 39.432922026778684
+  },
+  {
+    "id": 23246,
+    "name": "Fremennik kilt",
+    "offerPrice": 3564414,
+    "officialGePrice": 4723216,
+    "cofferValue": 4959376,
+    "roiPct": 39.13580184568908
+  },
+  {
+    "id": 3387,
+    "name": "Splitbark body",
+    "offerPrice": 33000,
+    "officialGePrice": 43697,
+    "cofferValue": 45881,
+    "roiPct": 39.03333333333333
+  },
+  {
+    "id": 2581,
+    "name": "Robin hood hat",
+    "offerPrice": 1146543,
+    "officialGePrice": 1517024,
+    "cofferValue": 1592875,
+    "roiPct": 38.928500719118254
+  },
+  {
+    "id": 19964,
+    "name": "Dark trousers",
+    "offerPrice": 737942,
+    "officialGePrice": 974350,
+    "cofferValue": 1023067,
+    "roiPct": 38.63786042805532
+  },
+  {
+    "id": 19927,
+    "name": "Guthix d&#039;hide boots",
+    "offerPrice": 270582,
+    "officialGePrice": 355936,
+    "cofferValue": 373732,
+    "roiPct": 38.12153062657531
+  },
+  {
+    "id": 32080,
+    "name": "Large rosewood hull parts",
+    "offerPrice": 59810,
+    "officialGePrice": 78589,
+    "cofferValue": 82518,
+    "roiPct": 37.9668951680321
+  },
+  {
+    "id": 6131,
+    "name": "Spined helm",
+    "offerPrice": 40000,
+    "officialGePrice": 52354,
+    "cofferValue": 54971,
+    "roiPct": 37.4275
+  },
+  {
+    "id": 29625,
+    "name": "Armageddon weapon scroll",
+    "offerPrice": 150689382,
+    "officialGePrice": 197035058,
+    "cofferValue": 206886810,
+    "roiPct": 37.2935552950904
+  },
+  {
+    "id": 30634,
+    "name": "Twinflame staff",
+    "offerPrice": 6044432,
+    "officialGePrice": 7884289,
+    "cofferValue": 8278503,
+    "roiPct": 36.96080955166672
+  },
+  {
+    "id": 19924,
+    "name": "Bandos d&#039;hide boots",
+    "offerPrice": 283699,
+    "officialGePrice": 368972,
+    "cofferValue": 387420,
+    "roiPct": 36.560227565130646
+  },
+  {
+    "id": 24585,
+    "name": "Looting bag note",
+    "offerPrice": 62555,
+    "officialGePrice": 81341,
+    "cofferValue": 85408,
+    "roiPct": 36.53265126688514
+  },
+  {
+    "id": 8455,
+    "name": "Bagged bluebells",
+    "offerPrice": 13500,
+    "officialGePrice": 17553,
+    "cofferValue": 18430,
+    "roiPct": 36.51851851851852
+  },
+  {
+    "id": 30451,
+    "name": "Echo ahrim&#039;s ornament kit",
+    "offerPrice": 307186,
+    "officialGePrice": 398927,
+    "cofferValue": 418873,
+    "roiPct": 36.35810225726433
+  },
+  {
+    "id": 10376,
+    "name": "Guthix bracers",
+    "offerPrice": 22085,
+    "officialGePrice": 28579,
+    "cofferValue": 30007,
+    "roiPct": 35.87050033959701
+  },
+  {
+    "id": 4757,
+    "name": "Verac&#039;s brassard",
+    "offerPrice": 174000,
+    "officialGePrice": 223914,
+    "cofferValue": 235109,
+    "roiPct": 35.12011494252874
+  },
+  {
+    "id": 23667,
+    "name": "Dragonstone armour set",
+    "offerPrice": 3000000,
+    "officialGePrice": 3859830,
+    "cofferValue": 4052821,
+    "roiPct": 35.094033333333336
+  },
+  {
+    "id": 28699,
+    "name": "Trailblazer reloaded death scroll",
+    "offerPrice": 1843574,
+    "officialGePrice": 2371233,
+    "cofferValue": 2489794,
+    "roiPct": 35.05256637379352
+  },
+  {
+    "id": 19936,
+    "name": "Zamorak d&#039;hide boots",
+    "offerPrice": 402114,
+    "officialGePrice": 517060,
+    "cofferValue": 542913,
+    "roiPct": 35.01469732463928
+  },
+  {
+    "id": 26442,
+    "name": "Shattered top (t2)",
+    "offerPrice": 156814,
+    "officialGePrice": 200840,
+    "cofferValue": 210882,
+    "roiPct": 34.47906436925274
+  },
+  {
+    "id": 2621,
+    "name": "Rune kiteshield (g)",
+    "offerPrice": 138874,
+    "officialGePrice": 177703,
+    "cofferValue": 186588,
+    "roiPct": 34.35776315220992
+  },
+  {
+    "id": 8427,
+    "name": "Bagged yew tree",
+    "offerPrice": 17474,
+    "officialGePrice": 22326,
+    "cofferValue": 23442,
+    "roiPct": 34.153599633741564
+  },
+  {
+    "id": 23342,
+    "name": "3rd age druidic staff",
+    "offerPrice": 636699420,
+    "officialGePrice": 813243243,
+    "cofferValue": 853905405,
+    "roiPct": 34.11436828385991
+  },
+  {
+    "id": 6914,
+    "name": "Master wand",
+    "offerPrice": 1876999,
+    "officialGePrice": 2395304,
+    "cofferValue": 2515069,
+    "roiPct": 33.9941576953424
+  },
+  {
+    "id": 6575,
+    "name": "Onyx ring",
+    "offerPrice": 1500005,
+    "officialGePrice": 1913979,
+    "cofferValue": 2009677,
+    "roiPct": 33.97802007326642
+  },
+  {
+    "id": 24475,
+    "name": "Twisted relic hunter (t3) armour set",
+    "offerPrice": 2402430,
+    "officialGePrice": 3064959,
+    "cofferValue": 3218206,
+    "roiPct": 33.95628592716541
+  },
+  {
+    "id": 32071,
+    "name": "Large mahogany hull parts",
+    "offerPrice": 25000,
+    "officialGePrice": 31885,
+    "cofferValue": 33479,
+    "roiPct": 33.916000000000004
+  },
+  {
+    "id": 23297,
+    "name": "Jester cape",
+    "offerPrice": 23291,
+    "officialGePrice": 29686,
+    "cofferValue": 31170,
+    "roiPct": 33.82851745309347
+  },
+  {
+    "id": 13151,
+    "name": "Unholy book page set",
+    "offerPrice": 28017,
+    "officialGePrice": 35659,
+    "cofferValue": 37441,
+    "roiPct": 33.63672056251561
+  },
+  {
+    "id": 20716,
+    "name": "Tome of fire (empty)",
+    "offerPrice": 1366127,
+    "officialGePrice": 1738718,
+    "cofferValue": 1825653,
+    "roiPct": 33.63713622525577
+  },
+  {
+    "id": 30443,
+    "name": "Echo virtus ornament kit",
+    "offerPrice": 1004607,
+    "officialGePrice": 1276636,
+    "cofferValue": 1340467,
+    "roiPct": 33.431978873330564
+  },
+  {
+    "id": 10368,
+    "name": "Zamorak bracers",
+    "offerPrice": 116757,
+    "officialGePrice": 148357,
+    "cofferValue": 155774,
+    "roiPct": 33.417268343653916
+  },
+  {
+    "id": 7394,
+    "name": "Blue wizard hat (g)",
+    "offerPrice": 137922,
+    "officialGePrice": 174677,
+    "cofferValue": 183410,
+    "roiPct": 32.980960252896566
+  },
+  {
+    "id": 13263,
+    "name": "Abyssal bludgeon",
+    "offerPrice": 19081167,
+    "officialGePrice": 24147602,
+    "cofferValue": 25354982,
+    "roiPct": 32.879618945738486
+  },
+  {
+    "id": 10382,
+    "name": "Guthix coif",
+    "offerPrice": 75000,
+    "officialGePrice": 94882,
+    "cofferValue": 99626,
+    "roiPct": 32.83466666666667
+  },
+  {
+    "id": 12512,
+    "name": "Armadyl coif",
+    "offerPrice": 89001,
+    "officialGePrice": 112546,
+    "cofferValue": 118173,
+    "roiPct": 32.77715980719318
+  },
+  {
+    "id": 28834,
+    "name": "Tecu salamander",
+    "offerPrice": 233056,
+    "officialGePrice": 294401,
+    "cofferValue": 309121,
+    "roiPct": 32.63807840175752
+  },
+  {
+    "id": 4753,
+    "name": "Verac&#039;s helm",
+    "offerPrice": 121443,
+    "officialGePrice": 152777,
+    "cofferValue": 160415,
+    "roiPct": 32.09077509613564
+  },
+  {
+    "id": 32038,
+    "name": "Large dragon keel parts",
+    "offerPrice": 3791427,
+    "officialGePrice": 4766740,
+    "cofferValue": 5005077,
+    "roiPct": 32.01037498546062
+  },
+  {
+    "id": 22960,
+    "name": "Drake&#039;s tooth",
+    "offerPrice": 65001,
+    "officialGePrice": 81663,
+    "cofferValue": 85746,
+    "roiPct": 31.914893617021278
+  },
+  {
+    "id": 10458,
+    "name": "Saradomin robe top",
+    "offerPrice": 67663,
+    "officialGePrice": 85003,
+    "cofferValue": 89253,
+    "roiPct": 31.90813295301716
+  },
+  {
+    "id": 12255,
+    "name": "Armadyl robe legs",
+    "offerPrice": 55055,
+    "officialGePrice": 69091,
+    "cofferValue": 72545,
+    "roiPct": 31.768231768231768
+  },
+  {
+    "id": 30453,
+    "name": "Echo home teleport scroll",
+    "offerPrice": 625404,
+    "officialGePrice": 784585,
+    "cofferValue": 823814,
+    "roiPct": 31.725092899949477
+  },
+  {
+    "id": 12253,
+    "name": "Armadyl robe top",
+    "offerPrice": 59999,
+    "officialGePrice": 75242,
+    "cofferValue": 79004,
+    "roiPct": 31.675527925465424
+  },
+  {
+    "id": 19930,
+    "name": "Armadyl d&#039;hide boots",
+    "offerPrice": 527653,
+    "officialGePrice": 660574,
+    "cofferValue": 693602,
+    "roiPct": 31.450403958662225
+  },
+  {
+    "id": 13265,
+    "name": "Abyssal dagger",
+    "offerPrice": 2176000,
+    "officialGePrice": 2707345,
+    "cofferValue": 2842712,
+    "roiPct": 30.639338235294115
+  },
+  {
+    "id": 23188,
+    "name": "Guthix d&#039;hide shield",
+    "offerPrice": 467000,
+    "officialGePrice": 581014,
+    "cofferValue": 610064,
+    "roiPct": 30.634689507494645
+  },
+  {
+    "id": 22808,
+    "name": "Dragon knife(p+)",
+    "offerPrice": 10600,
+    "officialGePrice": 13099,
+    "cofferValue": 13753,
+    "roiPct": 29.745283018867923
+  },
+  {
+    "id": 12883,
+    "name": "Karil&#039;s armour set",
+    "offerPrice": 2111501,
+    "officialGePrice": 2609169,
+    "cofferValue": 2739627,
+    "roiPct": 29.747842885227143
+  },
+  {
+    "id": 7390,
+    "name": "Blue wizard robe (g)",
+    "offerPrice": 181066,
+    "officialGePrice": 223265,
+    "cofferValue": 234428,
+    "roiPct": 29.471021616427155
+  },
+  {
+    "id": 22994,
+    "name": "Bottomless compost bucket",
+    "offerPrice": 959251,
+    "officialGePrice": 1182590,
+    "cofferValue": 1241719,
+    "roiPct": 29.446724579906615
+  },
+  {
+    "id": 26390,
+    "name": "Blood essence",
+    "offerPrice": 146966,
+    "officialGePrice": 180909,
+    "cofferValue": 189954,
+    "roiPct": 29.250302791121758
+  },
+  {
+    "id": 10466,
+    "name": "Guthix robe legs",
+    "offerPrice": 43421,
+    "officialGePrice": 53366,
+    "cofferValue": 56034,
+    "roiPct": 29.048156422007786
+  },
+  {
+    "id": 5730,
+    "name": "Dragon spear(p++)",
+    "offerPrice": 36305,
+    "officialGePrice": 44562,
+    "cofferValue": 46790,
+    "roiPct": 28.88031951521829
+  },
+  {
+    "id": 4932,
+    "name": "Karil&#039;s coif 0",
+    "offerPrice": 35257,
+    "officialGePrice": 43248,
+    "cofferValue": 45410,
+    "roiPct": 28.79711830274839
+  },
+  {
+    "id": 13271,
+    "name": "Abyssal dagger (p++)",
+    "offerPrice": 2228614,
+    "officialGePrice": 2733116,
+    "cofferValue": 2869771,
+    "roiPct": 28.769315816915803
+  },
+  {
+    "id": 10384,
+    "name": "Saradomin bracers",
+    "offerPrice": 50667,
+    "officialGePrice": 62116,
+    "cofferValue": 65221,
+    "roiPct": 28.724811020980123
+  },
+  {
+    "id": 8423,
+    "name": "Bagged willow tree",
+    "offerPrice": 10376,
+    "officialGePrice": 12699,
+    "cofferValue": 13333,
+    "roiPct": 28.49845797995374
+  },
+  {
+    "id": 12391,
+    "name": "Gilded boots",
+    "offerPrice": 1918500,
+    "officialGePrice": 2346983,
+    "cofferValue": 2464332,
+    "roiPct": 28.450977326035964
+  },
+  {
+    "id": 31099,
+    "name": "Mokhaiotl waystone",
+    "offerPrice": 121110,
+    "officialGePrice": 148106,
+    "cofferValue": 155511,
+    "roiPct": 28.404756006935845
+  },
+  {
+    "id": 29013,
+    "name": "Blue moon chestplate",
+    "offerPrice": 1564000,
+    "officialGePrice": 1909750,
+    "cofferValue": 2005237,
+    "roiPct": 28.212084398976984
+  },
+  {
+    "id": 26528,
+    "name": "Shattered cannon ornament kit",
+    "offerPrice": 675214,
+    "officialGePrice": 822360,
+    "cofferValue": 863478,
+    "roiPct": 27.882123297206512
+  },
+  {
+    "id": 25019,
+    "name": "Trailblazer top (t2)",
+    "offerPrice": 142111,
+    "officialGePrice": 172744,
+    "cofferValue": 181381,
+    "roiPct": 27.633328876723123
+  },
+  {
+    "id": 23197,
+    "name": "Ancient d&#039;hide shield",
+    "offerPrice": 493000,
+    "officialGePrice": 599187,
+    "cofferValue": 629146,
+    "roiPct": 27.6158215010142
+  },
+  {
+    "id": 23291,
+    "name": "Bear feet",
+    "offerPrice": 20000,
+    "officialGePrice": 24272,
+    "cofferValue": 25485,
+    "roiPct": 27.425
+  },
+  {
+    "id": 11998,
+    "name": "Smoke battlestaff",
+    "offerPrice": 2845671,
+    "officialGePrice": 3451479,
+    "cofferValue": 3624052,
+    "roiPct": 27.353162048599433
+  },
+  {
+    "id": 25413,
+    "name": "Bloodbark helm",
+    "offerPrice": 78518,
+    "officialGePrice": 95136,
+    "cofferValue": 99892,
+    "roiPct": 27.22178354007998
+  },
+  {
+    "id": 4736,
+    "name": "Karil&#039;s leathertop",
+    "offerPrice": 1295491,
+    "officialGePrice": 1569606,
+    "cofferValue": 1648086,
+    "roiPct": 27.21709375055481
+  },
+  {
+    "id": 12000,
+    "name": "Mystic smoke staff",
+    "offerPrice": 2958551,
+    "officialGePrice": 3580475,
+    "cofferValue": 3759498,
+    "roiPct": 27.072272879527848
+  },
+  {
+    "id": 28146,
+    "name": "Log brace",
+    "offerPrice": 625979,
+    "officialGePrice": 757260,
+    "cofferValue": 795123,
+    "roiPct": 27.020714752411823
+  },
+  {
+    "id": 6527,
+    "name": "Tzhaar-ket-em",
+    "offerPrice": 210000,
+    "officialGePrice": 253735,
+    "cofferValue": 266421,
+    "roiPct": 26.867142857142856
+  },
+  {
+    "id": 7396,
+    "name": "Blue wizard hat (t)",
+    "offerPrice": 42925,
+    "officialGePrice": 51836,
+    "cofferValue": 54427,
+    "roiPct": 26.795573675014563
+  },
+  {
+    "id": 29806,
+    "name": "Aranea boots",
+    "offerPrice": 3300000,
+    "officialGePrice": 3984629,
+    "cofferValue": 4183860,
+    "roiPct": 26.783636363636365
+  },
+  {
+    "id": 32074,
+    "name": "Large camphor hull parts",
+    "offerPrice": 40617,
+    "officialGePrice": 48982,
+    "cofferValue": 51431,
+    "roiPct": 26.62431986606593
+  },
+  {
+    "id": 30563,
+    "name": "Raging echoes spirit tree scroll",
+    "offerPrice": 3728000,
+    "officialGePrice": 4493114,
+    "cofferValue": 4717769,
+    "roiPct": 26.54959763948498
+  },
+  {
+    "id": 25401,
+    "name": "Swampbark legs",
+    "offerPrice": 77337,
+    "officialGePrice": 93183,
+    "cofferValue": 97842,
+    "roiPct": 26.513829085689906
+  },
+  {
+    "id": 12351,
+    "name": "Musketeer hat",
+    "offerPrice": 84000,
+    "officialGePrice": 101153,
+    "cofferValue": 106210,
+    "roiPct": 26.440476190476193
+  },
+  {
+    "id": 6731,
+    "name": "Seers ring",
+    "offerPrice": 986686,
+    "officialGePrice": 1187258,
+    "cofferValue": 1246620,
+    "roiPct": 26.34414595930215
+  },
+  {
+    "id": 6563,
+    "name": "Mystic mud staff",
+    "offerPrice": 106700,
+    "officialGePrice": 128378,
+    "cofferValue": 134796,
+    "roiPct": 26.331771321462043
+  },
+  {
+    "id": 20439,
+    "name": "Evil chicken head",
+    "offerPrice": 184170,
+    "officialGePrice": 221380,
+    "cofferValue": 232449,
+    "roiPct": 26.21436716077537
+  },
+  {
+    "id": 30424,
+    "name": "Raging echoes robeskirt (t3)",
+    "offerPrice": 435000,
+    "officialGePrice": 522761,
+    "cofferValue": 548899,
+    "roiPct": 26.183678160919538
+  },
+  {
+    "id": 4724,
+    "name": "Guthan&#039;s helm",
+    "offerPrice": 140006,
+    "officialGePrice": 168176,
+    "cofferValue": 176584,
+    "roiPct": 26.126023170435552
+  },
+  {
+    "id": 12697,
+    "name": "Super combat potion(3)",
+    "offerPrice": 11257,
+    "officialGePrice": 13516,
+    "cofferValue": 14191,
+    "roiPct": 26.063782535311365
+  },
+  {
+    "id": 3389,
+    "name": "Splitbark legs",
+    "offerPrice": 27000,
+    "officialGePrice": 32361,
+    "cofferValue": 33979,
+    "roiPct": 25.848148148148148
+  },
+  {
+    "id": 12353,
+    "name": "Monocle",
+    "offerPrice": 14444,
+    "officialGePrice": 17311,
+    "cofferValue": 18176,
+    "roiPct": 25.837718083633344
+  },
+  {
+    "id": 6733,
+    "name": "Archers ring",
+    "offerPrice": 2869757,
+    "officialGePrice": 3432848,
+    "cofferValue": 3604490,
+    "roiPct": 25.60262070969772
+  },
+  {
+    "id": 28988,
+    "name": "Blue moon spear",
+    "offerPrice": 331115,
+    "officialGePrice": 395998,
+    "cofferValue": 415797,
+    "roiPct": 25.57480029596968
+  },
+  {
+    "id": 12596,
+    "name": "Rangers&#039; tunic",
+    "offerPrice": 3737968,
+    "officialGePrice": 4468365,
+    "cofferValue": 4691783,
+    "roiPct": 25.516938614776798
+  },
+  {
+    "id": 20376,
+    "name": "Steel trimmed set (lg)",
+    "offerPrice": 23750,
+    "officialGePrice": 28354,
+    "cofferValue": 29771,
+    "roiPct": 25.35157894736842
+  },
+  {
+    "id": 12498,
+    "name": "Bandos bracers",
+    "offerPrice": 71924,
+    "officialGePrice": 85754,
+    "cofferValue": 90041,
+    "roiPct": 25.18908848228686
+  },
+  {
+    "id": 4153,
+    "name": "Granite maul",
+    "offerPrice": 182649,
+    "officialGePrice": 217194,
+    "cofferValue": 228053,
+    "roiPct": 24.858608588056875
+  },
+  {
+    "id": 30554,
+    "name": "Raging echoes rug",
+    "offerPrice": 345000,
+    "officialGePrice": 409347,
+    "cofferValue": 429814,
+    "roiPct": 24.58376811594203
+  },
+  {
+    "id": 29827,
+    "name": "Extended anti-venom+(3)",
+    "offerPrice": 13527,
+    "officialGePrice": 16042,
+    "cofferValue": 16844,
+    "roiPct": 24.52132771494049
+  },
+  {
+    "id": 13058,
+    "name": "Bandos rune armour set (sk)",
+    "offerPrice": 220399,
+    "officialGePrice": 260422,
+    "cofferValue": 273443,
+    "roiPct": 24.06725983330233
+  },
+  {
+    "id": 24391,
+    "name": "Twisted trousers (t3)",
+    "offerPrice": 252000,
+    "officialGePrice": 297206,
+    "cofferValue": 312066,
+    "roiPct": 23.835714285714285
+  },
+  {
+    "id": 22975,
+    "name": "Brimstone ring",
+    "offerPrice": 4168433,
+    "officialGePrice": 4912914,
+    "cofferValue": 5158559,
+    "roiPct": 23.752954647465845
+  },
+  {
+    "id": 10322,
+    "name": "Bob&#039;s black shirt",
+    "offerPrice": 23474,
+    "officialGePrice": 27616,
+    "cofferValue": 28996,
+    "roiPct": 23.523898781630738
+  },
+  {
+    "id": 21000,
+    "name": "Twisted buckler",
+    "offerPrice": 16585464,
+    "officialGePrice": 19506625,
+    "cofferValue": 20481956,
+    "roiPct": 23.49341568014015
+  },
+  {
+    "id": 2671,
+    "name": "Guthix platelegs",
+    "offerPrice": 36836,
+    "officialGePrice": 43322,
+    "cofferValue": 45488,
+    "roiPct": 23.487892279291998
+  },
+  {
+    "id": 28684,
+    "name": "Trailblazer reloaded bulwark ornament kit",
+    "offerPrice": 6464488,
+    "officialGePrice": 7595569,
+    "cofferValue": 7975347,
+    "roiPct": 23.371673054385745
+  },
+  {
+    "id": 19933,
+    "name": "Saradomin d&#039;hide boots",
+    "offerPrice": 305239,
+    "officialGePrice": 358452,
+    "cofferValue": 376374,
+    "roiPct": 23.304689112465972
+  },
+  {
+    "id": 20733,
+    "name": "Mystic mist staff",
+    "offerPrice": 130000,
+    "officialGePrice": 152485,
+    "cofferValue": 160109,
+    "roiPct": 23.160769230769233
+  },
+  {
+    "id": 10468,
+    "name": "Zamorak robe legs",
+    "offerPrice": 49449,
+    "officialGePrice": 57909,
+    "cofferValue": 60804,
+    "roiPct": 22.963052842322394
+  },
+  {
+    "id": 12371,
+    "name": "Lava dragon mask",
+    "offerPrice": 754990,
+    "officialGePrice": 882285,
+    "cofferValue": 926399,
+    "roiPct": 22.703479516284983
+  },
+  {
+    "id": 5747,
+    "name": "Dwarven stout(m)",
+    "offerPrice": 14205,
+    "officialGePrice": 16600,
+    "cofferValue": 17430,
+    "roiPct": 22.70327349524815
+  },
+  {
+    "id": 31081,
+    "name": "Antler guard",
+    "offerPrice": 556962,
+    "officialGePrice": 649611,
+    "cofferValue": 682091,
+    "roiPct": 22.466344203015645
+  },
+  {
+    "id": 30131,
+    "name": "Prayer regeneration potion(2)",
+    "offerPrice": 23014,
+    "officialGePrice": 26814,
+    "cofferValue": 28154,
+    "roiPct": 22.334231337446774
+  },
+  {
+    "id": 13167,
+    "name": "Bandos dragonhide set",
+    "offerPrice": 525001,
+    "officialGePrice": 611197,
+    "cofferValue": 641756,
+    "roiPct": 22.239005259037604
+  },
+  {
+    "id": 7398,
+    "name": "Enchanted robe",
+    "offerPrice": 46683,
+    "officialGePrice": 54346,
+    "cofferValue": 57063,
+    "roiPct": 22.235074866653814
+  },
+  {
+    "id": 13050,
+    "name": "Guthix armour set (sk)",
+    "offerPrice": 186555,
+    "officialGePrice": 217012,
+    "cofferValue": 227862,
+    "roiPct": 22.141995658116908
+  },
+  {
+    "id": 20041,
+    "name": "Samurai gloves",
+    "offerPrice": 31000,
+    "officialGePrice": 36001,
+    "cofferValue": 37801,
+    "roiPct": 21.938709677419354
+  },
+  {
+    "id": 8461,
+    "name": "Bagged roses",
+    "offerPrice": 15000,
+    "officialGePrice": 17404,
+    "cofferValue": 18274,
+    "roiPct": 21.826666666666668
+  },
+  {
+    "id": 31248,
+    "name": "Belle&#039;s folly",
+    "offerPrice": 1231000,
+    "officialGePrice": 1428253,
+    "cofferValue": 1499665,
+    "roiPct": 21.824939073923638
+  },
+  {
+    "id": 26376,
+    "name": "Torva full helm (damaged)",
+    "offerPrice": 223367730,
+    "officialGePrice": 259117963,
+    "cofferValue": 272073861,
+    "roiPct": 21.80535702269974
+  },
+  {
+    "id": 22464,
+    "name": "Bastion potion(3)",
+    "offerPrice": 14901,
+    "officialGePrice": 17271,
+    "cofferValue": 18134,
+    "roiPct": 21.696530434199047
+  },
+  {
+    "id": 30957,
+    "name": "Earthbound tecpatl",
+    "offerPrice": 148294,
+    "officialGePrice": 171872,
+    "cofferValue": 180465,
+    "roiPct": 21.694067190850607
+  },
+  {
+    "id": 28690,
+    "name": "Trailblazer reloaded blowpipe ornament kit",
+    "offerPrice": 3901292,
+    "officialGePrice": 4519525,
+    "cofferValue": 4745501,
+    "roiPct": 21.63921593154268
+  },
+  {
+    "id": 29824,
+    "name": "Extended anti-venom+(4)",
+    "offerPrice": 18474,
+    "officialGePrice": 21376,
+    "cofferValue": 22444,
+    "roiPct": 21.489661145393526
+  },
+  {
+    "id": 13165,
+    "name": "Guthix dragonhide set",
+    "offerPrice": 505084,
+    "officialGePrice": 584180,
+    "cofferValue": 613389,
+    "roiPct": 21.442967902368714
+  },
+  {
+    "id": 10462,
+    "name": "Guthix robe top",
+    "offerPrice": 57275,
+    "officialGePrice": 66157,
+    "cofferValue": 69464,
+    "roiPct": 21.28153644696639
+  },
+  {
+    "id": 25975,
+    "name": "Lightbearer",
+    "offerPrice": 5943964,
+    "officialGePrice": 6862323,
+    "cofferValue": 7205439,
+    "roiPct": 21.222790043815877
+  },
+  {
+    "id": 28304,
+    "name": "Seers icon",
+    "offerPrice": 1025000,
+    "officialGePrice": 1182469,
+    "cofferValue": 1241592,
+    "roiPct": 21.130926829268294
+  },
+  {
+    "id": 4714,
+    "name": "Ahrim&#039;s robeskirt",
+    "offerPrice": 1780000,
+    "officialGePrice": 2045734,
+    "cofferValue": 2148020,
+    "roiPct": 20.675280898876405
+  },
+  {
+    "id": 30146,
+    "name": "Goading potion(1)",
+    "offerPrice": 10500,
+    "officialGePrice": 12042,
+    "cofferValue": 12644,
+    "roiPct": 20.41904761904762
+  },
+  {
+    "id": 28313,
+    "name": "Magus ring",
+    "offerPrice": 33768265,
+    "officialGePrice": 38714700,
+    "cofferValue": 40650435,
+    "roiPct": 20.38058514406944
+  },
+  {
+    "id": 25004,
+    "name": "Trailblazer top (t3)",
+    "offerPrice": 1600000,
+    "officialGePrice": 1832603,
+    "cofferValue": 1924233,
+    "roiPct": 20.2645625
+  },
+  {
+    "id": 13249,
+    "name": "Key master teleport",
+    "offerPrice": 35633,
+    "officialGePrice": 40811,
+    "cofferValue": 42851,
+    "roiPct": 20.256503802654844
+  },
+  {
+    "id": 23200,
+    "name": "Armadyl d&#039;hide shield",
+    "offerPrice": 985946,
+    "officialGePrice": 1127555,
+    "cofferValue": 1183932,
+    "roiPct": 20.080815785042994
+  },
+  {
+    "id": 4902,
+    "name": "Dharok&#039;s platelegs 0",
+    "offerPrice": 764330,
+    "officialGePrice": 872454,
+    "cofferValue": 916076,
+    "roiPct": 19.853466434655186
+  },
+  {
+    "id": 24777,
+    "name": "Blood shard",
+    "offerPrice": 6501000,
+    "officialGePrice": 7414002,
+    "cofferValue": 7784702,
+    "roiPct": 19.746223657898785
+  },
+  {
+    "id": 28696,
+    "name": "Trailblazer reloaded vengeance scroll",
+    "offerPrice": 4310737,
+    "officialGePrice": 4914153,
+    "cofferValue": 5159860,
+    "roiPct": 19.69786140977749
+  },
+  {
+    "id": 30040,
+    "name": "Colossal wyrm teleport scroll",
+    "offerPrice": 37850,
+    "officialGePrice": 43080,
+    "cofferValue": 45234,
+    "roiPct": 19.50858652575958
+  },
+  {
+    "id": 6528,
+    "name": "Tzhaar-ket-om",
+    "offerPrice": 255871,
+    "officialGePrice": 291193,
+    "cofferValue": 305752,
+    "roiPct": 19.494589070273694
+  },
+  {
+    "id": 3477,
+    "name": "Rune plateskirt (t)",
+    "offerPrice": 40000,
+    "officialGePrice": 45403,
+    "cofferValue": 47673,
+    "roiPct": 19.1825
+  },
+  {
+    "id": 4896,
+    "name": "Dharok&#039;s platebody 0",
+    "offerPrice": 762665,
+    "officialGePrice": 865371,
+    "cofferValue": 908639,
+    "roiPct": 19.13998937934742
+  },
+  {
+    "id": 10378,
+    "name": "Guthix d&#039;hide body",
+    "offerPrice": 112631,
+    "officialGePrice": 127604,
+    "cofferValue": 133984,
+    "roiPct": 18.958368477594977
+  },
+  {
+    "id": 10372,
+    "name": "Zamorak chaps",
+    "offerPrice": 313238,
+    "officialGePrice": 354814,
+    "cofferValue": 372554,
+    "roiPct": 18.936399798236483
+  },
+  {
+    "id": 25090,
+    "name": "Trailblazer tool ornament kit",
+    "offerPrice": 1037278,
+    "officialGePrice": 1173759,
+    "cofferValue": 1232446,
+    "roiPct": 18.815399536093505
+  },
+  {
+    "id": 24229,
+    "name": "Ornate maul handle",
+    "offerPrice": 1202792,
+    "officialGePrice": 1359735,
+    "cofferValue": 1427721,
+    "roiPct": 18.700573332712555
+  },
+  {
+    "id": 12508,
+    "name": "Armadyl d&#039;hide body",
+    "offerPrice": 135828,
+    "officialGePrice": 153488,
+    "cofferValue": 161162,
+    "roiPct": 18.65152987601967
+  },
+  {
+    "id": 30143,
+    "name": "Goading potion(2)",
+    "offerPrice": 20010,
+    "officialGePrice": 22571,
+    "cofferValue": 23699,
+    "roiPct": 18.435782108945528
+  },
+  {
+    "id": 21387,
+    "name": "Master scroll book (empty)",
+    "offerPrice": 56250,
+    "officialGePrice": 63441,
+    "cofferValue": 66613,
+    "roiPct": 18.423111111111112
+  },
+  {
+    "id": 13028,
+    "name": "Rune trimmed set (lg)",
+    "offerPrice": 153153,
+    "officialGePrice": 172593,
+    "cofferValue": 181222,
+    "roiPct": 18.327424209777153
+  },
+  {
+    "id": 6735,
+    "name": "Warrior ring",
+    "offerPrice": 53300,
+    "officialGePrice": 60065,
+    "cofferValue": 63068,
+    "roiPct": 18.326454033771107
+  },
+  {
+    "id": 4998,
+    "name": "Verac&#039;s plateskirt 0",
+    "offerPrice": 220001,
+    "officialGePrice": 247910,
+    "cofferValue": 260305,
+    "roiPct": 18.31991672765124
+  },
+  {
+    "id": 20074,
+    "name": "Saradomin godsword ornament kit",
+    "offerPrice": 8607771,
+    "officialGePrice": 9698903,
+    "cofferValue": 10183848,
+    "roiPct": 18.309931804644897
+  },
+  {
+    "id": 26382,
+    "name": "Torva full helm",
+    "offerPrice": 236100000,
+    "officialGePrice": 265953611,
+    "cofferValue": 279251291,
+    "roiPct": 18.27670097416349
+  },
+  {
+    "id": 962,
+    "name": "Christmas cracker",
+    "offerPrice": 95000,
+    "officialGePrice": 106977,
+    "cofferValue": 112325,
+    "roiPct": 18.236842105263158
+  },
+  {
+    "id": 6581,
+    "name": "Onyx amulet",
+    "offerPrice": 1967236,
+    "officialGePrice": 2213490,
+    "cofferValue": 2324164,
+    "roiPct": 18.143628929116794
+  },
+  {
+    "id": 12786,
+    "name": "Magic shortbow scroll",
+    "offerPrice": 36849,
+    "officialGePrice": 41458,
+    "cofferValue": 43530,
+    "roiPct": 18.130749816819993
+  },
+  {
+    "id": 20065,
+    "name": "Occult ornament kit",
+    "offerPrice": 3797202,
+    "officialGePrice": 4271768,
+    "cofferValue": 4485356,
+    "roiPct": 18.12265979002434
+  },
+  {
+    "id": 26479,
+    "name": "Shattered relics void ornament kit",
+    "offerPrice": 767786,
+    "officialGePrice": 863116,
+    "cofferValue": 906271,
+    "roiPct": 18.03692695620915
+  },
+  {
+    "id": 29782,
+    "name": "Spider cave teleport",
+    "offerPrice": 17877,
+    "officialGePrice": 20091,
+    "cofferValue": 21095,
+    "roiPct": 18.000783129160375
+  },
+  {
+    "id": 12879,
+    "name": "Torag&#039;s armour set",
+    "offerPrice": 911114,
+    "officialGePrice": 1023591,
+    "cofferValue": 1074770,
+    "roiPct": 17.962186949163332
+  },
+  {
+    "id": 31163,
+    "name": "Bloodbark armour set",
+    "offerPrice": 490109,
+    "officialGePrice": 550310,
+    "cofferValue": 577825,
+    "roiPct": 17.897243266293824
+  },
+  {
+    "id": 4089,
+    "name": "Mystic hat",
+    "offerPrice": 12800,
+    "officialGePrice": 14358,
+    "cofferValue": 15075,
+    "roiPct": 17.7734375
+  },
+  {
+    "id": 12412,
+    "name": "Pirate hat &amp; patch",
+    "offerPrice": 241000,
+    "officialGePrice": 270168,
+    "cofferValue": 283676,
+    "roiPct": 17.707883817427387
+  },
+  {
+    "id": 11840,
+    "name": "Dragon boots",
+    "offerPrice": 353273,
+    "officialGePrice": 395726,
+    "cofferValue": 415512,
+    "roiPct": 17.617819646562292
+  },
+  {
+    "id": 30146,
+    "name": "Goading potion(1)",
+    "offerPrice": 10500,
+    "officialGePrice": 12042,
+    "cofferValue": 12644,
+    "roiPct": 20.41904761904762
+  },
+  {
+    "id": 10380,
+    "name": "Guthix chaps",
+    "offerPrice": 217625,
+    "officialGePrice": 243354,
+    "cofferValue": 255521,
+    "roiPct": 17.413440551407238
+  },
+  {
+    "id": 12490,
+    "name": "Ancient bracers",
+    "offerPrice": 40404,
+    "officialGePrice": 45131,
+    "cofferValue": 47387,
+    "roiPct": 17.282942282942283
+  },
+  {
+    "id": 30455,
+    "name": "Raging echoes death scroll",
+    "offerPrice": 1275000,
+    "officialGePrice": 1423481,
+    "cofferValue": 1494655,
+    "roiPct": 17.227843137254904
+  },
+  {
+    "id": 22461,
+    "name": "Bastion potion(4)",
+    "offerPrice": 20480,
+    "officialGePrice": 22860,
+    "cofferValue": 24003,
+    "roiPct": 17.2021484375
+  },
+  {
+    "id": 30557,
+    "name": "Raging echoes curtains",
+    "offerPrice": 365072,
+    "officialGePrice": 407093,
+    "cofferValue": 427447,
+    "roiPct": 17.08567077179296
+  },
+  {
+    "id": 31638,
+    "name": "Extended stamina potion(4)",
+    "offerPrice": 13379,
+    "officialGePrice": 14917,
+    "cofferValue": 15662,
+    "roiPct": 17.064055609537334
+  },
+  {
+    "id": 25398,
+    "name": "Swampbark helm",
+    "offerPrice": 50920,
+    "officialGePrice": 56761,
+    "cofferValue": 59599,
+    "roiPct": 17.044383346425764
+  },
+  {
+    "id": 2673,
+    "name": "Guthix full helm",
+    "offerPrice": 51348,
+    "officialGePrice": 57230,
+    "cofferValue": 60091,
+    "roiPct": 17.026953338007324
+  },
+  {
+    "id": 21003,
+    "name": "Elder maul",
+    "offerPrice": 97859034,
+    "officialGePrice": 108989170,
+    "cofferValue": 114438628,
+    "roiPct": 16.942323383245334
+  },
+  {
+    "id": 12453,
+    "name": "Black wizard hat (g)",
+    "offerPrice": 207913,
+    "officialGePrice": 231328,
+    "cofferValue": 242894,
+    "roiPct": 16.82482576847047
+  },
+  {
+    "id": 10386,
+    "name": "Saradomin d&#039;hide body",
+    "offerPrice": 121125,
+    "officialGePrice": 134693,
+    "cofferValue": 141427,
+    "roiPct": 16.76119711042312
+  },
+  {
+    "id": 25416,
+    "name": "Bloodbark legs",
+    "offerPrice": 143222,
+    "officialGePrice": 159035,
+    "cofferValue": 166986,
+    "roiPct": 16.592422951781153
+  },
+  {
+    "id": 20217,
+    "name": "Team cape i",
+    "offerPrice": 1599002,
+    "officialGePrice": 1774585,
+    "cofferValue": 1863314,
+    "roiPct": 16.52981046928021
+  },
+  {
+    "id": 3122,
+    "name": "Granite shield",
+    "offerPrice": 32814,
+    "officialGePrice": 36407,
+    "cofferValue": 38227,
+    "roiPct": 16.49600780154812
+  },
+  {
+    "id": 10388,
+    "name": "Saradomin chaps",
+    "offerPrice": 227795,
+    "officialGePrice": 252637,
+    "cofferValue": 265268,
+    "roiPct": 16.450317171140718
+  },
+  {
+    "id": 12978,
+    "name": "Iron trimmed set (sk)",
+    "offerPrice": 120545,
+    "officialGePrice": 133567,
+    "cofferValue": 140245,
+    "roiPct": 16.34244473018375
+  },
+  {
+    "id": 28919,
+    "name": "Tonalztics of ralos (uncharged)",
+    "offerPrice": 45394485,
+    "officialGePrice": 50238983,
+    "cofferValue": 52750932,
+    "roiPct": 16.20559634061274
+  },
+  {
+    "id": 11791,
+    "name": "Staff of the dead",
+    "offerPrice": 8302000,
+    "officialGePrice": 9185606,
+    "cofferValue": 9644886,
+    "roiPct": 16.17545169838593
+  },
+  {
+    "id": 5698,
+    "name": "Dragon dagger(p++)",
+    "offerPrice": 21024,
+    "officialGePrice": 23260,
+    "cofferValue": 24423,
+    "roiPct": 16.167237442922374
+  },
+  {
+    "id": 22988,
+    "name": "Hydra tail",
+    "offerPrice": 93978,
+    "officialGePrice": 103820,
+    "cofferValue": 109011,
+    "roiPct": 15.99629700568218
+  },
+  {
+    "id": 8435,
+    "name": "Bagged plant 3",
+    "offerPrice": 10391,
+    "officialGePrice": 11476,
+    "cofferValue": 12049,
+    "roiPct": 15.956115869502455
+  },
+  {
+    "id": 30131,
+    "name": "Prayer regeneration potion(2)",
+    "offerPrice": 23014,
+    "officialGePrice": 26814,
+    "cofferValue": 28154,
+    "roiPct": 22.334231337446774
+  },
+  {
+    "id": 4738,
+    "name": "Karil&#039;s leatherskirt",
+    "offerPrice": 617909,
+    "officialGePrice": 682172,
+    "cofferValue": 716280,
+    "roiPct": 15.919981744884765
+  },
+  {
+    "id": 24635,
+    "name": "Divine bastion potion(4)",
+    "offerPrice": 23827,
+    "officialGePrice": 26302,
+    "cofferValue": 27617,
+    "roiPct": 15.906324757627901
+  },
+  {
+    "id": 22296,
+    "name": "Staff of light",
+    "offerPrice": 8226954,
+    "officialGePrice": 9073433,
+    "cofferValue": 9527104,
+    "roiPct": 15.803540411189854
+  },
+  {
+    "id": 22326,
+    "name": "Justiciar faceguard",
+    "offerPrice": 13874317,
+    "officialGePrice": 15299505,
+    "cofferValue": 16064480,
+    "roiPct": 15.78573561494955
+  },
+  {
+    "id": 30134,
+    "name": "Prayer regeneration potion(1)",
+    "offerPrice": 11259,
+    "officialGePrice": 12415,
+    "cofferValue": 13035,
+    "roiPct": 15.774047428723687
+  },
+  {
+    "id": 9472,
+    "name": "Gnome goggles",
+    "offerPrice": 25000,
+    "officialGePrice": 27559,
+    "cofferValue": 28936,
+    "roiPct": 15.744
+  },
+  {
+    "id": 6525,
+    "name": "Toktz-xil-ek",
+    "offerPrice": 50000,
+    "officialGePrice": 55111,
+    "cofferValue": 57866,
+    "roiPct": 15.732
+  },
+  {
+    "id": 4728,
+    "name": "Guthan&#039;s platebody",
+    "offerPrice": 187780,
+    "officialGePrice": 206970,
+    "cofferValue": 217318,
+    "roiPct": 15.730109702843754
+  },
+  {
+    "id": 10344,
+    "name": "3rd age amulet",
+    "offerPrice": 60450000,
+    "officialGePrice": 66623278,
+    "cofferValue": 69954441,
+    "roiPct": 15.722813895781638
+  },
+  {
+    "id": 2659,
+    "name": "Zamorak kiteshield",
+    "offerPrice": 58563,
+    "officialGePrice": 64401,
+    "cofferValue": 67621,
+    "roiPct": 15.467103802742347
+  },
+  {
+    "id": 21643,
+    "name": "Granite boots",
+    "offerPrice": 234765,
+    "officialGePrice": 258099,
+    "cofferValue": 271003,
+    "roiPct": 15.435861393308201
+  },
+  {
+    "id": 22324,
+    "name": "Ghrazi rapier",
+    "offerPrice": 33122542,
+    "officialGePrice": 36411069,
+    "cofferValue": 38231622,
+    "roiPct": 15.424782312903398
+  },
+  {
+    "id": 23685,
+    "name": "Divine super combat potion(4)",
+    "offerPrice": 19733,
+    "officialGePrice": 21673,
+    "cofferValue": 22756,
+    "roiPct": 15.319515532356965
+  },
+  {
+    "id": 22209,
+    "name": "Extended super antifire(4)",
+    "offerPrice": 22065,
+    "officialGePrice": 24231,
+    "cofferValue": 25442,
+    "roiPct": 15.304781327894856
+  },
+  {
+    "id": 26219,
+    "name": "Osmumten&#039;s fang",
+    "offerPrice": 23408595,
+    "officialGePrice": 25693467,
+    "cofferValue": 26978140,
+    "roiPct": 15.248864786630723
+  },
+  {
+    "id": 12695,
+    "name": "Super combat potion(4)",
+    "offerPrice": 15501,
+    "officialGePrice": 17001,
+    "cofferValue": 17851,
+    "roiPct": 15.160312237920134
+  },
+  {
+    "id": 27657,
+    "name": "Ursine chainmace (u)",
+    "offerPrice": 6974776,
+    "officialGePrice": 7649565,
+    "cofferValue": 8032043,
+    "roiPct": 15.15843662936272
+  },
+  {
+    "id": 13163,
+    "name": "Saradomin dragonhide set",
+    "offerPrice": 574425,
+    "officialGePrice": 629634,
+    "cofferValue": 661115,
+    "roiPct": 15.091613352482918
+  },
+  {
+    "id": 6524,
+    "name": "Toktz-ket-xil",
+    "offerPrice": 401433,
+    "officialGePrice": 439801,
+    "cofferValue": 461791,
+    "roiPct": 15.035634838192177
+  },
+  {
+    "id": 27277,
+    "name": "Tumeken&#039;s shadow (uncharged)",
+    "offerPrice": 907100000,
+    "officialGePrice": 992595731,
+    "cofferValue": 1042225517,
+    "roiPct": 14.896430051813473
+  },
+  {
+    "id": 22290,
+    "name": "Uncharged trident (e)",
+    "offerPrice": 3093820,
+    "officialGePrice": 3385148,
+    "cofferValue": 3554405,
+    "roiPct": 14.887259116561403
+  },
+  {
+    "id": 23688,
+    "name": "Divine super combat potion(3)",
+    "offerPrice": 14993,
+    "officialGePrice": 16405,
+    "cofferValue": 17225,
+    "roiPct": 14.88694724204629
+  },
+  {
+    "id": 751,
+    "name": "Gnomeball",
+    "offerPrice": 25050,
+    "officialGePrice": 27397,
+    "cofferValue": 28766,
+    "roiPct": 14.834331337325349
+  },
+  {
+    "id": 30775,
+    "name": "Chasm teleport scroll",
+    "offerPrice": 38847,
+    "officialGePrice": 42405,
+    "cofferValue": 44525,
+    "roiPct": 14.616315288181841
+  },
+  {
+    "id": 20727,
+    "name": "Leaf-bladed battleaxe",
+    "offerPrice": 69352,
+    "officialGePrice": 75652,
+    "cofferValue": 79434,
+    "roiPct": 14.537432229784288
+  },
+  {
+    "id": 12996,
+    "name": "Black gold-trimmed set (lg)",
+    "offerPrice": 430101,
+    "officialGePrice": 469120,
+    "cofferValue": 492576,
+    "roiPct": 14.52565792685904
+  },
+  {
+    "id": 22124,
+    "name": "Superior dragon bones",
+    "offerPrice": 23192,
+    "officialGePrice": 25291,
+    "cofferValue": 26555,
+    "roiPct": 14.500689893066573
+  },
+  {
+    "id": 28149,
+    "name": "Sturdy harness",
+    "offerPrice": 790000,
+    "officialGePrice": 861117,
+    "cofferValue": 904172,
+    "roiPct": 14.452151898734177
+  },
+  {
+    "id": 30795,
+    "name": "Barrel of demonic tallow (full)",
+    "offerPrice": 20171,
+    "officialGePrice": 21956,
+    "cofferValue": 23053,
+    "roiPct": 14.287838976748798
+  },
+  {
+    "id": 22467,
+    "name": "Bastion potion(2)",
+    "offerPrice": 10300,
+    "officialGePrice": 11142,
+    "cofferValue": 11699,
+    "roiPct": 13.58252427184466
+  },
+  {
+    "id": 20211,
+    "name": "Team cape zero",
+    "offerPrice": 3536373,
+    "officialGePrice": 3843977,
+    "cofferValue": 4036175,
+    "roiPct": 14.133181086949822
+  },
+  {
+    "id": 4749,
+    "name": "Torag&#039;s platebody",
+    "offerPrice": 285949,
+    "officialGePrice": 310811,
+    "cofferValue": 326351,
+    "roiPct": 14.129092950141459
+  },
+  {
+    "id": 19961,
+    "name": "Dark tuxedo cuffs",
+    "offerPrice": 372274,
+    "officialGePrice": 404126,
+    "cofferValue": 424332,
+    "roiPct": 13.983786136018095
+  },
+  {
+    "id": 11972,
+    "name": "Combat bracelet(6)",
+    "offerPrice": 12196,
+    "officialGePrice": 13237,
+    "cofferValue": 13898,
+    "roiPct": 13.955395211544769
+  },
+  {
+    "id": 29577,
+    "name": "Burning claws",
+    "offerPrice": 6188296,
+    "officialGePrice": 6713545,
+    "cofferValue": 7049222,
+    "roiPct": 13.912165804609216
+  },
+  {
+    "id": 6922,
+    "name": "Infinity gloves",
+    "offerPrice": 729046,
+    "officialGePrice": 789634,
+    "cofferValue": 829115,
+    "roiPct": 13.726020031657809
+  },
+  {
+    "id": 32026,
+    "name": "Large steel keel parts",
+    "offerPrice": 19671,
+    "officialGePrice": 21302,
+    "cofferValue": 22367,
+    "roiPct": 13.70545473031366
+  },
+  {
+    "id": 24514,
+    "name": "Volatile orb",
+    "offerPrice": 39163139,
+    "officialGePrice": 42406079,
+    "cofferValue": 44526382,
+    "roiPct": 13.694619831163177
+  },
+  {
+    "id": 13048,
+    "name": "Guthix armour set (lg)",
+    "offerPrice": 205500,
+    "officialGePrice": 222402,
+    "cofferValue": 233522,
+    "roiPct": 13.636009732360096
+  },
+  {
+    "id": 22467,
+    "name": "Bastion potion(2)",
+    "offerPrice": 10300,
+    "officialGePrice": 11142,
+    "cofferValue": 11699,
+    "roiPct": 13.58252427184466
+  },
+  {
+    "id": 13060,
+    "name": "Ancient rune armour set (lg)",
+    "offerPrice": 228937,
+    "officialGePrice": 247633,
+    "cofferValue": 260014,
+    "roiPct": 13.5744768211342
+  },
+  {
+    "id": 12496,
+    "name": "Ancient coif",
+    "offerPrice": 107525,
+    "officialGePrice": 116219,
+    "cofferValue": 122029,
+    "roiPct": 13.488956056730995
+  },
+  {
+    "id": 25389,
+    "name": "Swampbark body",
+    "offerPrice": 90789,
+    "officialGePrice": 98084,
+    "cofferValue": 102988,
+    "roiPct": 13.436649814404827
+  },
+  {
+    "id": 27235,
+    "name": "Masori mask (f)",
+    "offerPrice": 25756403,
+    "officialGePrice": 27824855,
+    "cofferValue": 29216097,
+    "roiPct": 13.4323647599395
+  },
+  {
+    "id": 23360,
+    "name": "Ham joint",
+    "offerPrice": 1522848,
+    "officialGePrice": 1645007,
+    "cofferValue": 1727257,
+    "roiPct": 13.422810418373993
+  },
+  {
+    "id": 29084,
+    "name": "Sulphur blades",
+    "offerPrice": 90248,
+    "officialGePrice": 97470,
+    "cofferValue": 102343,
+    "roiPct": 13.401959046183848
+  },
+  {
+    "id": 4968,
+    "name": "Torag&#039;s platebody 0",
+    "offerPrice": 223556,
+    "officialGePrice": 241274,
+    "cofferValue": 253337,
+    "roiPct": 13.321494390667215
+  },
+  {
+    "id": 21649,
+    "name": "Merfolk trident",
+    "offerPrice": 1939712,
+    "officialGePrice": 2092346,
+    "cofferValue": 2196963,
+    "roiPct": 13.26232966543487
+  },
+  {
+    "id": 22111,
+    "name": "Dragonbone necklace",
+    "offerPrice": 87334,
+    "officialGePrice": 94177,
+    "cofferValue": 98885,
+    "roiPct": 13.226234914237295
+  },
+  {
+    "id": 2572,
+    "name": "Ring of wealth",
+    "offerPrice": 11666,
+    "officialGePrice": 12572,
+    "cofferValue": 13200,
+    "roiPct": 13.149322818446768
+  },
+  {
+    "id": 12506,
+    "name": "Armadyl bracers",
+    "offerPrice": 67466,
+    "officialGePrice": 72698,
+    "cofferValue": 76332,
+    "roiPct": 13.141434203895294
+  },
+  {
+    "id": 28931,
+    "name": "Searing page",
+    "offerPrice": 16494,
+    "officialGePrice": 17768,
+    "cofferValue": 18656,
+    "roiPct": 13.107796774584699
+  },
+  {
+    "id": 4722,
+    "name": "Dharok&#039;s platelegs",
+    "offerPrice": 840000,
+    "officialGePrice": 904770,
+    "cofferValue": 950008,
+    "roiPct": 13.096190476190475
+  },
+  {
+    "id": 12502,
+    "name": "Bandos chaps",
+    "offerPrice": 222222,
+    "officialGePrice": 239336,
+    "cofferValue": 251302,
+    "roiPct": 13.086013086013084
+  },
+  {
+    "id": 3024,
+    "name": "Super restore(4)",
+    "offerPrice": 10478,
+    "officialGePrice": 11284,
+    "cofferValue": 11848,
+    "roiPct": 13.075014315709105
+  },
+  {
+    "id": 12526,
+    "name": "Fury ornament kit",
+    "offerPrice": 329908,
+    "officialGePrice": 355225,
+    "cofferValue": 372986,
+    "roiPct": 13.057579688882962
+  },
+  {
+    "id": 23113,
+    "name": "Mystic set (blue)",
+    "offerPrice": 150023,
+    "officialGePrice": 161458,
+    "cofferValue": 169530,
+    "roiPct": 13.002672923485065
+  },
+  {
+    "id": 22542,
+    "name": "Viggora&#039;s chainmace (u)",
+    "offerPrice": 6936706,
+    "officialGePrice": 7464963,
+    "cofferValue": 7838211,
+    "roiPct": 12.996154082355515
+  },
+  {
+    "id": 5765,
+    "name": "Mature cider",
+    "offerPrice": 150005,
+    "officialGePrice": 161375,
+    "cofferValue": 169443,
+    "roiPct": 12.958234725509149
+  },
+  {
+    "id": 26233,
+    "name": "Ancient godsword",
+    "offerPrice": 38655555,
+    "officialGePrice": 41584703,
+    "cofferValue": 43663938,
+    "roiPct": 12.956437955683212
+  },
+  {
+    "id": 21739,
+    "name": "Granite ring",
+    "offerPrice": 31788,
+    "officialGePrice": 34191,
+    "cofferValue": 35900,
+    "roiPct": 12.93569900591418
+  },
+  {
+    "id": 11808,
+    "name": "Zamorak godsword",
+    "offerPrice": 18480145,
+    "officialGePrice": 19863635,
+    "cofferValue": 20856816,
+    "roiPct": 12.860672900564364
+  },
+  {
+    "id": 25410,
+    "name": "Bloodbark boots",
+    "offerPrice": 41500,
+    "officialGePrice": 44599,
+    "cofferValue": 46828,
+    "roiPct": 12.83855421686747
+  },
+  {
+    "id": 1959,
+    "name": "Pumpkin",
+    "offerPrice": 10000,
+    "officialGePrice": 10743,
+    "cofferValue": 11280,
+    "roiPct": 12.8
+  },
+  {
+    "id": 10292,
+    "name": "Rune helm (h4)",
+    "offerPrice": 20222,
+    "officialGePrice": 21718,
+    "cofferValue": 22803,
+    "roiPct": 12.763327069528236
+  },
+  {
+    "id": 11978,
+    "name": "Amulet of glory(6)",
+    "offerPrice": 12100,
+    "officialGePrice": 12979,
+    "cofferValue": 13627,
+    "roiPct": 12.619834710743802
+  },
+  {
+    "id": 21646,
+    "name": "Granite longsword",
+    "offerPrice": 20948,
+    "officialGePrice": 22452,
+    "cofferValue": 23574,
+    "roiPct": 12.535802940614857
+  },
+  {
+    "id": 12510,
+    "name": "Armadyl chaps",
+    "offerPrice": 242421,
+    "officialGePrice": 259770,
+    "cofferValue": 272758,
+    "roiPct": 12.514179877155856
+  },
+  {
+    "id": 12846,
+    "name": "Target teleport scroll",
+    "offerPrice": 8648693,
+    "officialGePrice": 9260877,
+    "cofferValue": 9723920,
+    "roiPct": 12.432248433376003
+  },
+  {
+    "id": 13169,
+    "name": "Armadyl dragonhide set",
+    "offerPrice": 679053,
+    "officialGePrice": 727049,
+    "cofferValue": 763401,
+    "roiPct": 12.421416295929772
+  },
+  {
+    "id": 12829,
+    "name": "Spirit shield",
+    "offerPrice": 55000,
+    "officialGePrice": 58868,
+    "cofferValue": 61811,
+    "roiPct": 12.383636363636363
+  },
+  {
+    "id": 26235,
+    "name": "Zaryte vambraces",
+    "offerPrice": 86173341,
+    "officialGePrice": 92159103,
+    "cofferValue": 96767058,
+    "roiPct": 12.293496894822727
+  },
+  {
+    "id": 20152,
+    "name": "Gilded sq shield",
+    "offerPrice": 1360311,
+    "officialGePrice": 1454558,
+    "cofferValue": 1527285,
+    "roiPct": 12.274693066511997
+  },
+  {
+    "id": 23050,
+    "name": "Mystic robe top (dusk)",
+    "offerPrice": 84999,
+    "officialGePrice": 90887,
+    "cofferValue": 95431,
+    "roiPct": 12.273085565712538
+  },
+  {
+    "id": 23261,
+    "name": "Gilded d&#039;hide vambraces",
+    "offerPrice": 5752000,
+    "officialGePrice": 6148068,
+    "cofferValue": 6455471,
+    "roiPct": 12.230024339360222
+  },
+  {
+    "id": 30459,
+    "name": "Raging echoes nexus scroll",
+    "offerPrice": 2754260,
+    "officialGePrice": 2943745,
+    "cofferValue": 3090932,
+    "roiPct": 12.223682586248213
+  },
+  {
+    "id": 20050,
+    "name": "Obsidian cape (r)",
+    "offerPrice": 710842,
+    "officialGePrice": 759671,
+    "cofferValue": 797654,
+    "roiPct": 12.212559190368605
+  },
+  {
+    "id": 23499,
+    "name": "Grubby key",
+    "offerPrice": 34500,
+    "officialGePrice": 36866,
+    "cofferValue": 38709,
+    "roiPct": 12.2
+  },
+  {
+    "id": 28295,
+    "name": "Berserker icon",
+    "offerPrice": 3200000,
+    "officialGePrice": 3418419,
+    "cofferValue": 3589339,
+    "roiPct": 12.16684375
+  },
+  {
+    "id": 23242,
+    "name": "3rd age plateskirt",
+    "offerPrice": 46500000,
+    "officialGePrice": 49661863,
+    "cofferValue": 52144956,
+    "roiPct": 12.139690322580647
+  },
+  {
+    "id": 20223,
+    "name": "Unholy blessing",
+    "offerPrice": 10811,
+    "officialGePrice": 11545,
+    "cofferValue": 12122,
+    "roiPct": 12.126537785588752
+  },
+  {
+    "id": 2675,
+    "name": "Guthix kiteshield",
+    "offerPrice": 46635,
+    "officialGePrice": 49759,
+    "cofferValue": 52246,
+    "roiPct": 12.031735820735499
+  },
+  {
+    "id": 13012,
+    "name": "Adamant set (lg)",
+    "offerPrice": 18473,
+    "officialGePrice": 19694,
+    "cofferValue": 20678,
+    "roiPct": 11.936339522546419
+  },
+  {
+    "id": 6918,
+    "name": "Infinity hat",
+    "offerPrice": 1368000,
+    "officialGePrice": 1458009,
+    "cofferValue": 1530909,
+    "roiPct": 11.908552631578948
+  },
+  {
+    "id": 10346,
+    "name": "3rd age platelegs",
+    "offerPrice": 120100000,
+    "officialGePrice": 127980101,
+    "cofferValue": 134379106,
+    "roiPct": 11.889347210657785
+  },
+  {
+    "id": 12875,
+    "name": "Verac&#039;s armour set",
+    "offerPrice": 792714,
+    "officialGePrice": 844001,
+    "cofferValue": 886201,
+    "roiPct": 11.79328231871772
+  },
+  {
+    "id": 26374,
+    "name": "Zaryte crossbow",
+    "offerPrice": 365311564,
+    "officialGePrice": 388820904,
+    "cofferValue": 408261949,
+    "roiPct": 11.757192827325882
+  },
+  {
+    "id": 12422,
+    "name": "3rd age wand",
+    "offerPrice": 470000000,
+    "officialGePrice": 500130506,
+    "cofferValue": 525137031,
+    "roiPct": 11.73128319148936
+  },
+  {
+    "id": 28708,
+    "name": "Trailblazer reloaded rejuvenation pool scroll",
+    "offerPrice": 6368371,
+    "officialGePrice": 6769127,
+    "cofferValue": 7107583,
+    "roiPct": 11.607552386630742
+  },
+  {
+    "id": 11968,
+    "name": "Skills necklace(6)",
+    "offerPrice": 12052,
+    "officialGePrice": 12809,
+    "cofferValue": 13449,
+    "roiPct": 11.591437105874544
+  },
+  {
+    "id": 27014,
+    "name": "Kovac&#039;s grog",
+    "offerPrice": 52218,
+    "officialGePrice": 55486,
+    "cofferValue": 58260,
+    "roiPct": 11.570722739285303
+  },
+  {
+    "id": 23053,
+    "name": "Mystic robe bottom (dusk)",
+    "offerPrice": 85000,
+    "officialGePrice": 90222,
+    "cofferValue": 94733,
+    "roiPct": 11.450588235294118
+  },
+  {
+    "id": 2655,
+    "name": "Zamorak platelegs",
+    "offerPrice": 40251,
+    "officialGePrice": 42689,
+    "cofferValue": 44823,
+    "roiPct": 11.358724006856972
+  },
+  {
+    "id": 12406,
+    "name": "Mort&#039;ton teleport",
+    "offerPrice": 15044,
+    "officialGePrice": 15948,
+    "cofferValue": 16745,
+    "roiPct": 11.306833289018877
+  },
+  {
+    "id": 12504,
+    "name": "Bandos coif",
+    "offerPrice": 102556,
+    "officialGePrice": 108714,
+    "cofferValue": 114149,
+    "roiPct": 11.304068021373688
+  },
+  {
+    "id": 2577,
+    "name": "Ranger boots",
+    "offerPrice": 22826751,
+    "officialGePrice": 24195208,
+    "cofferValue": 25404968,
+    "roiPct": 11.294717325299601
+  },
+  {
+    "id": 28298,
+    "name": "Archer icon",
+    "offerPrice": 3438000,
+    "officialGePrice": 3643765,
+    "cofferValue": 3825953,
+    "roiPct": 11.284264107038975
+  },
+  {
+    "id": 22446,
+    "name": "Vial of blood",
+    "offerPrice": 12500,
+    "officialGePrice": 13241,
+    "cofferValue": 13903,
+    "roiPct": 11.224
+  },
+  {
+    "id": 29000,
+    "name": "Eclipse atlatl",
+    "offerPrice": 2223295,
+    "officialGePrice": 2354834,
+    "cofferValue": 2472575,
+    "roiPct": 11.212187316572924
+  },
+  {
+    "id": 28583,
+    "name": "Warped sceptre (uncharged)",
+    "offerPrice": 89490,
+    "officialGePrice": 94733,
+    "cofferValue": 99469,
+    "roiPct": 11.150966588445636
+  },
+  {
+    "id": 3749,
+    "name": "Archer helm",
+    "offerPrice": 38543,
+    "officialGePrice": 40769,
+    "cofferValue": 42807,
+    "roiPct": 11.0629686324365
+  },
+  {
+    "id": 12902,
+    "name": "Toxic staff (uncharged)",
+    "offerPrice": 12101405,
+    "officialGePrice": 12799897,
+    "cofferValue": 13439891,
+    "roiPct": 11.060583461176615
+  },
+  {
+    "id": 26245,
+    "name": "Virtus robe bottom",
+    "offerPrice": 37880000,
+    "officialGePrice": 40044135,
+    "cofferValue": 42046341,
+    "roiPct": 10.998788278775079
+  },
+  {
+    "id": 20035,
+    "name": "Samurai kasa",
+    "offerPrice": 32714,
+    "officialGePrice": 34583,
+    "cofferValue": 36312,
+    "roiPct": 10.998349330561838
+  },
+  {
+    "id": 24268,
+    "name": "Basilisk jaw",
+    "offerPrice": 17774764,
+    "officialGePrice": 18768217,
+    "cofferValue": 19706627,
+    "roiPct": 10.868571869646201
+  },
+  {
+    "id": 21733,
+    "name": "Guardian boots",
+    "offerPrice": 2953384,
+    "officialGePrice": 3118335,
+    "cofferValue": 3274251,
+    "roiPct": 10.864384719359215
+  },
+  {
+    "id": 31996,
+    "name": "Dragon metal sheet",
+    "offerPrice": 880001,
+    "officialGePrice": 929003,
+    "cofferValue": 975453,
+    "roiPct": 10.846805855902437
+  },
+  {
+    "id": 20385,
+    "name": "Steel gold-trimmed set (sk)",
+    "offerPrice": 75000,
+    "officialGePrice": 79167,
+    "cofferValue": 83125,
+    "roiPct": 10.833333333333334
+  },
+  {
+    "id": 22438,
+    "name": "Justiciar armour set",
+    "offerPrice": 40751118,
+    "officialGePrice": 42998293,
+    "cofferValue": 45148207,
+    "roiPct": 10.790106421129355
+  },
+  {
+    "id": 12877,
+    "name": "Dharok&#039;s armour set",
+    "offerPrice": 3953164,
+    "officialGePrice": 4167335,
+    "cofferValue": 4375701,
+    "roiPct": 10.688577554586654
+  },
+  {
+    "id": 19921,
+    "name": "Ancient d&#039;hide boots",
+    "offerPrice": 434098,
+    "officialGePrice": 457532,
+    "cofferValue": 480408,
+    "roiPct": 10.668097987090473
+  },
+  {
+    "id": 13237,
+    "name": "Pegasian boots",
+    "offerPrice": 23220546,
+    "officialGePrice": 24473951,
+    "cofferValue": 25697648,
+    "roiPct": 10.667716426650777
+  },
+  {
+    "id": 13157,
+    "name": "Book of law page set",
+    "offerPrice": 33000,
+    "officialGePrice": 34774,
+    "cofferValue": 36512,
+    "roiPct": 10.642424242424243
+  },
+  {
+    "id": 13052,
+    "name": "Armadyl rune armour set (lg)",
+    "offerPrice": 199169,
+    "officialGePrice": 209860,
+    "cofferValue": 220353,
+    "roiPct": 10.636193383508477
+  },
+  {
+    "id": 27226,
+    "name": "Masori mask",
+    "offerPrice": 18100000,
+    "officialGePrice": 19069125,
+    "cofferValue": 20022581,
+    "roiPct": 10.621994475138122
+  },
+  {
+    "id": 7348,
+    "name": "Rune shield (h3)",
+    "offerPrice": 32256,
+    "officialGePrice": 33982,
+    "cofferValue": 35681,
+    "roiPct": 10.618179563492063
+  },
+  {
+    "id": 11980,
+    "name": "Ring of wealth (5)",
+    "offerPrice": 13139,
+    "officialGePrice": 13840,
+    "cofferValue": 14532,
+    "roiPct": 10.60202450719233
+  },
+  {
+    "id": 22486,
+    "name": "Scythe of vitur (uncharged)",
+    "offerPrice": 1525427634,
+    "officialGePrice": 1606415016,
+    "cofferValue": 1686735766,
+    "roiPct": 10.574617137164042
+  },
+  {
+    "id": 4675,
+    "name": "Ancient staff",
+    "offerPrice": 59550,
+    "officialGePrice": 62709,
+    "cofferValue": 65844,
+    "roiPct": 10.569269521410579
+  },
+  {
+    "id": 11105,
+    "name": "Skills necklace(4)",
+    "offerPrice": 11825,
+    "officialGePrice": 12451,
+    "cofferValue": 13073,
+    "roiPct": 10.553911205073996
+  },
+  {
+    "id": 4718,
+    "name": "Dharok&#039;s greataxe",
+    "offerPrice": 1747072,
+    "officialGePrice": 1839137,
+    "cofferValue": 1931093,
+    "roiPct": 10.53310911055755
+  },
+  {
+    "id": 22481,
+    "name": "Sanguinesti staff (uncharged)",
+    "offerPrice": 19450000,
+    "officialGePrice": 20474382,
+    "cofferValue": 21498101,
+    "roiPct": 10.530082262210797
+  },
+  {
+    "id": 11335,
+    "name": "Dragon full helm",
+    "offerPrice": 61476046,
+    "officialGePrice": 64704691,
+    "cofferValue": 67939925,
+    "roiPct": 10.514467700151048
+  },
+  {
+    "id": 12869,
+    "name": "Red dragonhide set",
+    "offerPrice": 11761,
+    "officialGePrice": 12373,
+    "cofferValue": 12991,
+    "roiPct": 10.458294362724258
+  },
+  {
+    "id": 12881,
+    "name": "Ahrim&#039;s armour set",
+    "offerPrice": 4957930,
+    "officialGePrice": 5215396,
+    "cofferValue": 5476165,
+    "roiPct": 10.452648585195838
+  },
+  {
+    "id": 24422,
+    "name": "Nightmare staff",
+    "offerPrice": 45120342,
+    "officialGePrice": 47443389,
+    "cofferValue": 49815558,
+    "roiPct": 10.405984954635317
+  },
+  {
+    "id": 4716,
+    "name": "Dharok&#039;s helm",
+    "offerPrice": 319148,
+    "officialGePrice": 335565,
+    "cofferValue": 352343,
+    "roiPct": 10.40113050998283
+  },
+  {
+    "id": 1645,
+    "name": "Dragonstone ring",
+    "offerPrice": 11224,
+    "officialGePrice": 11800,
+    "cofferValue": 12390,
+    "roiPct": 10.388453314326442
+  },
+  {
+    "id": 12335,
+    "name": "Briefcase",
+    "offerPrice": 216666,
+    "officialGePrice": 227560,
+    "cofferValue": 238938,
+    "roiPct": 10.279416244357675
+  },
+  {
+    "id": 13155,
+    "name": "Book of war page set",
+    "offerPrice": 14000,
+    "officialGePrice": 14694,
+    "cofferValue": 15428,
+    "roiPct": 10.2
+  },
+  {
+    "id": 25404,
+    "name": "Bloodbark body",
+    "offerPrice": 160888,
+    "officialGePrice": 168840,
+    "cofferValue": 177282,
+    "roiPct": 10.189697180647407
+  },
+  {
+    "id": 27241,
+    "name": "Masori chaps (f)",
+    "offerPrice": 62449884,
+    "officialGePrice": 65531767,
+    "cofferValue": 68808355,
+    "roiPct": 10.181717871565622
+  },
+  {
+    "id": 10348,
+    "name": "3rd age platebody",
+    "offerPrice": 222556000,
+    "officialGePrice": 233519764,
+    "cofferValue": 245195752,
+    "roiPct": 10.172609141070113
+  },
+  {
+    "id": 11836,
+    "name": "Bandos boots",
+    "offerPrice": 533117,
+    "officialGePrice": 559259,
+    "cofferValue": 587221,
+    "roiPct": 10.148616532581029
+  },
+  {
+    "id": 30143,
+    "name": "Goading potion(2)",
+    "offerPrice": 20010,
+    "officialGePrice": 22571,
+    "cofferValue": 23699,
+    "roiPct": 18.435782108945528
+  },
+  {
+    "id": 28307,
+    "name": "Ultor ring",
+    "offerPrice": 129670000,
+    "officialGePrice": 136006098,
+    "cofferValue": 142806402,
+    "roiPct": 10.130640857561502
+  },
+  {
+    "id": 2661,
+    "name": "Saradomin platebody",
+    "offerPrice": 64318,
+    "officialGePrice": 67426,
+    "cofferValue": 70797,
+    "roiPct": 10.0733853664604
+  },
+  {
+    "id": 13652,
+    "name": "Dragon claws",
+    "offerPrice": 48500000,
+    "officialGePrice": 50826427,
+    "cofferValue": 53367748,
+    "roiPct": 10.03659381443299
+  },
+  {
+    "id": 1712,
+    "name": "Amulet of glory(4)",
+    "offerPrice": 12029,
+    "officialGePrice": 12606,
+    "cofferValue": 13236,
+    "roiPct": 10.03408429628398
+  },
+  {
+    "id": 11785,
+    "name": "Armadyl crossbow",
+    "offerPrice": 29442540,
+    "officialGePrice": 30849764,
+    "cofferValue": 32392252,
+    "roiPct": 10.018537802784678
+  },
+  {
+    "id": 22443,
+    "name": "Cadantine blood potion (unf)",
+    "offerPrice": 16600,
+    "officialGePrice": 17388,
+    "cofferValue": 18257,
+    "roiPct": 9.981927710843372
+  },
+  {
+    "id": 21730,
+    "name": "Black tourmaline core",
+    "offerPrice": 2281000,
+    "officialGePrice": 2389044,
+    "cofferValue": 2508496,
+    "roiPct": 9.973520385795704
+  },
+  {
+    "id": 6916,
+    "name": "Infinity top",
+    "offerPrice": 1606423,
+    "officialGePrice": 1682366,
+    "cofferValue": 1766484,
+    "roiPct": 9.963814014117078
+  },
+  {
+    "id": 29019,
+    "name": "Blue moon helm",
+    "offerPrice": 830500,
+    "officialGePrice": 869726,
+    "cofferValue": 913212,
+    "roiPct": 9.959301625526791
+  },
+  {
+    "id": 7336,
+    "name": "Rune shield (h1)",
+    "offerPrice": 74422,
+    "officialGePrice": 77935,
+    "cofferValue": 81831,
+    "roiPct": 9.955389535352449
+  },
+  {
+    "id": 21018,
+    "name": "Ancestral hat",
+    "offerPrice": 64232000,
+    "officialGePrice": 67263976,
+    "cofferValue": 70627174,
+    "roiPct": 9.956367542657865
+  },
+  {
+    "id": 19550,
+    "name": "Ring of suffering",
+    "offerPrice": 22320896,
+    "officialGePrice": 23373969,
+    "cofferValue": 24542667,
+    "roiPct": 9.95377156902662
+  },
+  {
+    "id": 4720,
+    "name": "Dharok&#039;s platebody",
+    "offerPrice": 890000,
+    "officialGePrice": 931523,
+    "cofferValue": 978099,
+    "roiPct": 9.89876404494382
+  },
+  {
+    "id": 19481,
+    "name": "Heavy ballista",
+    "offerPrice": 1086238,
+    "officialGePrice": 1136773,
+    "cofferValue": 1193611,
+    "roiPct": 9.884850281430037
+  },
+  {
+    "id": 30750,
+    "name": "Oathplate helm",
+    "offerPrice": 93500000,
+    "officialGePrice": 97843154,
+    "cofferValue": 102735311,
+    "roiPct": 9.877337967914439
+  },
+  {
+    "id": 21882,
+    "name": "Dragon armour set (lg)",
+    "offerPrice": 150339000,
+    "officialGePrice": 157236232,
+    "cofferValue": 165098043,
+    "roiPct": 9.81717518408397
+  },
+  {
+    "id": 20131,
+    "name": "Robe top of darkness",
+    "offerPrice": 71620,
+    "officialGePrice": 74904,
+    "cofferValue": 78649,
+    "roiPct": 9.814297682211674
+  },
+  {
+    "id": 12494,
+    "name": "Ancient chaps",
+    "offerPrice": 281583,
+    "officialGePrice": 294283,
+    "cofferValue": 308997,
+    "roiPct": 9.735672963211558
+  },
+  {
+    "id": 2368,
+    "name": "Shield right half",
+    "offerPrice": 750001,
+    "officialGePrice": 783768,
+    "cofferValue": 822956,
+    "roiPct": 9.727320363572849
+  },
+  {
+    "id": 21742,
+    "name": "Granite hammer",
+    "offerPrice": 4295944,
+    "officialGePrice": 4485899,
+    "cofferValue": 4710193,
+    "roiPct": 9.642793295257107
+  },
+  {
+    "id": 19547,
+    "name": "Necklace of anguish",
+    "offerPrice": 22380986,
+    "officialGePrice": 23370379,
+    "cofferValue": 24538897,
+    "roiPct": 9.641715516912436
+  },
+  {
+    "id": 23264,
+    "name": "Gilded d&#039;hide body",
+    "offerPrice": 2201001,
+    "officialGePrice": 2297251,
+    "cofferValue": 2412113,
+    "roiPct": 9.591635805708403
+  },
+  {
+    "id": 12273,
+    "name": "Bandos cloak",
+    "offerPrice": 15194,
+    "officialGePrice": 15856,
+    "cofferValue": 16648,
+    "roiPct": 9.569566934316178
+  },
+  {
+    "id": 19553,
+    "name": "Amulet of torture",
+    "offerPrice": 22402605,
+    "officialGePrice": 23376170,
+    "cofferValue": 24544978,
+    "roiPct": 9.563053046732735
+  },
+  {
+    "id": 11802,
+    "name": "Armadyl godsword",
+    "offerPrice": 8823624,
+    "officialGePrice": 9204904,
+    "cofferValue": 9665149,
+    "roiPct": 9.537181094751999
+  },
+  {
+    "id": 2619,
+    "name": "Rune full helm (g)",
+    "offerPrice": 107590,
+    "officialGePrice": 112215,
+    "cofferValue": 117825,
+    "roiPct": 9.512965889023144
+  },
+  {
+    "id": 4747,
+    "name": "Torag&#039;s hammers",
+    "offerPrice": 95123,
+    "officialGePrice": 99210,
+    "cofferValue": 104170,
+    "roiPct": 9.510843854798525
+  },
+  {
+    "id": 30744,
+    "name": "Oathplate armour set",
+    "offerPrice": 291253222,
+    "officialGePrice": 303744958,
+    "cofferValue": 318932205,
+    "roiPct": 9.503408343410532
+  },
+  {
+    "id": 12207,
+    "name": "Bronze platelegs (g)",
+    "offerPrice": 10953,
+    "officialGePrice": 11416,
+    "cofferValue": 11986,
+    "roiPct": 9.431206062266046
+  },
+  {
+    "id": 13239,
+    "name": "Primordial boots",
+    "offerPrice": 23531500,
+    "officialGePrice": 24523619,
+    "cofferValue": 25749799,
+    "roiPct": 9.426934109597774
+  },
+  {
+    "id": 28693,
+    "name": "Trailblazer reloaded alchemy scroll",
+    "offerPrice": 1551996,
+    "officialGePrice": 1616538,
+    "cofferValue": 1697364,
+    "roiPct": 9.366518985873675
+  },
+  {
+    "id": 13024,
+    "name": "Rune armour set (lg)",
+    "offerPrice": 129091,
+    "officialGePrice": 134452,
+    "cofferValue": 141174,
+    "roiPct": 9.360063830940964
+  },
+  {
+    "id": 20143,
+    "name": "Dragon defender ornament kit",
+    "offerPrice": 48504,
+    "officialGePrice": 50517,
+    "cofferValue": 53042,
+    "roiPct": 9.355929407883885
+  },
+  {
+    "id": 24844,
+    "name": "Ring of endurance (uncharged)",
+    "offerPrice": 3841360,
+    "officialGePrice": 4000604,
+    "cofferValue": 4200634,
+    "roiPct": 9.352781306620573
+  },
+  {
+    "id": 11284,
+    "name": "Dragonfire shield",
+    "offerPrice": 3732479,
+    "officialGePrice": 3887028,
+    "cofferValue": 4081379,
+    "roiPct": 9.34767482951679
+  },
+  {
+    "id": 27641,
+    "name": "Saturated heart",
+    "offerPrice": 114400000,
+    "officialGePrice": 119118328,
+    "cofferValue": 125074244,
+    "roiPct": 9.330632867132866
+  },
+  {
+    "id": 30816,
+    "name": "Contract of bloodied blows",
+    "offerPrice": 42223,
+    "officialGePrice": 43957,
+    "cofferValue": 46154,
+    "roiPct": 9.310091656206334
+  },
+  {
+    "id": 22449,
+    "name": "Battlemage potion(4)",
+    "offerPrice": 20807,
+    "officialGePrice": 21650,
+    "cofferValue": 22732,
+    "roiPct": 9.251694141394722
+  },
+  {
+    "id": 8429,
+    "name": "Bagged magic tree",
+    "offerPrice": 53300,
+    "officialGePrice": 55458,
+    "cofferValue": 58230,
+    "roiPct": 9.24953095684803
+  },
+  {
+    "id": 10350,
+    "name": "3rd age full helmet",
+    "offerPrice": 49470220,
+    "officialGePrice": 51469544,
+    "cofferValue": 54043021,
+    "roiPct": 9.243542882970806
+  },
+  {
+    "id": 4103,
+    "name": "Mystic robe bottom (dark)",
+    "offerPrice": 47751,
+    "officialGePrice": 49665,
+    "cofferValue": 52148,
+    "roiPct": 9.208184121798496
+  },
+  {
+    "id": 19544,
+    "name": "Tormented bracelet",
+    "offerPrice": 22407377,
+    "officialGePrice": 23299330,
+    "cofferValue": 24464296,
+    "roiPct": 9.179650969410655
+  },
+  {
+    "id": 20739,
+    "name": "Mystic dust staff",
+    "offerPrice": 42939,
+    "officialGePrice": 44645,
+    "cofferValue": 46877,
+    "roiPct": 9.171149770604812
+  },
+  {
+    "id": 19997,
+    "name": "Holy wraps",
+    "offerPrice": 963113,
+    "officialGePrice": 999920,
+    "cofferValue": 1049916,
+    "roiPct": 9.012753435993492
+  },
+  {
+    "id": 6526,
+    "name": "Toktz-mej-tal",
+    "offerPrice": 346513,
+    "officialGePrice": 359644,
+    "cofferValue": 377626,
+    "roiPct": 8.978883909117407
+  },
+  {
+    "id": 3751,
+    "name": "Berserker helm",
+    "offerPrice": 39940,
+    "officialGePrice": 41453,
+    "cofferValue": 43525,
+    "roiPct": 8.97596394591888
+  },
+  {
+    "id": 10286,
+    "name": "Rune helm (h1)",
+    "offerPrice": 67083,
+    "officialGePrice": 69612,
+    "cofferValue": 73092,
+    "roiPct": 8.957560037565404
+  },
+  {
+    "id": 24463,
+    "name": "Twisted blueprints",
+    "offerPrice": 2654756,
+    "officialGePrice": 2754552,
+    "cofferValue": 2892279,
+    "roiPct": 8.947074608739937
+  },
+  {
+    "id": 23224,
+    "name": "Thieving bag",
+    "offerPrice": 10000,
+    "officialGePrice": 10371,
+    "cofferValue": 10889,
+    "roiPct": 8.89
+  },
+  {
+    "id": 12976,
+    "name": "Iron trimmed set (lg)",
+    "offerPrice": 129111,
+    "officialGePrice": 133864,
+    "cofferValue": 140557,
+    "roiPct": 8.865239987297752
+  },
+  {
+    "id": 29574,
+    "name": "Burning claw",
+    "offerPrice": 3050000,
+    "officialGePrice": 3160116,
+    "cofferValue": 3318121,
+    "roiPct": 8.790852459016394
+  },
+  {
+    "id": 13175,
+    "name": "Halloween mask set",
+    "offerPrice": 30849,
+    "officialGePrice": 31961,
+    "cofferValue": 33559,
+    "roiPct": 8.78472559888489
+  },
+  {
+    "id": 12500,
+    "name": "Bandos d&#039;hide body",
+    "offerPrice": 112176,
+    "officialGePrice": 116210,
+    "cofferValue": 122020,
+    "roiPct": 8.775495649693339
+  },
+  {
+    "id": 31205,
+    "name": "Grid master altar icon scroll",
+    "offerPrice": 425000,
+    "officialGePrice": 440201,
+    "cofferValue": 462211,
+    "roiPct": 8.755529411764707
+  },
+  {
+    "id": 29801,
+    "name": "Amulet of rancour",
+    "offerPrice": 62265555,
+    "officialGePrice": 64477477,
+    "cofferValue": 67701350,
+    "roiPct": 8.730019350184866
+  },
+  {
+    "id": 11804,
+    "name": "Bandos godsword",
+    "offerPrice": 18615000,
+    "officialGePrice": 19273983,
+    "cofferValue": 20237682,
+    "roiPct": 8.717066881547138
+  },
+  {
+    "id": 1249,
+    "name": "Dragon spear",
+    "offerPrice": 36600,
+    "officialGePrice": 37894,
+    "cofferValue": 39788,
+    "roiPct": 8.710382513661202
+  },
+  {
+    "id": 2637,
+    "name": "White beret",
+    "offerPrice": 40567,
+    "officialGePrice": 41987,
+    "cofferValue": 44086,
+    "roiPct": 8.6745384179259
+  },
+  {
+    "id": 12482,
+    "name": "Bandos platelegs",
+    "offerPrice": 41116,
+    "officialGePrice": 42539,
+    "cofferValue": 44665,
+    "roiPct": 8.631676233096606
+  },
+  {
+    "id": 10290,
+    "name": "Rune helm (h3)",
+    "offerPrice": 20275,
+    "officialGePrice": 20974,
+    "cofferValue": 22022,
+    "roiPct": 8.61652281134402
+  },
+  {
+    "id": 26384,
+    "name": "Torva platebody",
+    "offerPrice": 218450000,
+    "officialGePrice": 225947096,
+    "cofferValue": 237244450,
+    "roiPct": 8.603547722590982
+  },
+  {
+    "id": 7399,
+    "name": "Enchanted top",
+    "offerPrice": 73500,
+    "officialGePrice": 75985,
+    "cofferValue": 79784,
+    "roiPct": 8.549659863945578
+  },
+  {
+    "id": 28316,
+    "name": "Bellator ring",
+    "offerPrice": 31250000,
+    "officialGePrice": 32267782,
+    "cofferValue": 33881171,
+    "roiPct": 8.4197472
+  },
+  {
+    "id": 27238,
+    "name": "Masori body (f)",
+    "offerPrice": 89128211,
+    "officialGePrice": 92021158,
+    "cofferValue": 96622215,
+    "roiPct": 8.408116707290356
+  },
+  {
+    "id": 13056,
+    "name": "Bandos rune armour set (lg)",
+    "offerPrice": 274948,
+    "officialGePrice": 283854,
+    "cofferValue": 298046,
+    "roiPct": 8.400861253764349
+  },
+  {
+    "id": 13171,
+    "name": "Ancient dragonhide set",
+    "offerPrice": 652336,
+    "officialGePrice": 673299,
+    "cofferValue": 706963,
+    "roiPct": 8.374058767261044
+  },
+  {
+    "id": 19529,
+    "name": "Zenyte shard",
+    "offerPrice": 20388666,
+    "officialGePrice": 21037385,
+    "cofferValue": 22089254,
+    "roiPct": 8.340849764275896
+  },
+  {
+    "id": 1187,
+    "name": "Dragon sq shield",
+    "offerPrice": 300112,
+    "officialGePrice": 309541,
+    "cofferValue": 325018,
+    "roiPct": 8.298901743349148
+  },
+  {
+    "id": 27355,
+    "name": "Masori armour set (f)",
+    "offerPrice": 181278080,
+    "officialGePrice": 186969652,
+    "cofferValue": 196318134,
+    "roiPct": 8.296675472290968
+  },
+  {
+    "id": 20382,
+    "name": "Steel gold-trimmed set (lg)",
+    "offerPrice": 57468,
+    "officialGePrice": 59261,
+    "cofferValue": 62224,
+    "roiPct": 8.275910071692072
+  },
+  {
+    "id": 4890,
+    "name": "Dharok&#039;s greataxe 0",
+    "offerPrice": 1740000,
+    "officialGePrice": 1794004,
+    "cofferValue": 1883704,
+    "roiPct": 8.258850574712644
+  },
+  {
+    "id": 4207,
+    "name": "Crystal weapon seed",
+    "offerPrice": 372809,
+    "officialGePrice": 384237,
+    "cofferValue": 403448,
+    "roiPct": 8.218417473827081
+  },
+  {
+    "id": 5757,
+    "name": "Chef&#039;s delight(m)",
+    "offerPrice": 42127,
+    "officialGePrice": 43416,
+    "cofferValue": 45586,
+    "roiPct": 8.21088613003537
+  },
+  {
+    "id": 27232,
+    "name": "Masori chaps",
+    "offerPrice": 39363577,
+    "officialGePrice": 40563085,
+    "cofferValue": 42591239,
+    "roiPct": 8.199615598958397
+  },
+  {
+    "id": 29796,
+    "name": "Noxious halberd",
+    "offerPrice": 51500000,
+    "officialGePrice": 53065113,
+    "cofferValue": 55718368,
+    "roiPct": 8.19100582524272
+  },
+  {
+    "id": 6737,
+    "name": "Berserker ring",
+    "offerPrice": 3006526,
+    "officialGePrice": 3097884,
+    "cofferValue": 3252778,
+    "roiPct": 8.190582752319454
+  },
+  {
+    "id": 7362,
+    "name": "Studded body (g)",
+    "offerPrice": 24705,
+    "officialGePrice": 25455,
+    "cofferValue": 26727,
+    "roiPct": 8.184578020643594
+  },
+  {
+    "id": 4751,
+    "name": "Torag&#039;s platelegs",
+    "offerPrice": 293072,
+    "officialGePrice": 301895,
+    "cofferValue": 316989,
+    "roiPct": 8.160793252170114
+  },
+  {
+    "id": 13032,
+    "name": "Rune gold-trimmed set (lg)",
+    "offerPrice": 434000,
+    "officialGePrice": 446921,
+    "cofferValue": 469267,
+    "roiPct": 8.126036866359447
+  },
+  {
+    "id": 23276,
+    "name": "Gilded pickaxe",
+    "offerPrice": 4255001,
+    "officialGePrice": 4381494,
+    "cofferValue": 4600568,
+    "roiPct": 8.121431698840965
+  },
+  {
+    "id": 23389,
+    "name": "Spiked manacles",
+    "offerPrice": 460791,
+    "officialGePrice": 474416,
+    "cofferValue": 498136,
+    "roiPct": 8.104541972390953
+  },
+  {
+    "id": 27229,
+    "name": "Masori body",
+    "offerPrice": 57055958,
+    "officialGePrice": 58741222,
+    "cofferValue": 61678283,
+    "roiPct": 8.10138881552037
+  },
+  {
+    "id": 12441,
+    "name": "Musketeer tabard",
+    "offerPrice": 25101,
+    "officialGePrice": 25839,
+    "cofferValue": 27130,
+    "roiPct": 8.083343293095894
+  },
+  {
+    "id": 23218,
+    "name": "Rune platebody (h4)",
+    "offerPrice": 38000,
+    "officialGePrice": 39105,
+    "cofferValue": 41060,
+    "roiPct": 8.052631578947368
+  },
+  {
+    "id": 8788,
+    "name": "Magic stone",
+    "offerPrice": 1001380,
+    "officialGePrice": 1030174,
+    "cofferValue": 1081682,
+    "roiPct": 8.01913359563802
+  },
+  {
+    "id": 23279,
+    "name": "Gilded axe",
+    "offerPrice": 6292781,
+    "officialGePrice": 6470756,
+    "cofferValue": 6794293,
+    "roiPct": 7.969640132081507
+  },
+  {
+    "id": 20724,
+    "name": "Imbued heart",
+    "offerPrice": 111327448,
+    "officialGePrice": 114433053,
+    "cofferValue": 120154705,
+    "roiPct": 7.9290931019994275
+  },
+  {
+    "id": 7342,
+    "name": "Rune shield (h2)",
+    "offerPrice": 32199,
+    "officialGePrice": 33096,
+    "cofferValue": 34750,
+    "roiPct": 7.922606292120873
+  },
+  {
+    "id": 2997,
+    "name": "Pirate&#039;s hook",
+    "offerPrice": 1215191,
+    "officialGePrice": 1248562,
+    "cofferValue": 1310990,
+    "roiPct": 7.88345206638298
+  },
+  {
+    "id": 7388,
+    "name": "Blue skirt (t)",
+    "offerPrice": 44000,
+    "officialGePrice": 45204,
+    "cofferValue": 47464,
+    "roiPct": 7.872727272727273
+  },
+  {
+    "id": 23273,
+    "name": "Rune dragon mask",
+    "offerPrice": 15067,
+    "officialGePrice": 15479,
+    "cofferValue": 16252,
+    "roiPct": 7.86487024623349
+  },
+  {
+    "id": 1704,
+    "name": "Amulet of glory",
+    "offerPrice": 12100,
+    "officialGePrice": 12424,
+    "cofferValue": 13045,
+    "roiPct": 7.809917355371901
+  },
+  {
+    "id": 10828,
+    "name": "Helm of neitiznot",
+    "offerPrice": 50037,
+    "officialGePrice": 51362,
+    "cofferValue": 53930,
+    "roiPct": 7.780242620460859
+  },
+  {
+    "id": 30321,
+    "name": "Zombie helmet",
+    "offerPrice": 348119,
+    "officialGePrice": 357175,
+    "cofferValue": 375033,
+    "roiPct": 7.7312643090437465
+  },
+  {
+    "id": 4101,
+    "name": "Mystic robe top (dark)",
+    "offerPrice": 71340,
+    "officialGePrice": 73138,
+    "cofferValue": 76794,
+    "roiPct": 7.645079899074853
+  },
+  {
+    "id": 30753,
+    "name": "Oathplate chest",
+    "offerPrice": 99600000,
+    "officialGePrice": 102108381,
+    "cofferValue": 107213800,
+    "roiPct": 7.644377510040161
+  },
+  {
+    "id": 21049,
+    "name": "Ancestral robes set",
+    "offerPrice": 327897419,
+    "officialGePrice": 336123846,
+    "cofferValue": 352930038,
+    "roiPct": 7.63428363551712
+  },
+  {
+    "id": 22236,
+    "name": "Dragon platebody ornament kit",
+    "offerPrice": 9724573,
+    "officialGePrice": 9968134,
+    "cofferValue": 10466540,
+    "roiPct": 7.629815725585072
+  },
+  {
+    "id": 11826,
+    "name": "Armadyl helmet",
+    "offerPrice": 7967746,
+    "officialGePrice": 8165688,
+    "cofferValue": 8573972,
+    "roiPct": 7.608500572181895
+  },
+  {
+    "id": 30765,
+    "name": "Oathplate shards",
+    "offerPrice": 212756,
+    "officialGePrice": 218013,
+    "cofferValue": 228913,
+    "roiPct": 7.594145406005001
+  },
+  {
+    "id": 22978,
+    "name": "Dragon hunter lance",
+    "offerPrice": 67362928,
+    "officialGePrice": 69024778,
+    "cofferValue": 72476016,
+    "roiPct": 7.590358898888717
+  },
+  {
+    "id": 30756,
+    "name": "Oathplate legs",
+    "offerPrice": 99500000,
+    "officialGePrice": 101947350,
+    "cofferValue": 107044717,
+    "roiPct": 7.5826301507537694
+  },
+  {
+    "id": 27652,
+    "name": "Webweaver bow (u)",
+    "offerPrice": 14459123,
+    "officialGePrice": 14814286,
+    "cofferValue": 15555000,
+    "roiPct": 7.579138790091211
+  },
+  {
+    "id": 29253,
+    "name": "Enhanced quetzal whistle blueprint",
+    "offerPrice": 27610,
+    "officialGePrice": 28278,
+    "cofferValue": 29691,
+    "roiPct": 7.537124230351322
+  },
+  {
+    "id": 1333,
+    "name": "Rune scimitar",
+    "offerPrice": 14800,
+    "officialGePrice": 15158,
+    "cofferValue": 15915,
+    "roiPct": 7.533783783783783
+  },
+  {
+    "id": 6568,
+    "name": "Obsidian cape",
+    "offerPrice": 515766,
+    "officialGePrice": 528242,
+    "cofferValue": 554654,
+    "roiPct": 7.53985334434608
+  },
+  {
+    "id": 29028,
+    "name": "Blood moon helm",
+    "offerPrice": 946122,
+    "officialGePrice": 968984,
+    "cofferValue": 1017433,
+    "roiPct": 7.537188650089523
+  },
+  {
+    "id": 21021,
+    "name": "Ancestral robe top",
+    "offerPrice": 150950001,
+    "officialGePrice": 154572700,
+    "cofferValue": 162301335,
+    "roiPct": 7.519929728254854
+  },
+  {
+    "id": 22951,
+    "name": "Boots of brimstone",
+    "offerPrice": 441321,
+    "officialGePrice": 451673,
+    "cofferValue": 474256,
+    "roiPct": 7.462821846229842
+  },
+  {
+    "id": 12817,
+    "name": "Elysian spirit shield",
+    "offerPrice": 539556580,
+    "officialGePrice": 552041338,
+    "cofferValue": 579643404,
+    "roiPct": 7.429586717300343
+  },
+  {
+    "id": 22327,
+    "name": "Justiciar chestguard",
+    "offerPrice": 13889768,
+    "officialGePrice": 14208665,
+    "cofferValue": 14919098,
+    "roiPct": 7.410706931894039
+  },
+  {
+    "id": 12800,
+    "name": "Dragon pickaxe upgrade kit",
+    "offerPrice": 1200000,
+    "officialGePrice": 1227519,
+    "cofferValue": 1288894,
+    "roiPct": 7.407833333333333
+  },
+  {
+    "id": 3485,
+    "name": "Gilded plateskirt",
+    "offerPrice": 1212986,
+    "officialGePrice": 1240554,
+    "cofferValue": 1302581,
+    "roiPct": 7.38631773161438
+  },
+  {
+    "id": 30134,
+    "name": "Prayer regeneration potion(1)",
+    "offerPrice": 11259,
+    "officialGePrice": 12415,
+    "cofferValue": 13035,
+    "roiPct": 15.774047428723687
+  },
+  {
+    "id": 11126,
+    "name": "Combat bracelet",
+    "offerPrice": 12085,
+    "officialGePrice": 12356,
+    "cofferValue": 12973,
+    "roiPct": 7.347952006619776
+  },
+  {
+    "id": 21024,
+    "name": "Ancestral robe bottom",
+    "offerPrice": 109155000,
+    "officialGePrice": 111594015,
+    "cofferValue": 117173715,
+    "roiPct": 7.346172873436855
+  },
+  {
+    "id": 4730,
+    "name": "Guthan&#039;s chainskirt",
+    "offerPrice": 191200,
+    "officialGePrice": 195371,
+    "cofferValue": 205139,
+    "roiPct": 7.290271966527197
+  },
+  {
+    "id": 6139,
+    "name": "Skeletal top",
+    "offerPrice": 26100,
+    "officialGePrice": 26668,
+    "cofferValue": 28001,
+    "roiPct": 7.28352490421456
+  },
+  {
+    "id": 21902,
+    "name": "Dragon crossbow",
+    "offerPrice": 799599,
+    "officialGePrice": 816951,
+    "cofferValue": 857798,
+    "roiPct": 7.278523359834117
+  },
+  {
+    "id": 4113,
+    "name": "Mystic robe bottom (light)",
+    "offerPrice": 46600,
+    "officialGePrice": 47599,
+    "cofferValue": 49978,
+    "roiPct": 7.24892703862661
+  },
+  {
+    "id": 12863,
+    "name": "Dwarf cannon set",
+    "offerPrice": 756169,
+    "officialGePrice": 772252,
+    "cofferValue": 810864,
+    "roiPct": 7.23317142067448
+  },
+  {
+    "id": 21973,
+    "name": "Onyx dragon bolts",
+    "offerPrice": 11132,
+    "officialGePrice": 11367,
+    "cofferValue": 11935,
+    "roiPct": 7.213438735177865
+  },
+  {
+    "id": 3753,
+    "name": "Warrior helm",
+    "offerPrice": 36006,
+    "officialGePrice": 36764,
+    "cofferValue": 38602,
+    "roiPct": 7.209909459534522
+  },
+  {
+    "id": 6924,
+    "name": "Infinity bottoms",
+    "offerPrice": 1916749,
+    "officialGePrice": 1956938,
+    "cofferValue": 2054784,
+    "roiPct": 7.201516734846347
+  },
+  {
+    "id": 11905,
+    "name": "Trident of the seas (full)",
+    "offerPrice": 585875,
+    "officialGePrice": 598149,
+    "cofferValue": 628056,
+    "roiPct": 7.199658630253894
+  },
+  {
+    "id": 12389,
+    "name": "Gilded scimitar",
+    "offerPrice": 16175023,
+    "officialGePrice": 16511974,
+    "cofferValue": 17337572,
+    "roiPct": 7.187309718199473
+  },
+  {
+    "id": 4710,
+    "name": "Ahrim&#039;s staff",
+    "offerPrice": 260000,
+    "officialGePrice": 265407,
+    "cofferValue": 278677,
+    "roiPct": 7.183461538461539
+  },
+  {
+    "id": 31148,
+    "name": "Virtus armour set",
+    "offerPrice": 100478415,
+    "officialGePrice": 102555395,
+    "cofferValue": 107683164,
+    "roiPct": 7.170444517859881
+  },
+  {
+    "id": 1407,
+    "name": "Mystic earth staff",
+    "offerPrice": 24700,
+    "officialGePrice": 25200,
+    "cofferValue": 26460,
+    "roiPct": 7.125506072874494
+  },
+  {
+    "id": 22810,
+    "name": "Dragon knife(p++)",
+    "offerPrice": 12401,
+    "officialGePrice": 12650,
+    "cofferValue": 13282,
+    "roiPct": 7.104265785017337
+  },
+  {
+    "id": 10294,
+    "name": "Rune helm (h5)",
+    "offerPrice": 20396,
+    "officialGePrice": 20791,
+    "cofferValue": 21830,
+    "roiPct": 7.030790351049225
+  },
+  {
+    "id": 9470,
+    "name": "Gnome scarf",
+    "offerPrice": 1015778,
+    "officialGePrice": 1034823,
+    "cofferValue": 1086564,
+    "roiPct": 6.968648661420114
+  },
+  {
+    "id": 11113,
+    "name": "Skills necklace",
+    "offerPrice": 11905,
+    "officialGePrice": 12127,
+    "cofferValue": 12733,
+    "roiPct": 6.955060898782024
+  },
+  {
+    "id": 31166,
+    "name": "Mixed hide armour set",
+    "offerPrice": 87653,
+    "officialGePrice": 89278,
+    "cofferValue": 93741,
+    "roiPct": 6.945569461398924
+  },
+  {
+    "id": 21817,
+    "name": "Bracelet of ethereum (uncharged)",
+    "offerPrice": 42447,
+    "officialGePrice": 43230,
+    "cofferValue": 45391,
+    "roiPct": 6.935708059462388
+  },
+  {
+    "id": 1615,
+    "name": "Dragonstone",
+    "offerPrice": 11150,
+    "officialGePrice": 11350,
+    "cofferValue": 11917,
+    "roiPct": 6.878923766816143
+  },
+  {
+    "id": 6130,
+    "name": "Rock-shell legs",
+    "offerPrice": 37687,
+    "officialGePrice": 38345,
+    "cofferValue": 40262,
+    "roiPct": 6.832594793960782
+  },
+  {
+    "id": 25576,
+    "name": "Tome of water (empty)",
+    "offerPrice": 411856,
+    "officialGePrice": 419011,
+    "cofferValue": 439961,
+    "roiPct": 6.823987024591119
+  },
+  {
+    "id": 4151,
+    "name": "Abyssal whip",
+    "offerPrice": 1333005,
+    "officialGePrice": 1356081,
+    "cofferValue": 1423885,
+    "roiPct": 6.817678853417654
+  },
+  {
+    "id": 11834,
+    "name": "Bandos tassets",
+    "offerPrice": 16900000,
+    "officialGePrice": 17179372,
+    "cofferValue": 18038340,
+    "roiPct": 6.7357396449704146
+  },
+  {
+    "id": 7360,
+    "name": "Rune shield (h5)",
+    "offerPrice": 33065,
+    "officialGePrice": 33600,
+    "cofferValue": 35280,
+    "roiPct": 6.698926357175261
+  },
+  {
+    "id": 7158,
+    "name": "Dragon 2h sword",
+    "offerPrice": 130500,
+    "officialGePrice": 132592,
+    "cofferValue": 139221,
+    "roiPct": 6.682758620689655
+  },
+  {
+    "id": 24511,
+    "name": "Harmonised orb",
+    "offerPrice": 187935871,
+    "officialGePrice": 190822452,
+    "cofferValue": 200363574,
+    "roiPct": 6.612736000781884
+  },
+  {
+    "id": 1185,
+    "name": "Rune sq shield",
+    "offerPrice": 22350,
+    "officialGePrice": 22688,
+    "cofferValue": 23822,
+    "roiPct": 6.586129753914989
+  },
+  {
+    "id": 21012,
+    "name": "Dragon hunter crossbow",
+    "offerPrice": 45402869,
+    "officialGePrice": 46086586,
+    "cofferValue": 48390915,
+    "roiPct": 6.5811832287514695
+  },
+  {
+    "id": 23267,
+    "name": "Gilded d&#039;hide chaps",
+    "offerPrice": 8243999,
+    "officialGePrice": 8365591,
+    "cofferValue": 8783870,
+    "roiPct": 6.548654360583983
+  },
+  {
+    "id": 21804,
+    "name": "Ancient crystal",
+    "offerPrice": 149105,
+    "officialGePrice": 151241,
+    "cofferValue": 158803,
+    "roiPct": 6.504141376882062
+  },
+  {
+    "id": 4111,
+    "name": "Mystic robe top (light)",
+    "offerPrice": 70690,
+    "officialGePrice": 71654,
+    "cofferValue": 75236,
+    "roiPct": 6.430895459046542
+  },
+  {
+    "id": 5728,
+    "name": "Rune spear(p++)",
+    "offerPrice": 19265,
+    "officialGePrice": 19523,
+    "cofferValue": 20499,
+    "roiPct": 6.405398390864262
+  },
+  {
+    "id": 7354,
+    "name": "Rune shield (h4)",
+    "offerPrice": 32143,
+    "officialGePrice": 32572,
+    "cofferValue": 34200,
+    "roiPct": 6.39952711321283
+  },
+  {
+    "id": 22804,
+    "name": "Dragon knife",
+    "offerPrice": 11034,
+    "officialGePrice": 11177,
+    "cofferValue": 11735,
+    "roiPct": 6.353090447707086
+  },
+  {
+    "id": 11200,
+    "name": "Dwarven helmet",
+    "offerPrice": 35000,
+    "officialGePrice": 35451,
+    "cofferValue": 37223,
+    "roiPct": 6.351428571428571
+  },
+  {
+    "id": 21892,
+    "name": "Dragon platebody",
+    "offerPrice": 2469697,
+    "officialGePrice": 2501345,
+    "cofferValue": 2626412,
+    "roiPct": 6.34551525956423
+  },
+  {
+    "id": 22328,
+    "name": "Justiciar legguards",
+    "offerPrice": 12308200,
+    "officialGePrice": 12464812,
+    "cofferValue": 13088052,
+    "roiPct": 6.336036138509287
+  },
+  {
+    "id": 4884,
+    "name": "Dharok&#039;s helm 0",
+    "offerPrice": 280146,
+    "officialGePrice": 283541,
+    "cofferValue": 297718,
+    "roiPct": 6.272443654380217
+  },
+  {
+    "id": 11902,
+    "name": "Leaf-bladed sword",
+    "offerPrice": 39803,
+    "officialGePrice": 40285,
+    "cofferValue": 42299,
+    "roiPct": 6.270884104213251
+  },
+  {
+    "id": 6,
+    "name": "Cannon base",
+    "offerPrice": 192923,
+    "officialGePrice": 195201,
+    "cofferValue": 204961,
+    "roiPct": 6.239795151433474
+  },
+  {
+    "id": 22003,
+    "name": "Dragonfire ward",
+    "offerPrice": 16659717,
+    "officialGePrice": 16854196,
+    "cofferValue": 17696905,
+    "roiPct": 6.225724002394519
+  },
+  {
+    "id": 26386,
+    "name": "Torva platelegs",
+    "offerPrice": 162000000,
+    "officialGePrice": 163821236,
+    "cofferValue": 172012297,
+    "roiPct": 6.180430246913581
+  },
+  {
+    "id": 8,
+    "name": "Cannon stand",
+    "offerPrice": 187745,
+    "officialGePrice": 189793,
+    "cofferValue": 199282,
+    "roiPct": 6.145037151455432
+  },
+  {
+    "id": 26243,
+    "name": "Virtus robe top",
+    "offerPrice": 51922170,
+    "officialGePrice": 52471925,
+    "cofferValue": 55095521,
+    "roiPct": 6.111745714788115
+  },
+  {
+    "id": 31505,
+    "name": "Ironwood sapling",
+    "offerPrice": 15100,
+    "officialGePrice": 15255,
+    "cofferValue": 16017,
+    "roiPct": 6.072847682119206
+  },
+  {
+    "id": 31106,
+    "name": "Confliction gauntlets",
+    "offerPrice": 101566439,
+    "officialGePrice": 102599685,
+    "cofferValue": 107729669,
+    "roiPct": 6.0681757287956115
+  },
+  {
+    "id": 1147,
+    "name": "Rune med helm",
+    "offerPrice": 11100,
+    "officialGePrice": 11211,
+    "cofferValue": 11771,
+    "roiPct": 6.045045045045045
+  },
+  {
+    "id": 26225,
+    "name": "Ancient ceremonial mask",
+    "offerPrice": 29000,
+    "officialGePrice": 29283,
+    "cofferValue": 30747,
+    "roiPct": 6.024137931034483
+  },
+  {
+    "id": 6729,
+    "name": "Dagannoth bones",
+    "offerPrice": 13140,
+    "officialGePrice": 13259,
+    "cofferValue": 13921,
+    "roiPct": 5.943683409436834
+  },
+  {
+    "id": 26221,
+    "name": "Ancient ceremonial top",
+    "offerPrice": 58500,
+    "officialGePrice": 59027,
+    "cofferValue": 61978,
+    "roiPct": 5.9452991452991455
+  },
+  {
+    "id": 4587,
+    "name": "Dragon scimitar",
+    "offerPrice": 59201,
+    "officialGePrice": 59725,
+    "cofferValue": 62711,
+    "roiPct": 5.928953902805696
+  },
+  {
+    "id": 21895,
+    "name": "Dragon kiteshield",
+    "offerPrice": 85655888,
+    "officialGePrice": 86398992,
+    "cofferValue": 90718941,
+    "roiPct": 5.910922317447693
+  },
+  {
+    "id": 21978,
+    "name": "Super antifire potion(4)",
+    "offerPrice": 23123,
+    "officialGePrice": 23322,
+    "cofferValue": 24488,
+    "roiPct": 5.903213250875751
+  },
+  {
+    "id": 1405,
+    "name": "Mystic air staff",
+    "offerPrice": 25002,
+    "officialGePrice": 25215,
+    "cofferValue": 26475,
+    "roiPct": 5.891528677705783
+  },
+  {
+    "id": 24587,
+    "name": "Rune pouch note",
+    "offerPrice": 6870011,
+    "officialGePrice": 6927991,
+    "cofferValue": 7274390,
+    "roiPct": 5.886147780549406
+  },
+  {
+    "id": 1303,
+    "name": "Rune longsword",
+    "offerPrice": 18650,
+    "officialGePrice": 18806,
+    "cofferValue": 19746,
+    "roiPct": 5.8766756032171585
+  },
+  {
+    "id": 13235,
+    "name": "Eternal boots",
+    "offerPrice": 4945792,
+    "officialGePrice": 4986260,
+    "cofferValue": 5235573,
+    "roiPct": 5.8591424791014255
+  },
+  {
+    "id": 21637,
+    "name": "Wyvern visage",
+    "offerPrice": 24020505,
+    "officialGePrice": 24215123,
+    "cofferValue": 25425879,
+    "roiPct": 5.85072628572963
+  },
+  {
+    "id": 23002,
+    "name": "Bottled dragonbreath",
+    "offerPrice": 13485,
+    "officialGePrice": 13593,
+    "cofferValue": 14272,
+    "roiPct": 5.836114200964034
+  },
+  {
+    "id": 23110,
+    "name": "Mystic set (light)",
+    "offerPrice": 161627,
+    "officialGePrice": 162917,
+    "cofferValue": 171062,
+    "roiPct": 5.837514771665625
+  },
+  {
+    "id": 21634,
+    "name": "Ancient wyvern shield",
+    "offerPrice": 24463034,
+    "officialGePrice": 24654654,
+    "cofferValue": 25887386,
+    "roiPct": 5.822466665418525
+  },
+  {
+    "id": 4759,
+    "name": "Verac&#039;s plateskirt",
+    "offerPrice": 297844,
+    "officialGePrice": 300168,
+    "cofferValue": 315176,
+    "roiPct": 5.8191536509045
+  },
+  {
+    "id": 2667,
+    "name": "Saradomin kiteshield",
+    "offerPrice": 85001,
+    "officialGePrice": 85589,
+    "cofferValue": 89868,
+    "roiPct": 5.725814990411878
+  },
+  {
+    "id": 13026,
+    "name": "Rune armour set (sk)",
+    "offerPrice": 134219,
+    "officialGePrice": 135140,
+    "cofferValue": 141897,
+    "roiPct": 5.720501568332352
+  },
+  {
+    "id": 6562,
+    "name": "Mud battlestaff",
+    "offerPrice": 88300,
+    "officialGePrice": 88899,
+    "cofferValue": 93343,
+    "roiPct": 5.711211778029445
+  },
+  {
+    "id": 11118,
+    "name": "Combat bracelet(4)",
+    "offerPrice": 12290,
+    "officialGePrice": 12372,
+    "cofferValue": 12990,
+    "roiPct": 5.695687550854353
+  },
+  {
+    "id": 24417,
+    "name": "Inquisitor&#039;s mace",
+    "offerPrice": 234000000,
+    "officialGePrice": 235568220,
+    "cofferValue": 247346631,
+    "roiPct": 5.703688461538461
+  },
+  {
+    "id": 21006,
+    "name": "Kodai wand",
+    "offerPrice": 88093611,
+    "officialGePrice": 88682987,
+    "cofferValue": 93117136,
+    "roiPct": 5.702485053087448
+  },
+  {
+    "id": 4708,
+    "name": "Ahrim&#039;s hood",
+    "offerPrice": 406606,
+    "officialGePrice": 409316,
+    "cofferValue": 429781,
+    "roiPct": 5.699620763097446
+  },
+  {
+    "id": 22284,
+    "name": "Black d&#039;hide shield",
+    "offerPrice": 18874,
+    "officialGePrice": 18999,
+    "cofferValue": 19948,
+    "roiPct": 5.690367701600085
+  },
+  {
+    "id": 25392,
+    "name": "Swampbark gauntlets",
+    "offerPrice": 13049,
+    "officialGePrice": 13132,
+    "cofferValue": 13788,
+    "roiPct": 5.66326921603188
+  },
+  {
+    "id": 993,
+    "name": "Sinister key",
+    "offerPrice": 24894,
+    "officialGePrice": 25051,
+    "cofferValue": 26303,
+    "roiPct": 5.659998393187114
+  },
+  {
+    "id": 4093,
+    "name": "Mystic robe bottom",
+    "offerPrice": 47391,
+    "officialGePrice": 47690,
+    "cofferValue": 50074,
+    "roiPct": 5.661412504483974
+  },
+  {
+    "id": 26223,
+    "name": "Ancient ceremonial legs",
+    "offerPrice": 47063,
+    "officialGePrice": 47346,
+    "cofferValue": 49713,
+    "roiPct": 5.630750270913457
+  },
+  {
+    "id": 12437,
+    "name": "3rd age cloak",
+    "offerPrice": 445420067,
+    "officialGePrice": 448038252,
+    "cofferValue": 470440164,
+    "roiPct": 5.617191243429094
+  },
+  {
+    "id": 1215,
+    "name": "Dragon dagger",
+    "offerPrice": 17337,
+    "officialGePrice": 17437,
+    "cofferValue": 18308,
+    "roiPct": 5.600738305358481
+  },
+  {
+    "id": 4091,
+    "name": "Mystic robe top",
+    "offerPrice": 71353,
+    "officialGePrice": 71743,
+    "cofferValue": 75330,
+    "roiPct": 5.573696971395737
+  },
+  {
+    "id": 28276,
+    "name": "Chromium ingot",
+    "offerPrice": 40000,
+    "officialGePrice": 40197,
+    "cofferValue": 42206,
+    "roiPct": 5.515
+  },
+  {
+    "id": 20997,
+    "name": "Twisted bow",
+    "offerPrice": 1589158753,
+    "officialGePrice": 1596963700,
+    "cofferValue": 1676811885,
+    "roiPct": 5.515693874795654
+  },
+  {
+    "id": 20214,
+    "name": "Team cape x",
+    "offerPrice": 1863931,
+    "officialGePrice": 1872597,
+    "cofferValue": 1966226,
+    "roiPct": 5.488132339662788
+  },
+  {
+    "id": 1093,
+    "name": "Rune plateskirt",
+    "offerPrice": 38000,
+    "officialGePrice": 38162,
+    "cofferValue": 40070,
+    "roiPct": 5.447368421052631
+  },
+  {
+    "id": 22477,
+    "name": "Avernic defender hilt",
+    "offerPrice": 40971397,
+    "officialGePrice": 41143125,
+    "cofferValue": 43200281,
+    "roiPct": 5.44009763689532
+  },
+  {
+    "id": 11377,
+    "name": "Rune hasta",
+    "offerPrice": 11967,
+    "officialGePrice": 12015,
+    "cofferValue": 12615,
+    "roiPct": 5.4148909501128095
+  },
+  {
+    "id": 1401,
+    "name": "Mystic fire staff",
+    "offerPrice": 25035,
+    "officialGePrice": 25135,
+    "cofferValue": 26391,
+    "roiPct": 5.416417016177352
+  },
+  {
+    "id": 25862,
+    "name": "Bow of faerdhinen (inactive)",
+    "offerPrice": 155220667,
+    "officialGePrice": 155812113,
+    "cofferValue": 163602718,
+    "roiPct": 5.400086961358052
+  },
+  {
+    "id": 1377,
+    "name": "Dragon battleaxe",
+    "offerPrice": 119291,
+    "officialGePrice": 119706,
+    "cofferValue": 125691,
+    "roiPct": 5.365031729132961
+  },
+  {
+    "id": 21047,
+    "name": "Torn prayer scroll",
+    "offerPrice": 46799,
+    "officialGePrice": 46960,
+    "cofferValue": 49308,
+    "roiPct": 5.361225667215112
+  },
+  {
+    "id": 1403,
+    "name": "Mystic water staff",
+    "offerPrice": 25100,
+    "officialGePrice": 25179,
+    "cofferValue": 26437,
+    "roiPct": 5.326693227091633
+  },
+  {
+    "id": 4585,
+    "name": "Dragon plateskirt",
+    "offerPrice": 161000,
+    "officialGePrice": 161398,
+    "cofferValue": 169467,
+    "roiPct": 5.259006211180124
+  },
+  {
+    "id": 1247,
+    "name": "Rune spear",
+    "offerPrice": 11805,
+    "officialGePrice": 11832,
+    "cofferValue": 12423,
+    "roiPct": 5.2350698856416775
+  },
+  {
+    "id": 1163,
+    "name": "Rune full helm",
+    "offerPrice": 20712,
+    "officialGePrice": 20760,
+    "cofferValue": 21798,
+    "roiPct": 5.243337195828506
+  },
+  {
+    "id": 6724,
+    "name": "Seercull",
+    "offerPrice": 40000,
+    "officialGePrice": 40088,
+    "cofferValue": 42092,
+    "roiPct": 5.2299999999999995
+  },
+  {
+    "id": 3204,
+    "name": "Dragon halberd",
+    "offerPrice": 149208,
+    "officialGePrice": 149518,
+    "cofferValue": 156993,
+    "roiPct": 5.217548656908477
+  },
+  {
+    "id": 3202,
+    "name": "Rune halberd",
+    "offerPrice": 37892,
+    "officialGePrice": 37970,
+    "cofferValue": 39868,
+    "roiPct": 5.214821070410641
+  },
+  {
+    "id": 1702,
+    "name": "Dragonstone amulet",
+    "offerPrice": 12003,
+    "officialGePrice": 12028,
+    "cofferValue": 12629,
+    "roiPct": 5.2153628259601765
+  },
+  {
+    "id": 26380,
+    "name": "Torva platelegs (damaged)",
+    "offerPrice": 141588888,
+    "officialGePrice": 141875393,
+    "cofferValue": 148969162,
+    "roiPct": 5.212466955740199
+  },
+  {
+    "id": 12900,
+    "name": "Uncharged toxic trident",
+    "offerPrice": 3600000,
+    "officialGePrice": 3606401,
+    "cofferValue": 3786721,
+    "roiPct": 5.186694444444444
+  },
+  {
+    "id": 1127,
+    "name": "Rune platebody",
+    "offerPrice": 38506,
+    "officialGePrice": 38573,
+    "cofferValue": 40501,
+    "roiPct": 5.181010751571184
+  },
+  {
+    "id": 1305,
+    "name": "Dragon longsword",
+    "offerPrice": 59200,
+    "officialGePrice": 59298,
+    "cofferValue": 62262,
+    "roiPct": 5.172297297297297
+  },
+  {
+    "id": 21028,
+    "name": "Dragon harpoon",
+    "offerPrice": 2516446,
+    "officialGePrice": 2520606,
+    "cofferValue": 2646636,
+    "roiPct": 5.173566212030776
+  },
+  {
+    "id": 27269,
+    "name": "Armadylean plate",
+    "offerPrice": 8466443,
+    "officialGePrice": 8478872,
+    "cofferValue": 8902815,
+    "roiPct": 5.154136158478832
+  },
+  {
+    "id": 3054,
+    "name": "Mystic lava staff",
+    "offerPrice": 26145,
+    "officialGePrice": 26171,
+    "cofferValue": 27479,
+    "roiPct": 5.102314017976669
+  },
+  {
+    "id": 10352,
+    "name": "3rd age kiteshield",
+    "offerPrice": 108665002,
+    "officialGePrice": 108738517,
+    "cofferValue": 114175442,
+    "roiPct": 5.071034738489215
+  },
+  {
+    "id": 13227,
+    "name": "Eternal crystal",
+    "offerPrice": 4515273,
+    "officialGePrice": 4517930,
+    "cofferValue": 4743826,
+    "roiPct": 5.061775888191035
+  },
+  {
+    "id": 1149,
+    "name": "Dragon med helm",
+    "offerPrice": 58669,
+    "officialGePrice": 58700,
+    "cofferValue": 61635,
+    "roiPct": 5.055480747924798
+  },
+  {
+    "id": 5833,
+    "name": "Chef&#039;s delight(4)",
+    "offerPrice": 12652,
+    "officialGePrice": 12652,
+    "cofferValue": 13284,
+    "roiPct": 4.995257666772051
+  },
+  {
+    "id": 11414,
+    "name": "Rune hasta(p)",
+    "offerPrice": 20995,
+    "officialGePrice": 20995,
+    "cofferValue": 22044,
+    "roiPct": 4.996427720885925
+  },
+  {
+    "id": 5905,
+    "name": "Axeman&#039;s folly(m4)",
+    "offerPrice": 219452,
+    "officialGePrice": 219452,
+    "cofferValue": 230424,
+    "roiPct": 4.999726591692033
+  },
+  {
+    "id": 26554,
+    "name": "Shattered relic hunter (t1) armour set",
+    "offerPrice": 318116,
+    "officialGePrice": 318116,
+    "cofferValue": 334021,
+    "roiPct": 4.999748519408015
+  },
+  {
+    "id": 6579,
+    "name": "Onyx amulet (u)",
+    "offerPrice": 2307798,
+    "officialGePrice": 2307798,
+    "cofferValue": 2423187,
+    "roiPct": 4.999961001786119
+  },
+  {
+    "id": 5897,
+    "name": "Moonlight mead(m4)",
+    "offerPrice": 137520,
+    "officialGePrice": 137520,
+    "cofferValue": 144396,
+    "roiPct": 5
+  },
+  {
+    "id": 24472,
+    "name": "Twisted relic hunter (t2) armour set",
+    "offerPrice": 1656008,
+    "officialGePrice": 1656008,
+    "cofferValue": 1738808,
+    "roiPct": 4.999975845527317
+  },
+  {
+    "id": 5889,
+    "name": "Dragon bitter(m4)",
+    "offerPrice": 18601,
+    "officialGePrice": 18601,
+    "cofferValue": 19531,
+    "roiPct": 4.99973119724746
+  },
+  {
+    "id": 30404,
+    "name": "Raging echoes hat (t1)",
+    "offerPrice": 54324,
+    "officialGePrice": 54324,
+    "cofferValue": 57040,
+    "roiPct": 4.999631838598042
+  },
+  {
+    "id": 7451,
+    "name": "Cleaver",
+    "offerPrice": 16784,
+    "officialGePrice": 16784,
+    "cofferValue": 17623,
+    "roiPct": 4.998808388941849
+  },
+  {
+    "id": 8522,
+    "name": "Greenman&#039;s ale",
+    "offerPrice": 16566,
+    "officialGePrice": 16566,
+    "cofferValue": 17394,
+    "roiPct": 4.998189061934082
+  },
+  {
+    "id": 22299,
+    "name": "Ancient medallion",
+    "offerPrice": 3995567,
+    "officialGePrice": 3995461,
+    "cofferValue": 4195234,
+    "roiPct": 4.997213161486217
+  },
+  {
+    "id": 22302,
+    "name": "Ancient effigy",
+    "offerPrice": 7989507,
+    "officialGePrice": 7988699,
+    "cofferValue": 8388133,
+    "roiPct": 4.989369181352492
+  },
+  {
+    "id": 26227,
+    "name": "Ancient ceremonial gloves",
+    "offerPrice": 23200,
+    "officialGePrice": 23195,
+    "cofferValue": 24354,
+    "roiPct": 4.974137931034483
+  },
+  {
+    "id": 21813,
+    "name": "Ancient statuette",
+    "offerPrice": 1997415,
+    "officialGePrice": 1996894,
+    "cofferValue": 2096738,
+    "roiPct": 4.972577055844679
+  },
+  {
+    "id": 8786,
+    "name": "Marble block",
+    "offerPrice": 337716,
+    "officialGePrice": 337566,
+    "cofferValue": 354444,
+    "roiPct": 4.953274348861173
+  },
+  {
+    "id": 4087,
+    "name": "Dragon platelegs",
+    "offerPrice": 161291,
+    "officialGePrice": 161213,
+    "cofferValue": 169273,
+    "roiPct": 4.948819214959297
+  },
+  {
+    "id": 24517,
+    "name": "Eldritch orb",
+    "offerPrice": 186000000,
+    "officialGePrice": 185887314,
+    "cofferValue": 195181679,
+    "roiPct": 4.936386559139785
+  },
+  {
+    "id": 21810,
+    "name": "Ancient totem",
+    "offerPrice": 997005,
+    "officialGePrice": 996392,
+    "cofferValue": 1046211,
+    "roiPct": 4.935381467495148
+  },
+  {
+    "id": 29580,
+    "name": "Tormented synapse",
+    "offerPrice": 35831840,
+    "officialGePrice": 35807537,
+    "cofferValue": 37597913,
+    "roiPct": 4.92878121804518
+  },
+  {
+    "id": 10370,
+    "name": "Zamorak d&#039;hide body",
+    "offerPrice": 143090,
+    "officialGePrice": 142988,
+    "cofferValue": 150137,
+    "roiPct": 4.924872457893634
+  },
+  {
+    "id": 1373,
+    "name": "Rune battleaxe",
+    "offerPrice": 24702,
+    "officialGePrice": 24676,
+    "cofferValue": 25909,
+    "roiPct": 4.886244028823577
+  },
+  {
+    "id": 22212,
+    "name": "Extended super antifire(3)",
+    "offerPrice": 18029,
+    "officialGePrice": 18008,
+    "cofferValue": 18908,
+    "roiPct": 4.875478395917688
+  },
+  {
+    "id": 12871,
+    "name": "Black dragonhide set",
+    "offerPrice": 16000,
+    "officialGePrice": 15981,
+    "cofferValue": 16780,
+    "roiPct": 4.875
+  },
+  {
+    "id": 23288,
+    "name": "Frog slippers",
+    "offerPrice": 47655,
+    "officialGePrice": 47598,
+    "cofferValue": 49977,
+    "roiPct": 4.872521246458923
+  },
+  {
+    "id": 25985,
+    "name": "Elidinis&#039; ward",
+    "offerPrice": 3862209,
+    "officialGePrice": 3857393,
+    "cofferValue": 4050262,
+    "roiPct": 4.869052917643764
+  },
+  {
+    "id": 12470,
+    "name": "Armadyl platebody",
+    "offerPrice": 40376,
+    "officialGePrice": 40320,
+    "cofferValue": 42336,
+    "roiPct": 4.854368932038835
+  },
+  {
+    "id": 26439,
+    "name": "Shattered hood (t2)",
+    "offerPrice": 317000,
+    "officialGePrice": 316554,
+    "cofferValue": 332381,
+    "roiPct": 4.85205047318612
+  },
+  {
+    "id": 1664,
+    "name": "Dragon necklace",
+    "offerPrice": 11500,
+    "officialGePrice": 11484,
+    "cofferValue": 12058,
+    "roiPct": 4.852173913043478
+  },
+  {
+    "id": 4734,
+    "name": "Karil&#039;s crossbow",
+    "offerPrice": 108020,
+    "officialGePrice": 107865,
+    "cofferValue": 113258,
+    "roiPct": 4.849102018144788
+  },
+  {
+    "id": 11926,
+    "name": "Odium ward",
+    "offerPrice": 3979714,
+    "officialGePrice": 3973985,
+    "cofferValue": 4172684,
+    "roiPct": 4.848840896607143
+  },
+  {
+    "id": 1434,
+    "name": "Dragon mace",
+    "offerPrice": 29421,
+    "officialGePrice": 29378,
+    "cofferValue": 30846,
+    "roiPct": 4.8434791475476695
+  },
+  {
+    "id": 31551,
+    "name": "Rosewood seed",
+    "offerPrice": 87004,
+    "officialGePrice": 86867,
+    "cofferValue": 91210,
+    "roiPct": 4.834260493770402
+  },
+  {
+    "id": 10,
+    "name": "Cannon barrels",
+    "offerPrice": 171788,
+    "officialGePrice": 171480,
+    "cofferValue": 180054,
+    "roiPct": 4.811744708594314
+  },
+  {
+    "id": 21984,
+    "name": "Super antifire potion(2)",
+    "offerPrice": 10200,
+    "officialGePrice": 10179,
+    "cofferValue": 10687,
+    "roiPct": 4.7745098039215685
+  },
+  {
+    "id": 27667,
+    "name": "Claws of callisto",
+    "offerPrice": 47250,
+    "officialGePrice": 47143,
+    "cofferValue": 49500,
+    "roiPct": 4.761904761904762
+  },
+  {
+    "id": 9668,
+    "name": "Initiate harness m",
+    "offerPrice": 24855,
+    "officialGePrice": 24778,
+    "cofferValue": 26016,
+    "roiPct": 4.6710923355461675
+  },
+  {
+    "id": 13042,
+    "name": "Saradomin armour set (sk)",
+    "offerPrice": 306327,
+    "officialGePrice": 305336,
+    "cofferValue": 320602,
+    "roiPct": 4.660052819372762
+  },
+  {
+    "id": 30422,
+    "name": "Raging echoes top (t3)",
+    "offerPrice": 1091000,
+    "officialGePrice": 1087223,
+    "cofferValue": 1141584,
+    "roiPct": 4.636480293308891
+  },
+  {
+    "id": 1050,
+    "name": "Santa hat",
+    "offerPrice": 18001,
+    "officialGePrice": 17938,
+    "cofferValue": 18834,
+    "roiPct": 4.627520693294817
+  },
+  {
+    "id": 28338,
+    "name": "Soulreaper axe",
+    "offerPrice": 284000000,
+    "officialGePrice": 282957437,
+    "cofferValue": 297105308,
+    "roiPct": 4.614545070422535
+  },
+  {
+    "id": 12913,
+    "name": "Anti-venom+(4)",
+    "offerPrice": 10108,
+    "officialGePrice": 10070,
+    "cofferValue": 10573,
+    "roiPct": 4.600316580925999
+  },
+  {
+    "id": 1079,
+    "name": "Rune platelegs",
+    "offerPrice": 37985,
+    "officialGePrice": 37823,
+    "cofferValue": 39714,
+    "roiPct": 4.5517967618796895
+  },
+  {
+    "id": 8784,
+    "name": "Gold leaf",
+    "offerPrice": 139228,
+    "officialGePrice": 138599,
+    "cofferValue": 145528,
+    "roiPct": 4.524951877495906
+  },
+  {
+    "id": 2653,
+    "name": "Zamorak platebody",
+    "offerPrice": 44625,
+    "officialGePrice": 44417,
+    "cofferValue": 46637,
+    "roiPct": 4.508683473389356
+  },
+  {
+    "id": 1319,
+    "name": "Rune 2h sword",
+    "offerPrice": 38255,
+    "officialGePrice": 38050,
+    "cofferValue": 39952,
+    "roiPct": 4.436021435106522
+  },
+  {
+    "id": 2366,
+    "name": "Shield left half",
+    "offerPrice": 65434,
+    "officialGePrice": 65084,
+    "cofferValue": 68338,
+    "roiPct": 4.4380597243023505
+  },
+  {
+    "id": 30819,
+    "name": "Contract of divine severance",
+    "offerPrice": 41500,
+    "officialGePrice": 41275,
+    "cofferValue": 43338,
+    "roiPct": 4.428915662650603
+  },
+  {
+    "id": 29283,
+    "name": "Mixed hide legs",
+    "offerPrice": 29835,
+    "officialGePrice": 29672,
+    "cofferValue": 31155,
+    "roiPct": 4.424333836098542
+  },
+  {
+    "id": 9666,
+    "name": "Proselyte harness m",
+    "offerPrice": 30056,
+    "officialGePrice": 29888,
+    "cofferValue": 31382,
+    "roiPct": 4.411764705882353
+  },
+  {
+    "id": 30088,
+    "name": "Huasca seed",
+    "offerPrice": 36787,
+    "officialGePrice": 36574,
+    "cofferValue": 38402,
+    "roiPct": 4.390137820425694
+  },
+  {
+    "id": 27614,
+    "name": "Venator shard",
+    "offerPrice": 14711903,
+    "officialGePrice": 14620205,
+    "cofferValue": 15351215,
+    "roiPct": 4.345542517511161
+  },
+  {
+    "id": 3755,
+    "name": "Farseer helm",
+    "offerPrice": 38080,
+    "officialGePrice": 37841,
+    "cofferValue": 39733,
+    "roiPct": 4.340861344537815
+  },
+  {
+    "id": 11256,
+    "name": "Dragon impling jar",
+    "offerPrice": 381100,
+    "officialGePrice": 378703,
+    "cofferValue": 397638,
+    "roiPct": 4.339543426922067
+  },
+  {
+    "id": 2363,
+    "name": "Runite bar",
+    "offerPrice": 12335,
+    "officialGePrice": 12255,
+    "cofferValue": 12867,
+    "roiPct": 4.312930685042562
+  },
+  {
+    "id": 22954,
+    "name": "Devout boots",
+    "offerPrice": 739744,
+    "officialGePrice": 734733,
+    "cofferValue": 771469,
+    "roiPct": 4.2886458017908895
+  },
+  {
+    "id": 29280,
+    "name": "Mixed hide top",
+    "offerPrice": 16360,
+    "officialGePrice": 16238,
+    "cofferValue": 17049,
+    "roiPct": 4.211491442542787
+  },
+  {
+    "id": 13040,
+    "name": "Saradomin armour set (lg)",
+    "offerPrice": 299000,
+    "officialGePrice": 296676,
+    "cofferValue": 311509,
+    "roiPct": 4.183612040133779
+  },
+  {
+    "id": 23363,
+    "name": "Staff of bob the cat",
+    "offerPrice": 86130,
+    "officialGePrice": 85445,
+    "cofferValue": 89717,
+    "roiPct": 4.164634854290027
+  },
+  {
+    "id": 23354,
+    "name": "Amulet of power (t)",
+    "offerPrice": 401026,
+    "officialGePrice": 397835,
+    "cofferValue": 417726,
+    "roiPct": 4.164318522988535
+  },
+  {
+    "id": 20155,
+    "name": "Gilded 2h sword",
+    "offerPrice": 5755236,
+    "officialGePrice": 5708689,
+    "cofferValue": 5994123,
+    "roiPct": 4.150776788301991
+  },
+  {
+    "id": 1113,
+    "name": "Rune chainbody",
+    "offerPrice": 29872,
+    "officialGePrice": 29623,
+    "cofferValue": 31104,
+    "roiPct": 4.124263524370648
+  },
+  {
+    "id": 13173,
+    "name": "Partyhat set",
+    "offerPrice": 90609,
+    "officialGePrice": 89841,
+    "cofferValue": 94333,
+    "roiPct": 4.109967001070534
+  },
+  {
+    "id": 11798,
+    "name": "Godsword blade",
+    "offerPrice": 589488,
+    "officialGePrice": 584321,
+    "cofferValue": 613537,
+    "roiPct": 4.079641994408707
+  },
+  {
+    "id": 24641,
+    "name": "Divine bastion potion(2)",
+    "offerPrice": 11676,
+    "officialGePrice": 11570,
+    "cofferValue": 12148,
+    "roiPct": 4.042480301473107
+  },
+  {
+    "id": 11924,
+    "name": "Malediction ward",
+    "offerPrice": 1717008,
+    "officialGePrice": 1700630,
+    "cofferValue": 1785661,
+    "roiPct": 3.9984088600635523
+  },
+  {
+    "id": 29010,
+    "name": "Eclipse moon helm",
+    "offerPrice": 861111,
+    "officialGePrice": 852889,
+    "cofferValue": 895533,
+    "roiPct": 3.9973940641798795
+  },
+  {
+    "id": 30895,
+    "name": "Steel ring",
+    "offerPrice": 342692,
+    "officialGePrice": 339352,
+    "cofferValue": 356319,
+    "roiPct": 3.9764569934518463
+  },
+  {
+    "id": 12601,
+    "name": "Ring of the gods",
+    "offerPrice": 715000,
+    "officialGePrice": 707960,
+    "cofferValue": 743358,
+    "roiPct": 3.9661538461538464
+  },
+  {
+    "id": 24144,
+    "name": "Staff of balance",
+    "offerPrice": 30365001,
+    "officialGePrice": 30064560,
+    "cofferValue": 31567788,
+    "roiPct": 3.961096526886332
+  },
+  {
+    "id": 26241,
+    "name": "Virtus mask",
+    "offerPrice": 8892508,
+    "officialGePrice": 8803775,
+    "cofferValue": 9243963,
+    "roiPct": 3.952259587508946
+  },
+  {
+    "id": 26229,
+    "name": "Ancient ceremonial boots",
+    "offerPrice": 23100,
+    "officialGePrice": 22867,
+    "cofferValue": 24010,
+    "roiPct": 3.939393939393939
+  },
+  {
+    "id": 12,
+    "name": "Cannon furnace",
+    "offerPrice": 196501,
+    "officialGePrice": 194497,
+    "cofferValue": 204221,
+    "roiPct": 3.9287331871084623
+  },
+  {
+    "id": 12476,
+    "name": "Armadyl full helm",
+    "offerPrice": 50929,
+    "officialGePrice": 50395,
+    "cofferValue": 52914,
+    "roiPct": 3.8975829095407333
+  },
+  {
+    "id": 451,
+    "name": "Runite ore",
+    "offerPrice": 10250,
+    "officialGePrice": 10142,
+    "cofferValue": 10649,
+    "roiPct": 3.892682926829268
+  },
+  {
+    "id": 22856,
+    "name": "Celastrus sapling",
+    "offerPrice": 21666,
+    "officialGePrice": 21429,
+    "cofferValue": 22500,
+    "roiPct": 3.8493492107449465
+  },
+  {
+    "id": 1275,
+    "name": "Rune pickaxe",
+    "offerPrice": 18971,
+    "officialGePrice": 18760,
+    "cofferValue": 19698,
+    "roiPct": 3.8321648832428448
+  },
+  {
+    "id": 8443,
+    "name": "Topiary hedge",
+    "offerPrice": 25000,
+    "officialGePrice": 24722,
+    "cofferValue": 25958,
+    "roiPct": 3.832
+  },
+  {
+    "id": 29286,
+    "name": "Mixed hide boots",
+    "offerPrice": 16670,
+    "officialGePrice": 16484,
+    "cofferValue": 17308,
+    "roiPct": 3.827234553089382
+  },
+  {
+    "id": 1201,
+    "name": "Rune kiteshield",
+    "offerPrice": 32521,
+    "officialGePrice": 32155,
+    "cofferValue": 33762,
+    "roiPct": 3.8159958180867743
+  },
+  {
+    "id": 27612,
+    "name": "Venator bow (uncharged)",
+    "offerPrice": 75407873,
+    "officialGePrice": 74498400,
+    "cofferValue": 78223320,
+    "roiPct": 3.7336247370350835
+  },
+  {
+    "id": 13576,
+    "name": "Dragon warhammer",
+    "offerPrice": 14517477,
+    "officialGePrice": 14337312,
+    "cofferValue": 15054177,
+    "roiPct": 3.696923370362495
+  },
+  {
+    "id": 1347,
+    "name": "Rune warhammer",
+    "offerPrice": 24900,
+    "officialGePrice": 24589,
+    "cofferValue": 25818,
+    "roiPct": 3.686746987951807
+  },
+  {
+    "id": 11115,
+    "name": "Dragonstone bracelet",
+    "offerPrice": 11801,
+    "officialGePrice": 11653,
+    "cofferValue": 12235,
+    "roiPct": 3.6776544360647403
+  },
+  {
+    "id": 26500,
+    "name": "Shattered teleport scroll",
+    "offerPrice": 774685,
+    "officialGePrice": 764769,
+    "cofferValue": 803007,
+    "roiPct": 3.6559375746271066
+  },
+  {
+    "id": 24219,
+    "name": "Swift blade",
+    "offerPrice": 3789933,
+    "officialGePrice": 3739296,
+    "cofferValue": 3926260,
+    "roiPct": 3.5970820592342925
+  },
+  {
+    "id": 32014,
+    "name": "Rune keel parts",
+    "offerPrice": 59000,
+    "officialGePrice": 58195,
+    "cofferValue": 61104,
+    "roiPct": 3.5661016949152544
+  },
+  {
+    "id": 23413,
+    "name": "Climbing boots (g)",
+    "offerPrice": 45340,
+    "officialGePrice": 44686,
+    "cofferValue": 46920,
+    "roiPct": 3.4847816497573887
+  },
+  {
+    "id": 11252,
+    "name": "Magpie impling jar",
+    "offerPrice": 19246,
+    "officialGePrice": 18968,
+    "cofferValue": 19916,
+    "roiPct": 3.481242855658319
+  },
+  {
+    "id": 13062,
+    "name": "Ancient rune armour set (sk)",
+    "offerPrice": 265799,
+    "officialGePrice": 261692,
+    "cofferValue": 274776,
+    "roiPct": 3.3773640984352835
+  },
+  {
+    "id": 22734,
+    "name": "Dragon hasta(p)",
+    "offerPrice": 53667,
+    "officialGePrice": 52837,
+    "cofferValue": 55478,
+    "roiPct": 3.3745132017813555
+  },
+  {
+    "id": 22215,
+    "name": "Extended super antifire(2)",
+    "offerPrice": 12000,
+    "officialGePrice": 10858,
+    "cofferValue": 11400,
+    "roiPct": -5
+  },
+  {
+    "id": 11828,
+    "name": "Armadyl chestplate",
+    "offerPrice": 32836823,
+    "officialGePrice": 32315700,
+    "cofferValue": 33931485,
+    "roiPct": 3.3336416254398302
+  },
+  {
+    "id": 8425,
+    "name": "Bagged maple tree",
+    "offerPrice": 17495,
+    "officialGePrice": 17210,
+    "cofferValue": 18070,
+    "roiPct": 3.2866533295227205
+  },
+  {
+    "id": 11830,
+    "name": "Armadyl chainskirt",
+    "offerPrice": 24600000,
+    "officialGePrice": 24179307,
+    "cofferValue": 25388272,
+    "roiPct": 3.204357723577236
+  },
+  {
+    "id": 28310,
+    "name": "Venator ring",
+    "offerPrice": 51386636,
+    "officialGePrice": 50505484,
+    "cofferValue": 53030758,
+    "roiPct": 3.1995128071820074
+  },
+  {
+    "id": 27673,
+    "name": "Skull of vet&#039;ion",
+    "offerPrice": 48000,
+    "officialGePrice": 47148,
+    "cofferValue": 49505,
+    "roiPct": 3.135416666666667
+  },
+  {
+    "id": 31115,
+    "name": "Eye of ayak (uncharged)",
+    "offerPrice": 65729843,
+    "officialGePrice": 64547299,
+    "cofferValue": 67774663,
+    "roiPct": 3.110946119253624
+  },
+  {
+    "id": 24187,
+    "name": "Trouver parchment",
+    "offerPrice": 584009,
+    "officialGePrice": 573208,
+    "cofferValue": 601868,
+    "roiPct": 3.058000818480537
+  },
+  {
+    "id": 12873,
+    "name": "Guthan&#039;s armour set",
+    "offerPrice": 720926,
+    "officialGePrice": 707513,
+    "cofferValue": 742888,
+    "roiPct": 3.046359820564108
+  },
+  {
+    "id": 13159,
+    "name": "Book of darkness page set",
+    "offerPrice": 19961,
+    "officialGePrice": 19558,
+    "cofferValue": 20535,
+    "roiPct": 2.8756074344972697
+  },
+  {
+    "id": 5300,
+    "name": "Snapdragon seed",
+    "offerPrice": 48443,
+    "officialGePrice": 47461,
+    "cofferValue": 49834,
+    "roiPct": 2.8714158908407823
+  },
+  {
+    "id": 11832,
+    "name": "Bandos chestplate",
+    "offerPrice": 25800000,
+    "officialGePrice": 25251825,
+    "cofferValue": 26514416,
+    "roiPct": 2.7690542635658915
+  },
+  {
+    "id": 23339,
+    "name": "3rd age druidic robe bottoms",
+    "offerPrice": 2147483647,
+    "officialGePrice": 2101288017,
+    "cofferValue": 2206352417,
+    "roiPct": 2.7412907233188353
+  },
+  {
+    "id": 30079,
+    "name": "Hueycoatl hide chaps",
+    "offerPrice": 960420,
+    "officialGePrice": 939004,
+    "cofferValue": 985954,
+    "roiPct": 2.6586285166906145
+  },
+  {
+    "id": 2657,
+    "name": "Zamorak full helm",
+    "offerPrice": 690231,
+    "officialGePrice": 674838,
+    "cofferValue": 708579,
+    "roiPct": 2.6582405020927777
+  },
+  {
+    "id": 23943,
+    "name": "Elven signet",
+    "offerPrice": 2811378,
+    "officialGePrice": 2748207,
+    "cofferValue": 2885617,
+    "roiPct": 2.640662337117243
+  },
+  {
+    "id": 5873,
+    "name": "Greenmans ale(m4)",
+    "offerPrice": 193271,
+    "officialGePrice": 188865,
+    "cofferValue": 198308,
+    "roiPct": 2.606185097609057
+  },
+  {
+    "id": 27690,
+    "name": "Voidwaker",
+    "offerPrice": 41650000,
+    "officialGePrice": 40684332,
+    "cofferValue": 42718548,
+    "roiPct": 2.5655414165666266
+  },
+  {
+    "id": 1683,
+    "name": "Dragonstone amulet (u)",
+    "offerPrice": 12000,
+    "officialGePrice": 11719,
+    "cofferValue": 12304,
+    "roiPct": 2.533333333333333
+  },
+  {
+    "id": 12929,
+    "name": "Serpentine helm (uncharged)",
+    "offerPrice": 3690000,
+    "officialGePrice": 3602137,
+    "cofferValue": 3782243,
+    "roiPct": 2.499810298102981
+  },
+  {
+    "id": 31136,
+    "name": "Blood moon armour set",
+    "offerPrice": 22721016,
+    "officialGePrice": 22164466,
+    "cofferValue": 23272689,
+    "roiPct": 2.4280296268441517
+  },
+  {
+    "id": 21975,
+    "name": "Crushed superior dragon bones",
+    "offerPrice": 25200,
+    "officialGePrice": 24582,
+    "cofferValue": 25811,
+    "roiPct": 2.4246031746031744
+  },
+  {
+    "id": 24629,
+    "name": "Divine battlemage potion(2)",
+    "offerPrice": 11350,
+    "officialGePrice": 11067,
+    "cofferValue": 11620,
+    "roiPct": 2.378854625550661
+  },
+  {
+    "id": 6523,
+    "name": "Toktz-xil-ak",
+    "offerPrice": 361716,
+    "officialGePrice": 352650,
+    "cofferValue": 370282,
+    "roiPct": 2.368156233066826
+  },
+  {
+    "id": 2635,
+    "name": "Black beret",
+    "offerPrice": 55000,
+    "officialGePrice": 53542,
+    "cofferValue": 56219,
+    "roiPct": 2.2163636363636363
+  },
+  {
+    "id": 12383,
+    "name": "Black d&#039;hide chaps (g)",
+    "offerPrice": 115365,
+    "officialGePrice": 112280,
+    "cofferValue": 117894,
+    "roiPct": 2.19217266935379
+  },
+  {
+    "id": 4712,
+    "name": "Ahrim&#039;s robetop",
+    "offerPrice": 2282098,
+    "officialGePrice": 2220266,
+    "cofferValue": 2331279,
+    "roiPct": 2.155078353339778
+  },
+  {
+    "id": 30070,
+    "name": "Dragon hunter wand",
+    "offerPrice": 17274996,
+    "officialGePrice": 16805821,
+    "cofferValue": 17646112,
+    "roiPct": 2.1482841443204963
+  },
+  {
+    "id": 29022,
+    "name": "Blood moon chestplate",
+    "offerPrice": 4523646,
+    "officialGePrice": 4400695,
+    "cofferValue": 4620729,
+    "roiPct": 2.1461228398508636
+  },
+  {
+    "id": 22294,
+    "name": "Uncharged toxic trident (e)",
+    "offerPrice": 7137621,
+    "officialGePrice": 6935669,
+    "cofferValue": 7282452,
+    "roiPct": 2.029121467783173
+  }
+]
