@@ -35,3 +35,5 @@ _*.txt
 # Markdown files (except README.md)
 *.md
 !README.md
+.vercel
+.env*.local
