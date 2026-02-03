@@ -5,8 +5,6 @@ This directory contains all tests for the OSRS GE Scraper project.
 ## Directory Structure
 
 - `unit/` - Unit tests for individual functions and components
-- `integration/` - Integration tests for module interactions
-- `e2e/` - End-to-end tests for full user workflows
 
 ## Unit Tests
 
@@ -16,6 +14,8 @@ Unit tests focus on testing individual pieces of functionality in isolation:
 - **Utility functions** (`tst/unit/utils.test.ts`) - Test input parsing and formatting
 - **Components** (`tst/unit/components/`) - Test React components with mocked dependencies
 - **Data processing** (`tst/unit/geTracker.test.ts`) - Test HTML parsing and data transformation
+- **Validation** (`tst/unit/validation.test.ts`) - Test data validation and edge cases
+- **Error Boundary** (`tst/unit/ErrorBoundary.test.tsx`) - Test error handling components
 
 ## Running Tests
 

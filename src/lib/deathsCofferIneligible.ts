@@ -4,10 +4,7 @@ import {
   INELIGIBLE_NAMES_CACHE_TTL_MS,
   WIKI_API_BASE,
 } from './constants'
-
-function normalizeName(s: string): string {
-  return s.trim().toLowerCase().replace(/\s+/g, ' ')
-}
+import { normalizeName } from './utils'
 
 type MediaWikiQueryLinksResponse = {
   continue?: {
