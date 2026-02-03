@@ -17,6 +17,17 @@ export type OsrsLatestDatum = {
   lowTime: number
 }
 
+export type OsrsVolumeDatum = {
+  avgHighPrice: number
+  avgLowPrice: number
+  highPriceVolume: number
+  lowPriceVolume: number
+}
+
+export type OsrsVolumeResponse = {
+  data: Record<string, OsrsVolumeDatum>
+}
+
 export type OsrsLatestResponse = {
   data: Record<string, OsrsLatestDatum>
 }

@@ -1,21 +1,30 @@
 # OSRS Death's Coffer ROI Calculator
 
-A web application that calculates and displays Return on Investment (ROI) for Death's Coffer items in Old School RuneScape, helping players identify profitable trading opportunities.
+A web application that calculates and displays Return on Investment (ROI) for Death's Coffer items in Old School RuneScape, helping players identify profitable trading opportunities using official game APIs.
 
 ## Features
 
-- **Real-time Data**: Fetches data from GE Tracker and OSRS Wiki API
+- **Official APIs**: Uses Jagex and OSRS Wiki APIs for accurate, real-time data
 - **ROI Calculations**: Automatically calculates ROI percentages for Death's Coffer items
-- **Volume Estimates**: Displays estimated trade volume based on GE limits
+- **Progressive Loading**: Shows results as they're processed, no waiting
 - **Advanced Filtering**: Filter by ROI percentage, buy price range
 - **Responsive Design**: Clean, modern interface that works on all devices
-- **Data Validation**: Filters out ineligible items and ensures data quality
+- **Robust Error Handling**: Graceful degradation with enhanced retry logic
+- **Smart Rate Limiting**: Optimized API calls with intelligent throttling
 
 ## Data Sources
 
-- **GE Tracker**: Death's Coffer item list and current market data
-- **OSRS Wiki API**: Item mappings, prices, and trading limits
+- **Jagex API**: Official Grand Exchange prices for Death's Coffer calculations
+- **OSRS Wiki API**: Item mappings, market prices, and trading limits
 - **Smart Caching**: Optimized API calls with intelligent caching
+- **No Third Parties**: Direct integration with official sources only
+
+## Death's Coffer Formula
+
+The application uses the verified formula:
+- **Death's Coffer Value = Official GE Price × 1.05**
+- **ROI = (Coffer Value - Buy Price) / Buy Price**
+- **Buy Price**: Current market offer price from OSRS Wiki API
 
 ## Getting Started
 
@@ -46,9 +55,10 @@ npm run dev
 ## Usage
 
 ### Viewing ROI Data
-- The table displays all Death's Coffer items with positive ROI
+- The table displays Death's Coffer items with positive ROI
 - Columns include: Item name, buy price, official GE price, coffer value, ROI, and estimated volume
 - Items are sorted by ROI (highest first)
+- Results appear progressively as data is processed
 
 ### Filtering
 - **Min ROI (%)**: Filter items by minimum ROI percentage
@@ -58,8 +68,8 @@ npm run dev
 ### Understanding the Data
 - **ROI**: Calculated as (coffer value - buy price) / buy price
 - **Volume**: Estimated daily trading volume (GE limit × 5)
-- **Official GE**: Current Grand Exchange market price
-- **Coffer Value**: Value received from Death's Coffer
+- **Official GE**: Current Grand Exchange market price from Jagex API
+- **Coffer Value**: Value received from Death's Coffer (GE price × 1.05)
 
 ## Development
 
@@ -87,35 +97,51 @@ npm run build
 src/
 ├── components/     # React components
 ├── lib/           # Utility functions and API calls
+│   ├── api.ts     # Official API clients with retry logic
+│   ├── officialApi.ts # Death's Coffer calculations
+│   └── constants.ts # Application configuration
 ├── App.tsx        # Main application component
 └── main.tsx       # Application entry point
 
 tst/
 └── unit/          # Unit tests
-
-api/
-└── ge-tracker.js  # Vercel API proxy
 ```
 
 ## API Integration
 
-### GE Tracker API
-- Fetches Death's Coffer item list
-- Provides current market prices and coffer values
-- Accessed via Vercel API proxy in production
+### Jagex API
+- Fetches official Grand Exchange prices
+- Enhanced retry logic with exponential backoff
+- Rate limiting (2s between requests)
+- Empty response detection and validation
 
 ### OSRS Wiki API
 - Item mappings and metadata
+- Current market offer prices (low/high)
 - Grand Exchange trading limits
-- Current market prices
 - Used for volume estimation and data validation
 
-## Volume Estimation
+## Performance Features
 
-Since real volume data isn't available from public APIs, volume is estimated as:
-- **Formula**: GE Buy Limit × 5
-- **Rationale**: Popular items typically trade 5-10x their daily limit
-- **Purpose**: Provides relative trading activity context
+### Smart Processing
+- **Candidate Filtering**: Processes high-value items first
+- **Top 100 Limit**: Prevents excessive API calls
+- **Real-time Updates**: Shows results as they process
+- **Progressive Loading**: No more waiting for completion
+
+### Error Handling
+- **8 Retries**: Exponential backoff (1s → 30s max)
+- **Random Jitter**: Prevents thundering herd
+- **Timeout Protection**: 5-minute maximum load time
+- **Graceful Degradation**: Continues working when APIs fail
+
+## Volume Data
+
+Volume data is fetched directly from the OSRS Wiki API:
+- **Data Source**: OSRS Wiki API 5-minute endpoint (`/api/v1/osrs/5m`)
+- **Volume Calculation**: Math.max(highPriceVolume, lowPriceVolume)
+- **Real Trading Data**: Maximum volume between buy and sell prices
+- **Purpose**: Shows peak trading activity for each item
 
 ## Contributing
 
@@ -131,7 +157,7 @@ Since real volume data isn't available from public APIs, volume is estimated as:
 - **TypeScript** - Type safety
 - **Vite** - Build tool and dev server
 - **Vitest** - Testing framework
-- **Vercel** - Hosting and API proxy
+- **Vercel** - Hosting platform
 
 ## License
 

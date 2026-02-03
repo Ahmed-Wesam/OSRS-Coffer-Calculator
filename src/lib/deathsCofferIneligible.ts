@@ -1,10 +1,10 @@
-import { readCache, writeCache } from './cache'
-import type { OsrsMappingItem } from './types'
+import { readCache, writeCache } from './cache.js'
+import type { OsrsMappingItem } from './types.js'
 import {
   INELIGIBLE_NAMES_CACHE_TTL_MS,
   WIKI_API_BASE,
-} from './constants'
-import { normalizeName } from './utils'
+} from './constants.js'
+import { normalizeName } from './utils.js'
 
 type MediaWikiQueryLinksResponse = {
   continue?: {

@@ -1,7 +1,1 @@
-{
-  "functions": {
-    "api/ge-tracker.js": {
-      "maxDuration": 10
-    }
-  }
-}
+{"functions": {"api/update-edge-config.js": {"maxDuration": 300}}, "crons": [{"path": "/api/update-edge-config.js", "schedule": "0 0 * * *"}]}

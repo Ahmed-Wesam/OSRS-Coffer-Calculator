@@ -26,11 +26,11 @@ dist-ssr
 *.min.js
 api.*.js
 system.*.js
-vendor.*.js
 
 # Temporary reference files
 _*.js
 _*.txt
+run-local-cron-simple.mjs
 
 # Markdown files (except README.md and Roadmap.md)
 *.md

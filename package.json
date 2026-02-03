@@ -8,11 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "compare": "node tools/fetch-and-compare.mjs",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "node-fetch": "^3.3.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

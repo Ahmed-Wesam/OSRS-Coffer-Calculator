@@ -1,11 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import type { DeathCofferRow } from './lib/types'
-import { fetchGeTrackerDeathsCofferRows } from './lib/geTracker'
-import { getOsrsMapping, getOsrsVolume } from './lib/api'
-import { getDeathsCofferIneligibleNames } from './lib/deathsCofferIneligible'
-import { MIN_OFFICIAL_GE_PRICE } from './lib/constants'
-import { formatInt, formatPct, itemUrl, normalizeName, parsePriceInput, parseRoiInput } from './lib/utils.js'
+import { fetchEdgeConfigDeathsCofferRows } from './lib/edgeConfigApi'
+import { formatInt, formatPct, itemUrl, parseRoiInput, parsePriceInput } from './lib/utils'
 
 function App() {
   const [rows, setRows] = useState<DeathCofferRow[]>([])
@@ -18,80 +15,44 @@ function App() {
 
   useEffect(() => {
     let cancelled = false
+    let timeoutId: number
+    
     async function run() {
       try {
         setLoading(true)
         setError(null)
         setRows([])
 
-        const [ge, mapping] = await Promise.all([fetchGeTrackerDeathsCofferRows(), getOsrsMapping()])
-        const mappingById = new Map(mapping.map((m) => [m.id, m]))
+        // Set a timeout to prevent infinite loading
+        timeoutId = window.setTimeout(() => {
+          if (!cancelled) {
+            setError('Loading timeout - please refresh the page')
+            setLoading(false)
+          }
+        }, 30000) // 30 seconds (shorter since Edge Config should be fast)
 
-        const ineligibleNames = await getDeathsCofferIneligibleNames(mapping)
-
-        const computed: DeathCofferRow[] = ge
-          .map((r) => ({
-            id: r.id,
-            name: r.name,
-            buyPrice: r.offerPrice,
-            officialGePrice: r.officialGePrice,
-            cofferValue: r.cofferValue,
-            roi: r.roiPct / 100,
-            volume: 0, // Default value, will be updated later
-          }))
-          .filter((r) => r.roi > 0)
-          .filter((r) => r.officialGePrice >= MIN_OFFICIAL_GE_PRICE)
-          // Must be tradable on the Grand Exchange (has a GE buy limit in mapping).
-          .filter((r) => {
-            const m = mappingById.get(r.id)
-            return !!(m && typeof m.limit === 'number' && m.limit > 0)
-          })
-          // Exclude known-ineligible groups/items as best-effort.
-          .filter((r) => {
-            const n = normalizeName(r.name)
-            if (ineligibleNames.has(n)) return false
-            if (n.includes(' bond')) return false
-            if (n.endsWith(' bond')) return false
-            // Leagues reward tiers commonly use a (t1)/(t2)/(t3) suffix.
-            if (/\(t\d+\)$/.test(n)) return false
-            return true
-          })
-
-        // Fetch volume data for the filtered items
-        const itemIds = computed.map(r => r.id)
-        const volumeData = await getOsrsVolume(itemIds)
+        // Fetch data from Edge Config only - no API requests to Wiki
+        const edgeConfigData = await fetchEdgeConfigDeathsCofferRows()
         
-        // Add volume data to the computed rows
-        const computedWithVolume = computed.map(r => ({
-          ...r,
-          volume: volumeData[r.id] || 0
-        }))
-
-        // GE Tracker can include duplicate rows for the same item id.
-        // Keep the highest ROI row per id to avoid React duplicate key warnings.
-        const byId = new Map<number, DeathCofferRow>()
-        for (const r of computedWithVolume) {
-          const prev = byId.get(r.id)
-          if (!prev || r.roi > prev.roi) byId.set(r.id, r)
-        }
-        const deduped = Array.from(byId.values())
-        deduped.sort((a, b) => b.roi - a.roi)
-
-        if (!cancelled) setRows(deduped)
-      } catch (e) {
         if (!cancelled) {
-          setError(e instanceof Error ? e.message : String(e))
+          setRows(edgeConfigData)
+          setLoading(false)
         }
-      } finally {
+
+      } catch (error) {
         if (!cancelled) {
+          console.error('Failed to fetch Edge Config data:', error)
+          setError(error instanceof Error ? error.message : 'Failed to load data')
           setLoading(false)
         }
       }
     }
 
     run()
+
     return () => {
       cancelled = true
+      if (timeoutId) clearTimeout(timeoutId)
     }
   }, [])
 
@@ -118,6 +79,9 @@ function App() {
     <div className="app">
       <div className="header">
         <h1 className="title">OSRS Death&apos;s Coffer ROI Calculator</h1>
+        <p className="subtitle">
+          Calculate Return on Investment for Death&apos;s Coffer minigame. Data is precomputed and cached from OSRS Wiki and Jagex APIs.
+        </p>
 
         <div className="controls">
           <div className="control">
@@ -193,7 +157,7 @@ function App() {
                 <td>{formatInt(r.buyPrice)}</td>
                 <td>{formatInt(r.officialGePrice)}</td>
                 <td>{formatInt(r.cofferValue)}</td>
-                <td>{formatPct(r.roi)}</td>
+                <td className={r.roi > 0 ? "roi-positive" : ""}>{formatPct(r.roi)}</td>
                 <td>{formatInt(r.volume)}</td>
               </tr>
             ))}
