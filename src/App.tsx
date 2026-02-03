@@ -1,35 +1,17 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import type { DeathCofferRow } from './lib/types'
-import { fetchEdgeConfigDeathsCofferRows, triggerEdgeConfigUpdate } from './lib/edgeConfigApi'
+import { fetchEdgeConfigDeathsCofferRows } from './lib/edgeConfigApi'
 import { formatInt, formatPct, itemUrl, parseRoiInput, parsePriceInput } from './lib/utils'
 
 function App() {
   const [rows, setRows] = useState<DeathCofferRow[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [updating, setUpdating] = useState(false)
 
   const [minRoiPct, setMinRoiPct] = useState('0')
   const [minBuyPrice, setMinBuyPrice] = useState('')
   const [maxBuyPrice, setMaxBuyPrice] = useState('')
-
-  const handleTriggerUpdate = async () => {
-    try {
-      setUpdating(true)
-      const result = await triggerEdgeConfigUpdate()
-      if (result.success) {
-        // Wait a bit then refresh data
-        setTimeout(() => {
-          window.location.reload()
-        }, 3000)
-      }
-    } catch (error) {
-      console.error('Failed to trigger update:', error)
-    } finally {
-      setUpdating(false)
-    }
-  }
 
   useEffect(() => {
     let cancelled = false
@@ -155,18 +137,7 @@ function App() {
       {loading ? (
         <p className="muted">Loading…</p>
       ) : error ? (
-        <div>
-          <p className="muted">Error: {error}</p>
-          {error.includes('No data available yet') && (
-            <button 
-              onClick={handleTriggerUpdate}
-              disabled={updating}
-              style={{ marginTop: '10px', padding: '8px 16px' }}
-            >
-              {updating ? 'Generating data...' : 'Generate Data Now'}
-            </button>
-          )}
-        </div>
+        <p className="muted">Error: {error}</p>
       ) : null}
 
       <div className="tableWrap">
