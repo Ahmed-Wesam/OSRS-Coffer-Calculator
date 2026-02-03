@@ -1,4 +1,4 @@
-// Client-side API functions for Blob Storage (DEPRECATED EDGE CONFIG)
+// Client-side API functions for Blob Storage
 import type { DeathCofferRow } from './types'
 
 // Use deployed API for both development and production
@@ -6,7 +6,7 @@ const API_BASE = '/api'
 
 export async function fetchBlobStorageDeathsCofferRows(): Promise<DeathCofferRow[]> {
   try {
-    const response = await fetch(`${API_BASE}/edge-config`)
+    const response = await fetch(`${API_BASE}/blob-config`)
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`)
     }
@@ -20,7 +20,7 @@ export async function fetchBlobStorageDeathsCofferRows(): Promise<DeathCofferRow
 
 export async function triggerBlobStorageUpdate(): Promise<{success: boolean, itemCount?: number, timestamp?: string}> {
   try {
-    const response = await fetch(`${API_BASE}/update-edge-config`, {
+    const response = await fetch(`${API_BASE}/update-blob-config`, {
       method: 'POST'
     })
     if (!response.ok) {

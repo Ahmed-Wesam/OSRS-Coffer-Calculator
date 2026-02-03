@@ -6,9 +6,6 @@ const cronRateLimiter = createRateLimiter(2, 300000) // 2 requests per 5 minutes
 
 export default async function handler(request, response) {
   try {
-    // Add security headers
-    addSecurityHeaders(response)
-    
     // Validate request method
     if (request.method !== 'GET') {
       return response.status(405).json({ error: 'Method not allowed' })
@@ -151,10 +148,14 @@ export default async function handler(request, response) {
     const mergedItems = Array.from(uniqueItems.values())
       .sort((a, b) => b.roi - a.roi)
     
+    // Filter out items with insufficient total trading value (volume * price < 1m)
+    const filteredItems = mergedItems.filter(item => (item.volume * item.buyPrice) >= 1000000)
+    console.log(`📊 Filtered ${mergedItems.length - filteredItems.length} items (volume*price < 1m), keeping ${filteredItems.length} items`)
+    
     const mergedData = {
       timestamp: latestTimestamp,
-      itemCount: mergedItems.length,
-      items: mergedItems,
+      itemCount: filteredItems.length,
+      items: filteredItems,
       sources: recentBlobs.map(blob => blob.pathname)
     }
 

@@ -7,6 +7,15 @@ const JAGEX_API_BASE = 'https://secure.runescape.com/m=itemdb_oldschool/api/cata
 // Create rate limiters
 const cronRateLimiter = createRateLimiter(2, 300000) // 2 requests per 5 minutes
 
+// Adaptive rate limiting with failure tracking
+let lastJagexFetchAt = 0
+let recentFailures = 0
+const BASE_RATE_LIMIT_MS = 1200 // Increased to 1.2s for more waiting
+
+function getAdaptiveDelay() {
+  return BASE_RATE_LIMIT_MS * Math.pow(1.2, Math.min(recentFailures, 2)) // Much less aggressive
+}
+
 // Helper function to fetch with retries
 async function fetchWithRetry(url, retries = 3, delay = 1000) {
   for (let i = 0; i < retries; i++) {
@@ -27,17 +36,17 @@ async function fetchWithRetry(url, retries = 3, delay = 1000) {
   }
 }
 
-// Rate limiting for Jagex API - reduced to 2 seconds for efficiency
-let lastJagexFetchAt = 0;
-const JAGEX_RATE_LIMIT_MS = 2000; // 2 seconds between calls
+// Rate limiting for Jagex API - adaptive with failure tracking
+const JAGEX_RATE_LIMIT_MS = 500; // 0.5 seconds between calls
 
-async function fetchJagexPrice(itemId, maxRetries = 3) {
-  // Rate limiting - wait if we're calling too fast
+async function fetchJagexPrice(itemId, maxRetries = 2) { // Reduced to 2 retries
+  // Adaptive rate limiting
+  const adaptiveDelay = getAdaptiveDelay();
   const now = Date.now();
   const timeSinceLastFetch = now - lastJagexFetchAt;
-  if (timeSinceLastFetch < JAGEX_RATE_LIMIT_MS) {
-    const waitTime = JAGEX_RATE_LIMIT_MS - timeSinceLastFetch;
-    console.log(`⏱️ Rate limiting Jagex API - waiting ${waitTime}ms...`);
+  if (timeSinceLastFetch < adaptiveDelay) {
+    const waitTime = adaptiveDelay - timeSinceLastFetch;
+    console.log(`⏱️ Adaptive rate limiting - waiting ${waitTime}ms...`);
     await new Promise(resolve => setTimeout(resolve, waitTime));
   }
   
@@ -52,39 +61,39 @@ async function fetchJagexPrice(itemId, maxRetries = 3) {
       if (!data || !data.item || !data.item.current || !data.item.current.price) {
         console.log(`⚠️ Empty/invalid response for ${itemId}, attempt ${attempt}/${maxRetries} - ALWAYS retrying`);
         if (attempt < maxRetries) {
-          // Wait before retry (6, 8, 10 seconds backoff)
-          const backoffTime = 6000 * attempt; // 6s, 12s, 18s
-          console.log(`⏱️ Backing off ${backoffTime}ms before retry...`);
+          // Exponential backoff with jitter
+          const baseDelay = 1000 * attempt;
+          const jitter = Math.random() * 500; // ±500ms jitter
+          const backoffTime = baseDelay + jitter;
+          console.log(`⏱️ Backing off ${backoffTime.toFixed(0)}ms before retry...`);
           await new Promise(resolve => setTimeout(resolve, backoffTime));
           continue;
         }
         console.log(`❌ Failed to get valid price for ${itemId} after ${maxRetries} attempts`);
+        recentFailures++;
         return null;
       }
       
       const price = data.item.current.price;
       console.log(`✅ Got price for ${itemId}: ${price} (attempt ${attempt})`);
       
-      // ALWAYS retry even on success to get the most recent data
-      if (attempt < maxRetries) {
-        console.log(`🔄 Retrying ${itemId} even on success to get most recent data (attempt ${attempt}/${maxRetries})`);
-        const backoffTime = 6000 * attempt;
-        console.log(`⏱️ Backing off ${backoffTime}ms before retry...`);
-        await new Promise(resolve => setTimeout(resolve, backoffTime));
-        continue;
-      }
+      // Reset failure counter on success
+      recentFailures = Math.max(0, recentFailures - 1);
       
-      // Final attempt - return the last successful price
-      console.log(`🎯 Final price for ${itemId}: ${price} (after ${attempt} attempts)`);
+      // Return immediately on first success - no need to retry
+      console.log(`🎯 Got valid price for ${itemId} - returning immediately`);
       return price;
       
     } catch (error) {
       console.error(`Attempt ${attempt} failed for ${itemId}:`, error.message);
       if (attempt < maxRetries) {
-        // Wait before retry (6, 8, 10 seconds backoff)
-        const backoffTime = 6000 * attempt;
-        console.log(`⏱️ Backing off ${backoffTime}ms before retry...`);
+        // Exponential backoff with jitter for errors
+        const baseDelay = 1000 * attempt;
+        const jitter = Math.random() * 500;
+        const backoffTime = baseDelay + jitter;
+        console.log(`⏱️ Backing off ${backoffTime.toFixed(0)}ms before retry...`);
         await new Promise(resolve => setTimeout(resolve, backoffTime));
+        recentFailures++;
       }
     }
   }
@@ -194,14 +203,24 @@ export default async function handler(request, response) {
 
       if (!Number.isFinite(offerPrice) || offerPrice <= 0) continue
       if (!Number.isFinite(sellPrice) || sellPrice <= 0) continue
-      if (offerPrice < 1000) continue
+
+      // Get volume and filter by volume * price ≥ 1m
+      const volumeInfo = volumeData[String(candidate.id)]
+      const itemVolume = volumeInfo ? Math.max(volumeInfo.highPriceVolume || 0, volumeInfo.lowPriceVolume || 0) : 0
+      
+      const totalTradingValue = itemVolume * offerPrice
+      if (totalTradingValue < 1000000) { // Increased to 1m
+        console.log(`⏭️ Skipping ${itemMapping.name} - insufficient trading value: ${totalTradingValue.toLocaleString()} (volume: ${itemVolume}, price: ${offerPrice.toLocaleString()})`)
+        continue
+      }
 
       candidateItems.push({
         id: itemId,
         name: itemMapping.name,
         offerPrice,
         sellPrice,
-        limit: itemMapping.limit
+        limit: itemMapping.limit,
+        volume: itemVolume // Store volume for later use
       })
     }
 
@@ -236,13 +255,7 @@ export default async function handler(request, response) {
           continue
         }
 
-        // Parse price string using consistent function
         const price = parseItemdbPrice(officialGePrice)
-
-        if (price < 1000) {
-          console.log(`⏭️ Skipping ${candidate.name} - price too low: ${price}`)
-          continue
-        }
 
         // Calculate Death's Coffer value and ROI
         const cofferValue = Math.floor(price * 1.05)
@@ -255,9 +268,7 @@ export default async function handler(request, response) {
           continue
         }
 
-        // Get volume
-        const volumeInfo = volumeData[String(candidate.id)]
-        const itemVolume = volumeInfo ? Math.max(volumeInfo.highPriceVolume || 0, volumeInfo.lowPriceVolume || 0) : 0
+        const itemVolume = candidate.volume
 
         results.push({
           id: candidate.id,
