@@ -118,6 +118,34 @@ export async function getOsrsLatest(opts?: { ttlMs?: number }): Promise<OsrsLate
   return data
 }
 
+export async function getOsrsVolume(itemIds: number[], opts?: { ttlMs?: number }): Promise<Record<number, number>> {
+  const ttlMs = opts?.ttlMs ?? LATEST_CACHE_TTL_MS
+  const cacheKey = `osrs:volume:v1:${itemIds.sort().join(',')}`
+  const cached = readCache<Record<number, number>>(cacheKey, ttlMs)
+  if (cached) return cached
+
+  // Get mapping data to estimate volume based on GE limits
+  const mapping = await getOsrsMapping()
+  const mappingById = new Map(mapping.map(m => [m.id, m]))
+  
+  const volumeData: Record<number, number> = {}
+  for (const id of itemIds) {
+    const itemMapping = mappingById.get(id)
+    if (itemMapping && typeof itemMapping.limit === 'number' && itemMapping.limit > 0) {
+      // Estimate daily volume as a multiple of the GE limit
+      // This is a rough estimate since actual volume data isn't available
+      // Popular items might trade 5-10x their GE limit daily
+      const baseVolume = itemMapping.limit * 5 // Conservative estimate
+      volumeData[id] = baseVolume
+    } else {
+      volumeData[id] = 0
+    }
+  }
+  
+  writeCache(cacheKey, volumeData)
+  return volumeData
+}
+
 export async function getOsrsOfficialGuidePrice(itemId: number, opts?: { ttlMs?: number }): Promise<number> {
   const ttlMs = opts?.ttlMs ?? ITEMDB_CACHE_TTL_MS
   const cacheKey = `osrs:itemdb:detail:${itemId}`

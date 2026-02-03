@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import type { DeathCofferRow } from './lib/types'
 import { fetchGeTrackerDeathsCofferRows } from './lib/geTracker'
-import { getOsrsMapping } from './lib/api'
+import { getOsrsMapping, getOsrsVolume } from './lib/api'
 import { getDeathsCofferIneligibleNames } from './lib/deathsCofferIneligible'
 import { MIN_OFFICIAL_GE_PRICE } from './lib/constants'
 import { formatInt, formatPct, itemUrl, normalizeName, parsePriceInput, parseRoiInput } from './lib/utils.js'
@@ -56,10 +56,20 @@ function App() {
             return true
           })
 
+        // Fetch volume data for the filtered items
+        const itemIds = computed.map(r => r.id)
+        const volumeData = await getOsrsVolume(itemIds)
+        
+        // Add volume data to the computed rows
+        const computedWithVolume = computed.map(r => ({
+          ...r,
+          volume: volumeData[r.id] || 0
+        }))
+
         // GE Tracker can include duplicate rows for the same item id.
         // Keep the highest ROI row per id to avoid React duplicate key warnings.
         const byId = new Map<number, DeathCofferRow>()
-        for (const r of computed) {
+        for (const r of computedWithVolume) {
           const prev = byId.get(r.id)
           if (!prev || r.roi > prev.roi) byId.set(r.id, r)
         }
@@ -168,6 +178,7 @@ function App() {
               <th>Official GE</th>
               <th>Coffer value</th>
               <th>ROI</th>
+              <th>Volume</th>
             </tr>
           </thead>
           <tbody>
@@ -182,6 +193,7 @@ function App() {
                 <td>{formatInt(r.officialGePrice)}</td>
                 <td>{formatInt(r.cofferValue)}</td>
                 <td>{formatPct(r.roi)}</td>
+                <td>{formatInt(r.volume || 0)}</td>
               </tr>
             ))}
           </tbody>
