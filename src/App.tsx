@@ -5,7 +5,7 @@ import { fetchGeTrackerDeathsCofferRows } from './lib/geTracker'
 import { getOsrsMapping } from './lib/api'
 import { getDeathsCofferIneligibleNames } from './lib/deathsCofferIneligible'
 import { MIN_OFFICIAL_GE_PRICE } from './lib/constants'
-import { formatInt, formatPct, itemUrl, normalizeName, parsePriceInput, parseRoiInput } from './lib/utils'
+import { formatInt, formatPct, itemUrl, normalizeName, parsePriceInput, parseRoiInput } from './lib/utils.js'
 
 function App() {
   const [rows, setRows] = useState<DeathCofferRow[]>([])

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parsePriceInput, parseRoiInput } from './lib/utils'
+import { parsePriceInput, parseRoiInput } from './lib/utils.js'
 
 describe('Input Parsing Functions', () => {
   describe('parsePriceInput', () => {
