@@ -13,9 +13,10 @@ export default async function handler(request, response) {
     
     const blobData = await blobResponse.json()
     
-    // Find items-*.json files
+    // Find items-*.json files (with or without ob/ prefix)
     const itemsBlobs = blobData.blobs.filter(blob => 
-      blob.pathname.startsWith('items-') && blob.pathname.endsWith('.json')
+      (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
+      blob.pathname.endsWith('.json')
     )
     
     if (itemsBlobs.length === 0) {
