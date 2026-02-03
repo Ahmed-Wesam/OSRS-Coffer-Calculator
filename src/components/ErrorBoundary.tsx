@@ -20,8 +20,9 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error }
   }
 
-  override componentDidCatch(_error: Error, _errorInfo: ErrorInfo): void {
-    // Error logging can be added here for production monitoring
+  override componentDidCatch(_error: Error, _errorInfo: ErrorInfo) {
+    // You can log the error to an error reporting service here
+    console.error('Error caught by boundary:', _error, _errorInfo)
   }
 
   override render(): ReactNode {
