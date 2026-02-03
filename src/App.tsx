@@ -37,6 +37,7 @@ function App() {
             officialGePrice: r.officialGePrice,
             cofferValue: r.cofferValue,
             roi: r.roiPct / 100,
+            volume: 0, // Default value, will be updated later
           }))
           .filter((r) => r.roi > 0)
           .filter((r) => r.officialGePrice >= MIN_OFFICIAL_GE_PRICE)
@@ -193,7 +194,7 @@ function App() {
                 <td>{formatInt(r.officialGePrice)}</td>
                 <td>{formatInt(r.cofferValue)}</td>
                 <td>{formatPct(r.roi)}</td>
-                <td>{formatInt(r.volume || 0)}</td>
+                <td>{formatInt(r.volume)}</td>
               </tr>
             ))}
           </tbody>
