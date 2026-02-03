@@ -1,19 +1,22 @@
 import { describe, it, expect } from 'vitest'
 
 // Mock validation functions
-function validateItem(item: any): boolean {
+function validateItem(item: unknown): boolean {
+  if (typeof item !== 'object' || item === null) return false
+  
+  const obj = item as Record<string, unknown>
   return (
-    typeof item.id === 'number' && 
-    Number.isInteger(item.id) &&
-    item.id > 0 &&
-    typeof item.name === 'string' && 
-    item.name.trim().length > 0 &&
-    typeof item.buyPrice === 'number' && 
-    Number.isFinite(item.buyPrice) && 
-    item.buyPrice > 0 &&
-    typeof item.officialGePrice === 'number' && 
-    Number.isFinite(item.officialGePrice) && 
-    item.officialGePrice > 0
+    typeof obj.id === 'number' && 
+    Number.isInteger(obj.id) &&
+    obj.id > 0 &&
+    typeof obj.name === 'string' && 
+    obj.name.trim().length > 0 &&
+    typeof obj.buyPrice === 'number' && 
+    Number.isFinite(obj.buyPrice) && 
+    obj.buyPrice > 0 &&
+    typeof obj.officialGePrice === 'number' && 
+    Number.isFinite(obj.officialGePrice) && 
+    obj.officialGePrice > 0
   )
 }
 
