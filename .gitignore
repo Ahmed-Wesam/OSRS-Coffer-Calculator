@@ -32,8 +32,9 @@ vendor.*.js
 _*.js
 _*.txt
 
-# Markdown files (except README.md)
+# Markdown files (except README.md and Roadmap.md)
 *.md
 !README.md
+!Roadmap.md
 .vercel
 .env*.local
