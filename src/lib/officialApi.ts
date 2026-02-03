@@ -110,6 +110,7 @@ export async function fetchOfficialDeathsCofferRows(onProgress?: (results: Offic
         }
         
       } catch (error) {
+        console.warn(`Error processing item ${candidate.id}:`, error instanceof Error ? error.message : String(error))
         continue
       }
     }

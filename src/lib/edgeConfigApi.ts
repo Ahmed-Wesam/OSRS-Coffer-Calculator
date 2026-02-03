@@ -1,8 +1,8 @@
 // Client-side API functions for Blob Storage (DEPRECATED EDGE CONFIG)
 import type { DeathCofferRow } from './types'
 
-// Use local API server for development, deployed API for production
-const API_BASE = import.meta.env.DEV ? 'http://localhost:3002/api' : '/api'
+// Use deployed API for both development and production
+const API_BASE = '/api'
 
 export async function fetchBlobStorageDeathsCofferRows(): Promise<DeathCofferRow[]> {
   try {

@@ -225,6 +225,7 @@ export async function getOsrsOfficialGuidePrice(itemId: number, opts?: { ttlMs?:
     // Enhanced error handling for Jagex API issues
     // Itemdb occasionally returns empty/invalid bodies under throttling.
     // Treat as missing for this item so the UI can continue.
+    console.warn(`Jagex API error for item ${itemId}:`, error instanceof Error ? error.message : String(error))
     return NaN
   }
 }

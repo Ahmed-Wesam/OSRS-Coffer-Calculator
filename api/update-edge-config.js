@@ -1,7 +1,11 @@
 import { getOsrsLatest, getOsrsVolume, getOsrsMapping } from '../src/lib/api.js'
 import { getDeathsCofferIneligibleNames } from '../src/lib/deathsCofferIneligible.js'
+import { addSecurityHeaders, sanitizeInput, validateIP, createRateLimiter } from '../src/lib/security.js'
 
 const JAGEX_API_BASE = 'https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json'
+
+// Create rate limiters
+const cronRateLimiter = createRateLimiter(2, 300000) // 2 requests per 5 minutes
 
 // Helper function to fetch with retries
 async function fetchWithRetry(url, retries = 3, delay = 1000) {
@@ -23,18 +27,137 @@ async function fetchWithRetry(url, retries = 3, delay = 1000) {
   }
 }
 
-async function fetchJagexPrice(itemId) {
-  try {
-    const data = await fetchWithRetry(`${JAGEX_API_BASE}?item=${itemId}`)
-    return data.item?.current?.price || null
-  } catch (error) {
-    console.error(`Failed to fetch Jagex price for item ${itemId}:`, error)
-    return null
+// Rate limiting for Jagex API - reduced to 2 seconds for efficiency
+let lastJagexFetchAt = 0;
+const JAGEX_RATE_LIMIT_MS = 2000; // 2 seconds between calls
+
+async function fetchJagexPrice(itemId, maxRetries = 3) {
+  // Rate limiting - wait if we're calling too fast
+  const now = Date.now();
+  const timeSinceLastFetch = now - lastJagexFetchAt;
+  if (timeSinceLastFetch < JAGEX_RATE_LIMIT_MS) {
+    const waitTime = JAGEX_RATE_LIMIT_MS - timeSinceLastFetch;
+    console.log(`⏱️ Rate limiting Jagex API - waiting ${waitTime}ms...`);
+    await new Promise(resolve => setTimeout(resolve, waitTime));
   }
+  
+  // ALWAYS retry no matter what - even on success
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      lastJagexFetchAt = Date.now(); // Update last fetch time
+      
+      const data = await fetchWithRetry(`${JAGEX_API_BASE}?item=${itemId}`);
+      
+      // Check if response is empty or invalid - ALWAYS retry
+      if (!data || !data.item || !data.item.current || !data.item.current.price) {
+        console.log(`⚠️ Empty/invalid response for ${itemId}, attempt ${attempt}/${maxRetries} - ALWAYS retrying`);
+        if (attempt < maxRetries) {
+          // Wait before retry (6, 8, 10 seconds backoff)
+          const backoffTime = 6000 * attempt; // 6s, 12s, 18s
+          console.log(`⏱️ Backing off ${backoffTime}ms before retry...`);
+          await new Promise(resolve => setTimeout(resolve, backoffTime));
+          continue;
+        }
+        console.log(`❌ Failed to get valid price for ${itemId} after ${maxRetries} attempts`);
+        return null;
+      }
+      
+      const price = data.item.current.price;
+      console.log(`✅ Got price for ${itemId}: ${price} (attempt ${attempt})`);
+      
+      // ALWAYS retry even on success to get the most recent data
+      if (attempt < maxRetries) {
+        console.log(`🔄 Retrying ${itemId} even on success to get most recent data (attempt ${attempt}/${maxRetries})`);
+        const backoffTime = 6000 * attempt;
+        console.log(`⏱️ Backing off ${backoffTime}ms before retry...`);
+        await new Promise(resolve => setTimeout(resolve, backoffTime));
+        continue;
+      }
+      
+      // Final attempt - return the last successful price
+      console.log(`🎯 Final price for ${itemId}: ${price} (after ${attempt} attempts)`);
+      return price;
+      
+    } catch (error) {
+      console.error(`Attempt ${attempt} failed for ${itemId}:`, error.message);
+      if (attempt < maxRetries) {
+        // Wait before retry (6, 8, 10 seconds backoff)
+        const backoffTime = 6000 * attempt;
+        console.log(`⏱️ Backing off ${backoffTime}ms before retry...`);
+        await new Promise(resolve => setTimeout(resolve, backoffTime));
+      }
+    }
+  }
+  
+  return null;
+}
+
+// Consistent price parsing function (same as api.ts)
+function parseItemdbPrice(price) {
+  const s = String(price ?? '').trim().toLowerCase();
+  const m = s.match(/^([0-9]+(?:\.[0-9]+)?)([kmb])?$/);
+  if (!m) {
+    const n = Number(s.replace(/,/g, ''));
+    return Number.isFinite(n) ? n : NaN;
+  }
+
+  const base = Number(m[1]);
+  if (!Number.isFinite(base)) return NaN;
+
+  const suffix = m[2];
+  if (suffix === 'k') return Math.round(base * 1_000);
+  if (suffix === 'm') return Math.round(base * 1_000_000);
+  if (suffix === 'b') return Math.round(base * 1_000_000_000);
+  return Math.round(base);
 }
 
 export default async function handler(request, response) {
   try {
+    // Add security headers
+    addSecurityHeaders(response)
+    
+    // Validate request method
+    if (request.method !== 'POST') {
+      return response.status(405).json({ error: 'Method not allowed' })
+    }
+    
+    // Get and validate client IP
+    const clientIP = sanitizeInput(
+      request.headers['x-forwarded-for'] || 
+      request.headers['x-real-ip'] || 
+      request.connection?.remoteAddress || 
+      'unknown'
+    )
+    
+    // Validate IP format
+    if (!validateIP(clientIP)) {
+      return response.status(403).json({ 
+        error: 'Access denied',
+        message: 'Invalid IP address'
+      })
+    }
+    
+    // Apply rate limiting for cron job
+    if (!cronRateLimiter(clientIP)) {
+      return response.status(429).json({ 
+        error: 'Too many requests',
+        message: 'Cron job rate limit exceeded. Please wait before triggering another update.'
+      })
+    }
+    
+    // Validate request body
+    if (request.body && typeof request.body === 'object') {
+      // Sanitize request body to prevent injection
+      const sanitizedBody = {}
+      for (const [key, value] of Object.entries(request.body)) {
+        const sanitizedKey = sanitizeInput(key)
+        if (typeof sanitizedKey === 'string' && sanitizedKey.match(/^[a-zA-Z0-9_-]+$/)) {
+          sanitizedBody[sanitizedKey] = typeof value === 'string' ? sanitizeInput(value) : value
+        }
+      }
+      request.body = sanitizedBody
+    }
+    
     console.log('Starting Blob Storage update...')
     
     // Get all necessary data in parallel
@@ -84,17 +207,26 @@ export default async function handler(request, response) {
 
     console.log(`📊 Processing ${candidateItems.length} eligible items...`)
     
-    // Process top candidates (limit to 5 for testing)
+    // Process items in batches to avoid timeout and improve efficiency
     candidateItems.sort((a, b) => b.sellPrice - a.sellPrice)
-    const topCandidates = candidateItems.slice(0, 5)
+    const BATCH_SIZE = 100; // Process 100 items at a time
+    const topCandidates = candidateItems; // Process ALL items
+    
+    console.log(`📊 Will process in ${Math.ceil(topCandidates.length / BATCH_SIZE)} batches of ${BATCH_SIZE} items each`)
+    console.log(`⏱️ Estimated time: ${Math.ceil(topCandidates.length * JAGEX_RATE_LIMIT_MS / 1000 / 60)} minutes`)
 
     const results = []
+    let successCount = 0
+    let failCount = 0
     
     for (let i = 0; i < topCandidates.length; i++) {
       const candidate = topCandidates[i]
       
       try {
-        console.log(`⏳ Processing item ${i + 1}/${topCandidates.length}: ${candidate.name}`)
+        // Progress reporting every 10 items
+        if (i % 10 === 0) {
+          console.log(`⏳ Batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(topCandidates.length / BATCH_SIZE)} - Item ${i + 1}/${topCandidates.length} (${((i + 1) / topCandidates.length * 100).toFixed(1)}%) - Success: ${successCount}, Fail: ${failCount}`)
+        }
         
         // Get official GE price from Jagex API
         const officialGePrice = await fetchJagexPrice(candidate.id)
@@ -104,19 +236,8 @@ export default async function handler(request, response) {
           continue
         }
 
-        // Parse price string
-        const priceStr = String(officialGePrice).toLowerCase()
-        let price = 0
-        
-        if (priceStr.includes('k')) {
-          price = parseFloat(priceStr.replace('k', '')) * 1000
-        } else if (priceStr.includes('m')) {
-          price = parseFloat(priceStr.replace('m', '')) * 1000000
-        } else if (priceStr.includes('b')) {
-          price = parseFloat(priceStr.replace('b', '')) * 1000000000
-        } else {
-          price = parseFloat(priceStr)
-        }
+        // Parse price string using consistent function
+        const price = parseItemdbPrice(officialGePrice)
 
         if (price < 1000) {
           console.log(`⏭️ Skipping ${candidate.name} - price too low: ${price}`)
@@ -146,16 +267,21 @@ export default async function handler(request, response) {
           cofferValue,
           roi,
           volume: itemVolume,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          processedAt: new Date().toISOString()
         })
         
-        console.log(`✅ Added ${candidate.name} - ROI: ${(roi * 100).toFixed(2)}%`)
+        successCount++
+        console.log(`✅ Added ${candidate.name} - ROI: ${(roi * 100).toFixed(2)}% - Success: ${successCount}, Fail: ${failCount}`)
         
       } catch (error) {
-        console.error(`❌ Error processing item ${candidate.id}:`, error)
+        console.error(`❌ Error processing item ${candidate.id}:`, error instanceof Error ? error.message : String(error))
+        failCount++
         continue
       }
     }
+
+    console.log(`🎯 Processing complete! Success: ${successCount}, Fail: ${failCount}, Total: ${topCandidates.length}`)
 
     // Sort by ROI descending
     results.sort((a, b) => b.roi - a.roi)
@@ -195,9 +321,26 @@ export default async function handler(request, response) {
 
   } catch (error) {
     console.error('❌ Blob Storage update failed:', error)
+    
+    // Sanitize error message to remove sensitive information
+    let errorMessage = 'Blob Storage update failed'
+    if (error instanceof Error) {
+      // Remove any sensitive data from error message
+      errorMessage = error.message
+        .replace(/Bearer\s+\S+/gi, 'Bearer [REDACTED]')
+        .replace(/token\s*=\s*\S+/gi, 'token=[REDACTED]')
+        .replace(/password\s*=\s*\S+/gi, 'password=[REDACTED]')
+        .replace(/key\s*=\s*\S+/gi, 'key=[REDACTED]')
+        .replace(/secret\s*=\s*\S+/gi, 'secret=[REDACTED]')
+        .replace(/auth\s*=\s*\S+/gi, 'auth=[REDACTED]')
+        .replace(/\b\d{10,}\b/g, '[ID]')
+        .replace(/[a-f0-9]{32,}/gi, '[HASH]')
+    }
+    
     return response.status(500).json({
       success: false,
-      error: error.message
+      error: errorMessage,
+      message: 'An error occurred during the update process'
     })
   }
 }
