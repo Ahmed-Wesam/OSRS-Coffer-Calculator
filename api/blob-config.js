@@ -13,25 +13,71 @@ export default async function handler(request, response) {
     
     const blobData = await blobResponse.json()
     
-    // Find items-*.json files (with or without ob/ prefix)
+    // Get today's date in YYYY-MM-DD format
+    const today = new Date().toISOString().split('T')[0]
+    
+    // Find items-*.json files with today's date (with or without ob/ prefix)
     const itemsBlobs = blobData.blobs.filter(blob => 
       (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
-      blob.pathname.endsWith('.json')
+      blob.pathname.endsWith('.json') &&
+      blob.pathname.includes(today)
     )
     
     if (itemsBlobs.length === 0) {
-      return response.status(404).json({ error: 'No items files' })
+      return response.status(404).json({ error: `No items files found for today (${today})` })
     }
     
-    // Get latest file
+    // Sort by date (newest first)
     itemsBlobs.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt))
-    const latestBlob = itemsBlobs[0]
     
-    // Return the file content
-    const contentResponse = await fetch(latestBlob.url)
-    const data = await contentResponse.json()
+    // Fetch today's files and merge data
+    const allItems = []
+    const fileTimestamps = []
     
-    return response.status(200).json(data)
+    console.log(`📁 Found ${itemsBlobs.length} files for today (${today}), fetching all...`)
+    
+    for (const blob of itemsBlobs) {
+      try {
+        const contentResponse = await fetch(blob.url)
+        const data = await contentResponse.json()
+        
+        if (data.items && Array.isArray(data.items)) {
+          allItems.push(...data.items)
+          fileTimestamps.push({
+            filename: blob.pathname,
+            timestamp: data.timestamp || blob.uploadedAt,
+            itemCount: data.items.length
+          })
+          console.log(`📄 Loaded ${blob.pathname}: ${data.items.length} items`)
+        }
+      } catch (error) {
+        console.error(`❌ Failed to load ${blob.pathname}:`, error.message)
+      }
+    }
+    
+    // Remove duplicates by item ID (keep latest data)
+    const uniqueItems = []
+    const seenIds = new Set()
+    
+    for (const item of allItems) {
+      if (!seenIds.has(item.id)) {
+        seenIds.add(item.id)
+        uniqueItems.push(item)
+      }
+    }
+    
+    console.log(`📊 Total items from today's files: ${allItems.length}`)
+    console.log(`📊 Unique items after deduplication: ${uniqueItems.length}`)
+    
+    const mergedData = {
+      timestamp: new Date().toISOString(),
+      date: today,
+      sourceFiles: fileTimestamps,
+      totalItems: uniqueItems.length,
+      items: uniqueItems
+    }
+    
+    return response.status(200).json(mergedData)
     
   } catch (error) {
     return response.status(500).json({ error: 'Failed to read blob data' })
