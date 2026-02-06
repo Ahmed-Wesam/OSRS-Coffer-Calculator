@@ -148,7 +148,6 @@ function App() {
               <th>Buy price</th>
               <th>Official GE</th>
               <th>Coffer value</th>
-              <th>Volume</th>
               <th>ROI</th>
             </tr>
           </thead>
@@ -163,7 +162,6 @@ function App() {
                 <td>{formatInt(r.buyPrice)}</td>
                 <td>{formatInt(r.officialGePrice)}</td>
                 <td>{formatInt(r.cofferValue)}</td>
-                <td>{formatInt(r.volume)}</td>
                 <td className={r.roi > 0 ? "roi-positive" : ""}>{formatPct(r.roi)}</td>
               </tr>
             ))}
