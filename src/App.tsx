@@ -98,11 +98,6 @@ function App() {
         {dataInfo && (
           <p className="data-info">
             Data from {dataInfo.date}
-            {dataInfo.isFallback && (
-              <span className="fallback-notice">
-                {' '}⚠️ Using fallback data from {dataInfo.fallbackDate} (today's data not available yet)
-              </span>
-            )}
           </p>
         )}
 

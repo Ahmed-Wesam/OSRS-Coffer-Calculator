@@ -45,11 +45,6 @@ body {
   color: #94a3b8;
 }
 
-.fallback-notice {
-  color: #fbbf24;
-  font-weight: 500;
-}
-
 /* Filter Bar - wrapped in container with subtle border */
 .controls {
   display: flex;
