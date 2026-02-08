@@ -1,17 +1,17 @@
 // Client-side API functions for Blob Storage
-import type { DeathCofferRow } from './types'
+import type { BlobStorageResponse } from './types'
 
 // Use deployed API for both development and production
 const API_BASE = '/api'
 
-export async function fetchBlobStorageDeathsCofferRows(): Promise<DeathCofferRow[]> {
+export async function fetchBlobStorageDeathsCofferRows(): Promise<BlobStorageResponse> {
   try {
     const response = await fetch(`${API_BASE}/blob-config`)
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`)
     }
     const data = await response.json()
-    return data.items || []
+    return data
   } catch (error) {
     console.error('Failed to fetch Blob Storage Death\'s Coffer data:', error)
     throw error

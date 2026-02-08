@@ -23,8 +23,38 @@ export default async function handler(request, response) {
       blob.pathname.includes(today)
     )
     
+    // If no today's files found, fallback to the latest available day
+    let targetDate = today
     if (itemsBlobs.length === 0) {
-      return response.status(404).json({ error: `No items files found for today (${today})` })
+      console.log(`⚠️  No items files found for today (${today}), searching for latest available day...`)
+      
+      // Find all items-*.json files and sort by date
+      const allItemsBlobs = blobData.blobs.filter(blob => 
+        (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
+        blob.pathname.endsWith('.json')
+      )
+      
+      if (allItemsBlobs.length === 0) {
+        return response.status(404).json({ error: 'No items files found in storage' })
+      }
+      
+      // Sort by upload date (newest first)
+      allItemsBlobs.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt))
+      
+      // Extract date from the newest file's pathname
+      const latestBlob = allItemsBlobs[0]
+      const dateMatch = latestBlob.pathname.match(/(\d{4}-\d{2}-\d{2})/)
+      targetDate = dateMatch ? dateMatch[1] : today
+      
+      console.log(`📅 Using fallback date: ${targetDate} (from file: ${latestBlob.pathname})`)
+      
+      // Filter files for the fallback date
+      const fallbackBlobs = allItemsBlobs.filter(blob => blob.pathname.includes(targetDate))
+      itemsBlobs.push(...fallbackBlobs)
+    }
+    
+    if (itemsBlobs.length === 0) {
+      return response.status(404).json({ error: `No items files found for today (${today}) or fallback date` })
     }
     
     // Sort by date (newest first)
@@ -34,7 +64,7 @@ export default async function handler(request, response) {
     const allItems = []
     const fileTimestamps = []
     
-    console.log(`📁 Found ${itemsBlobs.length} files for today (${today}), fetching all...`)
+    console.log(`📁 Found ${itemsBlobs.length} files for ${targetDate === today ? 'today' : `fallback date ${targetDate}`}, fetching all...`)
     
     for (const blob of itemsBlobs) {
       try {
@@ -66,12 +96,14 @@ export default async function handler(request, response) {
       }
     }
     
-    console.log(`📊 Total items from today's files: ${allItems.length}`)
+    console.log(`📊 Total items from ${targetDate === today ? "today's" : "fallback date's"} files: ${allItems.length}`)
     console.log(`📊 Unique items after deduplication: ${uniqueItems.length}`)
     
     const mergedData = {
       timestamp: new Date().toISOString(),
-      date: today,
+      date: targetDate,
+      isFallback: targetDate !== today,
+      fallbackDate: targetDate !== today ? targetDate : undefined,
       sourceFiles: fileTimestamps,
       totalItems: uniqueItems.length,
       items: uniqueItems

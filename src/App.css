@@ -38,6 +38,18 @@ body {
   font-size: 14px;
 }
 
+.data-info {
+  margin: 6px 0 0;
+  opacity: 0.8;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.fallback-notice {
+  color: #fbbf24;
+  font-weight: 500;
+}
+
 /* Filter Bar - wrapped in container with subtle border */
 .controls {
   display: flex;

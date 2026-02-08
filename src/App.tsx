@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
-import type { DeathCofferRow } from './lib/types'
+import type { DeathCofferRow, BlobStorageResponse } from './lib/types'
 import { fetchEdgeConfigDeathsCofferRows } from './lib/edgeConfigApi'
 import { formatInt, formatPct, itemUrl, parseRoiInput, parsePriceInput } from './lib/utils'
 
@@ -8,6 +8,7 @@ function App() {
   const [rows, setRows] = useState<DeathCofferRow[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [dataInfo, setDataInfo] = useState<{date: string, isFallback?: boolean, fallbackDate?: string} | null>(null)
 
   const [minRoiPct, setMinRoiPct] = useState('0')
   const [minBuyPrice, setMinBuyPrice] = useState('')
@@ -32,10 +33,15 @@ function App() {
         }, 30000) // 30 seconds (shorter since Edge Config should be fast)
 
         // Fetch data from Edge Config only - no API requests to Wiki
-        const edgeConfigData = await fetchEdgeConfigDeathsCofferRows()
+        const edgeConfigData: BlobStorageResponse = await fetchEdgeConfigDeathsCofferRows()
         
         if (!cancelled) {
-          setRows(edgeConfigData)
+          setRows(edgeConfigData.items)
+          setDataInfo({
+            date: edgeConfigData.date,
+            isFallback: edgeConfigData.isFallback,
+            fallbackDate: edgeConfigData.fallbackDate
+          })
           setLoading(false)
         }
 
@@ -88,6 +94,17 @@ function App() {
         <p className="subtitle">
           Calculate Return on Investment for Death&apos;s Coffer minigame. Data is precomputed and cached from OSRS Wiki and Jagex APIs.
         </p>
+        
+        {dataInfo && (
+          <p className="data-info">
+            Data from {dataInfo.date}
+            {dataInfo.isFallback && (
+              <span className="fallback-notice">
+                {' '}⚠️ Using fallback data from {dataInfo.fallbackDate} (today's data not available yet)
+              </span>
+            )}
+          </p>
+        )}
 
         <div className="controls">
           <div className="control">

@@ -41,3 +41,17 @@ export type DeathCofferRow = {
   roi: number
   volume: number
 }
+
+export type BlobStorageResponse = {
+  timestamp: string
+  date: string
+  isFallback?: boolean
+  fallbackDate?: string
+  sourceFiles: Array<{
+    filename: string
+    timestamp: string
+    itemCount: number
+  }>
+  totalItems: number
+  items: DeathCofferRow[]
+}
