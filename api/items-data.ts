@@ -28,16 +28,19 @@ interface BlobStorageResponse {
 }
 
 // Transform blob data to expected format
-function transformBlobData(blobItems: any[]): DeathCofferRow[] {
-  return blobItems.map(item => ({
-    id: item.id,
-    name: item.name,
-    buyPrice: item.offerPrice || item.buyPrice || 0,
-    officialGePrice: item.gePrice || item.officialGePrice || 0,
-    cofferValue: item.cofferValue || 0,
-    roi: item.roi || 0,
-    volume: item.volume || 0
-  }));
+function transformBlobData(blobItems: unknown[]): DeathCofferRow[] {
+  return blobItems.map((item: unknown) => {
+    const blobItem = item as Record<string, unknown>;
+    return {
+      id: Number(blobItem.id) || 0,
+      name: String(blobItem.name || ''),
+      buyPrice: Number(blobItem.offerPrice || blobItem.buyPrice) || 0,
+      officialGePrice: Number(blobItem.gePrice || blobItem.officialGePrice) || 0,
+      cofferValue: Number(blobItem.cofferValue) || 0,
+      roi: Number(blobItem.roi) || 0,
+      volume: Number(blobItem.volume) || 0
+    };
+  });
 }
 
 export default async function handler(
@@ -82,7 +85,7 @@ export default async function handler(
     
     const today = new Date().toISOString().split('T')[0]
     
-    const itemsBlobs = blobs.filter((blob: any) => 
+    const itemsBlobs = blobs.filter((blob: { pathname: string; uploadedAt: Date }) => 
       (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
       blob.pathname.endsWith('.json') &&
       blob.pathname.includes(today)
@@ -92,7 +95,7 @@ export default async function handler(
     if (itemsBlobs.length === 0) {
       console.log(`⚠️  No items files found for today (${today}), searching for latest available day...`)
       
-      const allItemsBlobs = blobs.filter((blob: any) => 
+      const allItemsBlobs = blobs.filter((blob: { pathname: string; uploadedAt: Date }) => 
         (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
         blob.pathname.endsWith('.json')
       )
@@ -103,7 +106,7 @@ export default async function handler(
         return
       }
       
-      allItemsBlobs.sort((a: any, b: any) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
+      allItemsBlobs.sort((a: { uploadedAt: Date }, b: { uploadedAt: Date }) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
       
       const latestBlob = allItemsBlobs[0]
       const dateMatch = latestBlob.pathname.match(/(\d{4}-\d{2}-\d{2})/)
@@ -111,7 +114,7 @@ export default async function handler(
       
       console.log(`📅 Using fallback date: ${targetDate} (from file: ${latestBlob.pathname})`)
       
-      const fallbackBlobs = allItemsBlobs.filter((blob: any) => blob.pathname.includes(targetDate))
+      const fallbackBlobs = allItemsBlobs.filter((blob: { pathname: string }) => blob.pathname.includes(targetDate))
       itemsBlobs.push(...fallbackBlobs)
     }
     
