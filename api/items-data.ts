@@ -1,8 +1,31 @@
-import type { BlobStorageResponse, DeathCofferRow } from '../src/lib/types'
-import { addSecurityHeaders } from '../src/lib/security'
-import { list, type ListBlobResultBlob } from '@vercel/blob'
+import { list } from '@vercel/blob'
 
 export const config = { maxDuration: 300 }
+
+// Define types inline to avoid import issues
+interface DeathCofferRow {
+  id: number
+  name: string
+  buyPrice: number
+  officialGePrice: number
+  cofferValue: number
+  roi: number
+  volume: number
+}
+
+interface BlobStorageResponse {
+  timestamp: string
+  date: string
+  isFallback?: boolean
+  fallbackDate?: string
+  sourceFiles: Array<{
+    filename: string
+    timestamp: string
+    itemCount: number
+  }>
+  totalItems: number
+  items: DeathCofferRow[]
+}
 
 export default async function handler(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,8 +40,16 @@ export default async function handler(
       return
     }
 
-    // Add security headers
-    addSecurityHeaders(response)
+    // Add CORS headers manually
+    response.setHeader('Access-Control-Allow-Origin', '*')
+    response.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS')
+    response.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+
+    // Handle OPTIONS preflight
+    if (request.method === 'OPTIONS') {
+      response.status(200).end()
+      return
+    }
 
     // Check if environment variables are set
     if (!process.env.BLOB_READ_WRITE_TOKEN) {
@@ -38,7 +69,7 @@ export default async function handler(
     
     const today = new Date().toISOString().split('T')[0]
     
-    const itemsBlobs = blobs.filter((blob: ListBlobResultBlob) => 
+    const itemsBlobs = blobs.filter((blob: any) => 
       (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
       blob.pathname.endsWith('.json') &&
       blob.pathname.includes(today)
@@ -48,7 +79,7 @@ export default async function handler(
     if (itemsBlobs.length === 0) {
       console.log(`⚠️  No items files found for today (${today}), searching for latest available day...`)
       
-      const allItemsBlobs = blobs.filter((blob: ListBlobResultBlob) => 
+      const allItemsBlobs = blobs.filter((blob: any) => 
         (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
         blob.pathname.endsWith('.json')
       )
@@ -59,7 +90,7 @@ export default async function handler(
         return
       }
       
-      allItemsBlobs.sort((a: ListBlobResultBlob, b: ListBlobResultBlob) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
+      allItemsBlobs.sort((a: any, b: any) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
       
       const latestBlob = allItemsBlobs[0]
       const dateMatch = latestBlob.pathname.match(/(\d{4}-\d{2}-\d{2})/)
@@ -67,7 +98,7 @@ export default async function handler(
       
       console.log(`📅 Using fallback date: ${targetDate} (from file: ${latestBlob.pathname})`)
       
-      const fallbackBlobs = allItemsBlobs.filter((blob: ListBlobResultBlob) => blob.pathname.includes(targetDate))
+      const fallbackBlobs = allItemsBlobs.filter((blob: any) => blob.pathname.includes(targetDate))
       itemsBlobs.push(...fallbackBlobs)
     }
     
@@ -142,8 +173,6 @@ export default async function handler(
     
     console.log(`🚀 Successfully returning ${uniqueItems.length} items`)
     
-    // Add security headers and return response
-    addSecurityHeaders(response)
     response.status(200).json(responseData)
     
   } catch (error) {
