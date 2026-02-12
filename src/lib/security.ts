@@ -1,5 +1,6 @@
 // Security middleware for API endpoints
-export function addSecurityHeaders(response) {
+
+export function addSecurityHeaders(response: any): void {
   // Add security headers
   response.setHeader('X-Content-Type-Options', 'nosniff')
   response.setHeader('X-Frame-Options', 'DENY')
@@ -8,7 +9,7 @@ export function addSecurityHeaders(response) {
   response.setHeader('Content-Security-Policy', "default-src 'self'")
 }
 
-export function sanitizeInput(input) {
+export function sanitizeInput(input: any): any {
   if (typeof input !== 'string') return input
   
   // Remove potentially dangerous characters
@@ -19,12 +20,12 @@ export function sanitizeInput(input) {
     .trim()
 }
 
-export function validateIP(ip) {
+export function validateIP(ip: string): boolean {
   // Basic IP validation
   if (!ip || typeof ip !== 'string') return false
   
   // Check for private/internal IPs
-  const privateRanges = [
+  const privateRanges: RegExp[] = [
     /^10\./,
     /^172\.(1[6-9]|2[0-9]|3[0-1])\./,
     /^192\.168\./,
@@ -40,9 +41,9 @@ export function validateIP(ip) {
 }
 
 export function createRateLimiter(maxRequests = 10, windowMs = 60000) {
-  const requests = new Map()
+  const requests = new Map<string, number[]>()
   
-  return function checkRateLimit(ip) {
+  return function checkRateLimit(ip: string): boolean {
     const now = Date.now()
     const windowStart = now - windowMs
     

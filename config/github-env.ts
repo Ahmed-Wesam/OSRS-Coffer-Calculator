@@ -1,5 +1,15 @@
 // GitHub Actions environment configuration
-export const config = {
+
+interface Config {
+  NETLIFY_AUTH_TOKEN?: string
+  NETLIFY_SITE_ID?: string
+  VERCEL_ORG_ID?: string
+  VERCEL_PROJECT_ID?: string
+  VERCEL_TOKEN?: string
+  NODE_ENV: string
+}
+
+export const config: Config = {
   NETLIFY_AUTH_TOKEN: process.env.NETLIFY_AUTH_TOKEN,
   NETLIFY_SITE_ID: process.env.NETLIFY_SITE_ID,
   VERCEL_ORG_ID: process.env.VERCEL_ORG_ID,
@@ -10,7 +20,7 @@ export const config = {
 
 // Validate required secrets in production
 if (config.NODE_ENV === 'production') {
-  const requiredSecrets = ['NETLIFY_AUTH_TOKEN', 'NETLIFY_SITE_ID', 'VERCEL_ORG_ID', 'VERCEL_PROJECT_ID', 'VERCEL_TOKEN'];
+  const requiredSecrets: (keyof Config)[] = ['NETLIFY_AUTH_TOKEN', 'NETLIFY_SITE_ID', 'VERCEL_ORG_ID', 'VERCEL_PROJECT_ID', 'VERCEL_TOKEN'];
   const missingSecrets = requiredSecrets.filter(secret => !config[secret]);
   
   if (missingSecrets.length > 0) {

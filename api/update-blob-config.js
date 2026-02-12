@@ -1,6 +1,6 @@
 import { getOsrsLatest, getOsrsVolume, getOsrsMapping } from '../src/lib/api.js'
 import { getDeathsCofferIneligibleNames } from '../src/lib/deathsCofferIneligible.js'
-import { addSecurityHeaders, sanitizeInput, validateIP, createRateLimiter } from '../src/lib/security.js'
+import { addSecurityHeaders, sanitizeInput, validateIP, createRateLimiter } from '../src/lib/security.ts'
 
 const JAGEX_API_BASE = 'https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json'
 
