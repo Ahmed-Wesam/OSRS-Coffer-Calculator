@@ -62,8 +62,6 @@ _*.js
 
 _*.txt
 
-run-local-cron-simple.mjs
-
 
 
 # Markdown files (except README.md and Roadmap.md)

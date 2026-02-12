@@ -41,6 +41,79 @@ async function fetchWithRetry(url, retries = 3, delay = 1000) {
   }
 }
 
+async function fetchAllPageLinks(page) {
+  const out = [];
+  let plcontinue = undefined;
+  const url = `https://oldschool.runescape.wiki/api.php?action=query&format=json&prop=links&pllimit=500&titles=${encodeURIComponent(page)}`;
+
+  while (true) {
+    const res = await fetch(`${url}${plcontinue ? `&plcontinue=${plcontinue}` : ''}`);
+    const text = await res.text().catch(() => { return '' });
+    const data = (() => {
+      try {
+        return JSON.parse(text);
+      } catch {
+        throw new Error(`Invalid JSON from Wiki api.php: ${text.slice(0, 200)}`);
+      }
+    })();
+
+    const pages = data.query?.pages ?? {};
+    for (const p of Object.values(pages)) {
+      for (const l of p.links ?? []) {
+        // Skip non-main namespace.
+        if (l.ns !== 0) continue;
+        out.push(l.title);
+      }
+    }
+
+    plcontinue = data.continue?.plcontinue;
+    if (!plcontinue) break;
+  }
+
+  return out;
+}
+
+async function getDeathsCofferIneligibleIds(mapping) {
+  // Create name to ID mapping for lookup
+  const nameToIdMap = new Map();
+  for (const item of mapping) {
+    const normalizedName = item.name.toLowerCase().replace(/\s+/g, ' ');
+    nameToIdMap.set(normalizedName, item.id);
+  }
+
+  // Pages linked from the OSRS Wiki "Ineligible items" section.
+  const sources = ['Leagues_Reward_Shop', 'Grid_Master', 'Deadman_Reward_Store', 'Keel_parts'];
+
+  const explicit = ['old school bond', "belle's folly", 'dragon cannon barrel'].map((n) => n.toLowerCase().replace(/\s+/g, ' '));
+
+  const ineligibleIds = new Set();
+
+  // Add explicit exclusions by looking up their IDs
+  for (const name of explicit) {
+    const id = nameToIdMap.get(name);
+    if (id) {
+      ineligibleIds.add(id);
+    }
+  }
+
+  // Fetch ineligible items from Wiki pages
+  for (const page of sources) {
+    console.log(`📖 Fetching ineligible items from ${page}...`);
+    const titles = await fetchAllPageLinks(page);
+    for (const t of titles) {
+      const n = t.toLowerCase().replace(/\s+/g, ' ');
+      // Look up item ID by name
+      const id = nameToIdMap.get(n);
+      if (id) {
+        ineligibleIds.add(id);
+      }
+    }
+  }
+
+  console.log(`🚫 Found ${ineligibleIds.size} ineligible item IDs`);
+  return ineligibleIds;
+}
+
 // Rate limiting for Jagex API - conservative to avoid throttling
 let lastJagexFetchAt = 0;
 let recentFailures = 0;
@@ -231,90 +304,149 @@ async function main() {
   try {
     console.log('🚀 Starting OSRS scraper...');
     
-    // Fetch mapping data
-    console.log('📋 Fetching item mapping...');
-    const mappingData = await fetchWithRetry(OSRS_MAPPING_ENDPOINT);
+    // Step 1: Fetch OSRS Wiki data
+    console.log('� Fetching OSRS Wiki data...');
     
-    // Filter eligible items (exclude certain categories)
-    const eligibleItems = mappingData.filter(item => {
-      // Skip ineligible items
-      if (item.ineligible) {
-        console.log(`⏭️ Skipping ${item.name} (ID: ${item.id}) - ineligible item`);
-        return false;
+    const [latestResponse, volumeResponse, mappingData] = await Promise.all([
+      fetchWithRetry(OSRS_LATEST_ENDPOINT),
+      fetchWithRetry(OSRS_VOLUME_ENDPOINT),
+      fetchWithRetry(OSRS_MAPPING_ENDPOINT)
+    ]);
+    
+    // Extract data from the new API response structure
+    const latestData = latestResponse.data;
+    const volumeData = volumeResponse.data;
+    
+    console.log(`✅ Got ${Object.keys(latestData).length} latest prices`);
+    console.log(`✅ Got ${Object.keys(volumeData).length} volume data`);
+    console.log(`✅ Got ${mappingData.length} mapping items`);
+    
+    // Create mapping for quick lookup
+    const mappingById = new Map();
+    for (const item of mappingData) {
+      mappingById.set(item.id, item);
+    }
+    
+    // Step 2: Get ineligible items for filtering
+    console.log('🚫 Fetching ineligible items from Wiki...');
+    const ineligibleIds = await getDeathsCofferIneligibleIds(mappingData);
+    
+    // Step 3: Filter eligible items
+    console.log('🔍 Filtering eligible items...');
+    const candidateItems = [];
+    
+    for (const [itemIdStr, priceData] of Object.entries(latestData)) {
+      const itemId = Number(itemIdStr);
+      if (!Number.isFinite(itemId)) continue;
+
+      const itemMapping = mappingById.get(itemId);
+      if (!itemMapping) continue;
+
+      // Check if item is ineligible (filter by ID before API calls)
+      if (ineligibleIds.has(itemId)) {
+        console.log(`⏭️ Skipping ${itemMapping.name} (ID: ${itemId}) - ineligible item`);
+        continue;
       }
+
+      const offerPrice = priceData.low;
+      const sellPrice = priceData.high;
+
+      if (!Number.isFinite(offerPrice) || offerPrice <= 0) continue;
+      if (!Number.isFinite(sellPrice) || sellPrice <= 0) continue;
+
+      // Get volume and include ALL items (no filtering)
+      const volumeInfo = volumeData[String(itemId)];
+      const itemVolume = volumeInfo ? Math.max(volumeInfo.highPriceVolume || 0, volumeInfo.lowPriceVolume || 0) : 0;
       
-      // Skip items with very low prices (likely not profitable)
-      if (item.value < 1000) {
-        console.log(`⏭️ Pre-filtering ${item.name} - offer price too low: ${item.value.toLocaleString()}`);
-        return false;
+      // DEBUG: Log first few items to see data
+      if (candidateItems.length < 5) {
+        console.log(`DEBUG: ${itemMapping.name} - price: ${offerPrice.toLocaleString()}, volume: ${itemVolume}, limit: ${itemMapping.limit || 0}`);
       }
-      
-      return true;
-    });
-    
-    console.log(`📊 Found ${eligibleItems.length} eligible items`);
-    console.log(`🔥 GOING ALL OUT! Processing ALL ${eligibleItems.length} eligible items...`);
-    console.log(`📊 Processing ${eligibleItems.length} items with 2-second rate limiting and retry until successful...`);
-    
+
+      // Filter BEFORE Jagex API - only items with offerPrice ≥ 100k
+      if (offerPrice < 100000) {
+        console.log(`⏭️ Pre-filtering ${itemMapping.name} - offer price too low: ${offerPrice.toLocaleString()}`);
+        continue;
+      }
+
+      candidateItems.push({
+        id: itemId,
+        name: itemMapping.name,
+        offerPrice,
+        sellPrice,
+        limit: itemMapping.limit || 0,
+        volume: itemVolume // Store volume for later use
+      });
+    }
+
+    console.log(`📊 Found ${candidateItems.length} eligible items`);
+
+    // Step 4: Process ALL eligible items - GO ALL OUT!
+    console.log(`🔥 GOING ALL OUT! Processing ALL ${candidateItems.length} eligible items...`);
+    const topCandidates = candidateItems; // Process ALL items, not just 100
+
+    // Process items with retry until successful
     const results = [];
     let successCount = 0;
     let failCount = 0;
     
-    for (let i = 0; i < eligibleItems.length; i++) {
-      const item = eligibleItems[i];
-      const progress = ((i + 1) / eligibleItems.length * 100).toFixed(1);
-      
-      console.log(`⏳ [${i + 1}/${eligibleItems.length}] ${item.name} (${progress}%) - Success: ${successCount}, Fail: ${failCount}`);
-      
+    console.log(`📊 Processing ${topCandidates.length} items with 2-second rate limiting and retry until successful...`);
+    
+    for (let i = 0; i < topCandidates.length; i++) {
+      const candidate = topCandidates[i];
+    
       try {
-        const price = await fetchJagexPrice(item.id);
+        console.log(`⏳ [${i + 1}/${topCandidates.length}] ${candidate.name} (${((i + 1) / topCandidates.length * 100).toFixed(1)}%) - Success: ${successCount}, Fail: ${failCount}`);
         
-        if (price !== null) {
-          // Calculate ROI (profit margin)
-          const roi = ((price - item.value) / item.value * 100).toFixed(2);
-          
-          // Only include items with positive ROI
-          if (price > item.value) {
-            results.push({
-              id: item.id,
-              name: item.name,
-              gePrice: price,
-              offerPrice: item.value,
-              roi: parseFloat(roi),
-              members: item.members,
-              timestamp: new Date().toISOString()
-            });
-            console.log(`✅ Added ${item.name} - ROI: ${roi}% - Success: ${successCount + 1}, Fail: ${failCount}`);
-            successCount++;
-          } else {
-            console.log(`❌ Skipped ${item.name} - Negative ROI: ${roi}% - Success: ${successCount}, Fail: ${failCount + 1}`);
-            failCount++;
-          }
-        } else {
-          console.log(`❌ Failed to get price for ${item.name} - Success: ${successCount}, Fail: ${failCount + 1}`);
+        let officialGePrice = await fetchJagexPrice(candidate.id);
+        
+        // Keep retrying until we get a valid price (any price > 0)
+        while (!officialGePrice || officialGePrice <= 0) {
+          console.log(`🔄 Retrying ${candidate.name} - no valid price yet, trying again...`);
+          await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds before retry
+          officialGePrice = await fetchJagexPrice(candidate.id);
+        }
+
+        const price = officialGePrice;
+
+        const cofferValue = Math.floor(price * 1.05);
+        const buyPrice = candidate.offerPrice;
+        const profit = cofferValue - buyPrice;
+        const roi = profit / buyPrice;
+
+        if (roi <= 0) {
+          console.log(`⏭️ Skipping ${candidate.name} - not profitable`);
           failCount++;
+          continue;
         }
+
+        const itemVolume = candidate.volume;
+
+        results.push({
+          id: candidate.id,
+          name: candidate.name,
+          buyPrice,
+          officialGePrice: price,
+          cofferValue,
+          roi,
+          volume: itemVolume,
+          timestamp: new Date().toISOString(),
+          processedAt: new Date().toISOString()
+        });
         
-        // Rate limiting between items
-        if (i < eligibleItems.length - 1) {
-          const delay = getAdaptiveDelay();
-          console.log(`⏱️ Adaptive rate limiting - waiting ${delay}ms...`);
-          await new Promise(resolve => setTimeout(resolve, delay));
-        }
+        successCount++;
+        console.log(`✅ Added ${candidate.name} - ROI: ${(roi * 100).toFixed(2)}% - Success: ${successCount}, Fail: ${failCount}`);
         
       } catch (error) {
-        console.log(`❌ Error processing ${item.name}: ${error.message} - Success: ${successCount}, Fail: ${failCount + 1}`);
+        console.error(`❌ Error processing ${candidate.name}:`, error.message);
         failCount++;
       }
     }
-    
-    console.log(`\n🎉 Scraping completed!`);
-    console.log(`✅ Successful items: ${successCount}`);
-    console.log(`❌ Failed items: ${failCount}`);
-    console.log(`📊 Profitable items found: ${results.length}`);
-    
-    // Sort by ROI (highest first)
+
+    // Sort by ROI descending
     results.sort((a, b) => b.roi - a.roi);
+
+    console.log(`🎯 Found ${results.length} profitable items!`);
     
     // Save results to file
     const fs = await import('fs');
@@ -325,7 +457,7 @@ async function main() {
     // Display top 10 items
     console.log(`\n🏆 Top 10 items by ROI:`);
     results.slice(0, 10).forEach((item, index) => {
-      console.log(`${index + 1}. ${item.name} - ROI: ${item.roi}% - GE: ${item.gePrice.toLocaleString()}, Offer: ${item.offerPrice.toLocaleString()}`);
+      console.log(`${index + 1}. ${item.name} - ROI: ${(item.roi * 100).toFixed(2)}% - GE: ${item.officialGePrice.toLocaleString()}, Offer: ${item.buyPrice.toLocaleString()}`);
     });
     
     console.log(`\n✨ OSRS scraper completed successfully!`);
