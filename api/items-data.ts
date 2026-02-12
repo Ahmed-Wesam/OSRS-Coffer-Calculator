@@ -27,6 +27,19 @@ interface BlobStorageResponse {
   items: DeathCofferRow[]
 }
 
+// Transform blob data to expected format
+function transformBlobData(blobItems: any[]): DeathCofferRow[] {
+  return blobItems.map(item => ({
+    id: item.id,
+    name: item.name,
+    buyPrice: item.offerPrice || item.buyPrice || 0,
+    officialGePrice: item.gePrice || item.officialGePrice || 0,
+    cofferValue: item.cofferValue || 0,
+    roi: item.roi || 0,
+    volume: item.volume || 0
+  }));
+}
+
 export default async function handler(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   request: any, 
@@ -116,7 +129,6 @@ export default async function handler(
     
     for (const blob of itemsBlobs) {
       try {
-        console.log(`📄 Fetching ${blob.pathname}...`)
         const fileResponse = await fetch(blob.url)
         
         if (!fileResponse.ok) {
@@ -129,11 +141,9 @@ export default async function handler(
         if (Array.isArray(fileData)) {
           allItems.push(...fileData)
           processedFiles.push(blob.pathname)
-          console.log(`✅ Added ${fileData.length} items from ${blob.pathname}`)
         } else if (fileData.items && Array.isArray(fileData.items)) {
           allItems.push(...fileData.items)
           processedFiles.push(blob.pathname)
-          console.log(`✅ Added ${fileData.items.length} items from ${blob.pathname}`)
         } else {
           console.log(`⚠️ Invalid data format in ${blob.pathname}`)
         }
@@ -158,17 +168,23 @@ export default async function handler(
     // Sort by ROI descending
     uniqueItems.sort((a, b) => (b.roi || 0) - (a.roi || 0))
     
+    // Transform data to match frontend expectations
+    const transformedItems = transformBlobData(uniqueItems)
+    
+    // Get the actual file timestamp instead of current time
+    const fileTimestamp = itemsBlobs.length > 0 ? itemsBlobs[0].uploadedAt.toISOString() : new Date().toISOString()
+    
     const responseData: BlobStorageResponse = {
-      timestamp: new Date().toISOString(),
+      timestamp: fileTimestamp,
       date: targetDate,
       isFallback: targetDate !== today,
       sourceFiles: processedFiles.map((filename: string) => ({
         filename,
-        timestamp: new Date().toISOString(),
+        timestamp: fileTimestamp,
         itemCount: 0 // Would need to fetch file to get accurate count
       })),
-      totalItems: uniqueItems.length,
-      items: uniqueItems
+      totalItems: transformedItems.length,
+      items: transformedItems
     }
     
     console.log(`🚀 Successfully returning ${uniqueItems.length} items`)
