@@ -3,7 +3,7 @@ export function formatInt(n: number): string {
 }
 
 export function formatPct(p: number): string {
-  return `${(p * 100).toFixed(2)}%`
+  return `${p.toFixed(2)}%`
 }
 
 export function itemUrl(id: number): string {
