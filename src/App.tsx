@@ -62,10 +62,13 @@ function App() {
             setError('Loading timeout - the server may be initializing or no data is available yet. Please try refreshing in a few minutes.')
             setLoading(false)
           }
-        }, 15000) // 15 seconds timeout
+        }, 45000) // 45 seconds timeout for large datasets
 
         // Fetch data from Edge Config only - no API requests to Wiki
         const edgeConfigData: BlobStorageResponse = await fetchEdgeConfigDeathsCofferRows()
+        
+        // Clear the timeout since we got a successful response
+        if (timeoutId) clearTimeout(timeoutId)
         
         if (!cancelled) {
           setRows(edgeConfigData.items)
@@ -79,6 +82,9 @@ function App() {
         }
 
       } catch (error) {
+        // Clear the timeout since we got an error response
+        if (timeoutId) clearTimeout(timeoutId)
+        
         if (!cancelled) {
           console.error('Failed to fetch Edge Config data:', error)
           
