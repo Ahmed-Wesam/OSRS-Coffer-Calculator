@@ -77,6 +77,5 @@ _*.txt
 .env*.local
 
 # Task management files
-run-scraper.bat
 scraper-log.txt
 

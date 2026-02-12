@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import type { DeathCofferRow, BlobStorageResponse } from './lib/types'
-import { fetchEdgeConfigDeathsCofferRows } from './lib/edgeConfigApi'
+import { fetchBlobStorageDeathsCofferRows } from './lib/blobStorageApi'
 import { formatInt, formatPct, itemUrl, parseRoiInput, parsePriceInput } from './lib/utils'
 
 // Format date for user's timezone
@@ -56,45 +56,48 @@ function App() {
         setError(null)
         setRows([])
 
-        // Set a timeout to prevent infinite loading
         timeoutId = window.setTimeout(() => {
           if (!cancelled) {
             setError('Loading timeout - the server may be initializing or no data is available yet. Please try refreshing in a few minutes.')
             setLoading(false)
           }
-        }, 45000) // 45 seconds timeout for large datasets
+        }, 45000)
 
-        // Fetch data from Edge Config only - no API requests to Wiki
-        const edgeConfigData: BlobStorageResponse = await fetchEdgeConfigDeathsCofferRows()
+        let blobStorageData: BlobStorageResponse
         
-        // Clear the timeout since we got a successful response
-        if (timeoutId) clearTimeout(timeoutId)
+        try {
+          blobStorageData = await fetchBlobStorageDeathsCofferRows()
+        } finally {
+          if (timeoutId) clearTimeout(timeoutId)
+        }
         
         if (!cancelled) {
-          setRows(edgeConfigData.items)
+          setRows(blobStorageData.items)
           setDataInfo({
-            date: edgeConfigData.date,
-            timestamp: edgeConfigData.timestamp,
-            isFallback: edgeConfigData.isFallback,
-            fallbackDate: edgeConfigData.fallbackDate
+            date: blobStorageData.date,
+            timestamp: blobStorageData.timestamp,
+            isFallback: blobStorageData.isFallback,
+            fallbackDate: blobStorageData.fallbackDate
           })
           setLoading(false)
         }
 
       } catch (error) {
-        // Clear the timeout since we got an error response
-        if (timeoutId) clearTimeout(timeoutId)
-        
         if (!cancelled) {
-          console.error('Failed to fetch Edge Config data:', error)
+          console.error('Failed to fetch Blob Storage data:', error)
           
-          // Check if it's a 404 error (no data available yet)
-          if (error instanceof Error && error.message.includes('HTTP 404')) {
-            setError('No data available yet. The cron job needs to run first to generate Death\'s Coffer data. This usually happens automatically every few hours.')
-          } else if (error instanceof Error && error.message.includes('No data available')) {
-            setError(error.message)
+          if (error instanceof Error) {
+            if (error.message.includes('HTTP 404')) {
+              setError('No data available yet. The cron job needs to run first to generate Death\'s Coffer data. This usually happens automatically every few hours.')
+            } else if (error.message.includes('Invalid response format')) {
+              setError('Data format error. Please try refreshing the page.')
+            } else if (error.message.includes('Failed to fetch Death\'s Coffer data')) {
+              setError('Unable to fetch data from the server. Please try again later.')
+            } else {
+              setError(error.message)
+            }
           } else {
-            setError(error instanceof Error ? error.message : 'Failed to load data')
+            setError('An unexpected error occurred while loading data.')
           }
           setLoading(false)
         }

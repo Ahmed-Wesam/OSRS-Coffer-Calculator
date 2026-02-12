@@ -1,4 +1,5 @@
 import type { BlobStorageResponse } from '../src/lib/types'
+import { addSecurityHeaders } from '../src/lib/security'
 
 export default async function handler(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -7,6 +8,15 @@ export default async function handler(
   response: any
 ): Promise<void> {
   try {
+    // Validate request method
+    if (request.method !== 'GET') {
+      response.status(405).json({ error: 'Method not allowed' })
+      return
+    }
+
+    // Add security headers
+    addSecurityHeaders(response)
+
     // Check if environment variables are set
     if (!process.env.BLOB_READ_WRITE_TOKEN) {
       console.error('❌ BLOB_READ_WRITE_TOKEN not set')
@@ -14,7 +24,7 @@ export default async function handler(
       return
     }
 
-    console.log('🔧 Fetching blob data from Vercel API...')
+    console.log('🔧 Fetching items data from Vercel Blob Storage...')
     
     // Read from Blob Storage
     const blobResponse = await fetch(`https://api.vercel.com/v2/blob`, {
@@ -25,29 +35,25 @@ export default async function handler(
     
     if (!blobResponse.ok) {
       console.error(`❌ Blob API failed: ${blobResponse.status} ${blobResponse.statusText}`)
-      response.status(404).json({ error: 'No blob data available' })
+      response.status(404).json({ error: 'No items data available' })
       return
     }
     
     const blobData = await blobResponse.json()
     console.log(`📊 Found ${blobData.blobs?.length || 0} blobs in storage`)
     
-    // Get today's date in YYYY-MM-DD format
     const today = new Date().toISOString().split('T')[0]
     
-    // Find items-*.json files with today's date (with or without ob/ prefix)
     const itemsBlobs = blobData.blobs.filter((blob: {pathname: string, uploadedAt: string}) => 
       (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
       blob.pathname.endsWith('.json') &&
       blob.pathname.includes(today)
     )
     
-    // If no today's files found, fallback to the latest available day
     let targetDate = today
     if (itemsBlobs.length === 0) {
       console.log(`⚠️  No items files found for today (${today}), searching for latest available day...`)
       
-      // Find all items-*.json files and sort by date
       const allItemsBlobs = blobData.blobs.filter((blob: {pathname: string, uploadedAt: string}) => 
         (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
         blob.pathname.endsWith('.json')
@@ -59,17 +65,14 @@ export default async function handler(
         return
       }
       
-      // Sort by upload date (newest first)
       allItemsBlobs.sort((a: {uploadedAt: string}, b: {uploadedAt: string}) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
       
-      // Extract date from the newest file's pathname
       const latestBlob = allItemsBlobs[0]
       const dateMatch = latestBlob.pathname.match(/(\d{4}-\d{2}-\d{2})/)
       targetDate = dateMatch ? dateMatch[1] : today
       
       console.log(`📅 Using fallback date: ${targetDate} (from file: ${latestBlob.pathname})`)
       
-      // Filter files for the fallback date
       const fallbackBlobs = allItemsBlobs.filter((blob: {pathname: string}) => blob.pathname.includes(targetDate))
       itemsBlobs.push(...fallbackBlobs)
     }
@@ -79,10 +82,8 @@ export default async function handler(
       return
     }
     
-    // Sort by date (newest first)
     itemsBlobs.sort((a: {uploadedAt: string}, b: {uploadedAt: string}) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
     
-    // Fetch today's files and merge data
     const allItems: unknown[] = []
     const fileTimestamps: Array<{filename: string, timestamp: string, itemCount: number}> = []
     
@@ -107,7 +108,6 @@ export default async function handler(
       }
     }
     
-    // Remove duplicates by item ID (keep latest data)
     const uniqueItems: BlobStorageResponse['items'] = []
     const seenIds = new Set()
     
@@ -121,24 +121,43 @@ export default async function handler(
     console.log(`📊 Total items from ${targetDate === today ? "today's" : "fallback date's"} files: ${allItems.length}`)
     console.log(`📊 Unique items after deduplication: ${uniqueItems.length}`)
     
-    // Use the latest source file timestamp instead of current time
-    const latestTimestamp = fileTimestamps.length > 0 
-      ? fileTimestamps[0].timestamp 
-      : new Date().toISOString()
-    
-    const mergedData: BlobStorageResponse = {
-      timestamp: latestTimestamp,
+    response.status(200).json({
+      items: uniqueItems,
       date: targetDate,
+      timestamp: new Date().toISOString(),
       isFallback: targetDate !== today,
       fallbackDate: targetDate !== today ? targetDate : undefined,
-      sourceFiles: fileTimestamps,
-      totalItems: uniqueItems.length,
-      items: uniqueItems
+      sourceFiles: itemsBlobs.map((blob: {pathname: string, uploadedAt: string}) => ({
+        filename: blob.pathname,
+        timestamp: blob.uploadedAt,
+        itemCount: 0
+      })),
+      totalItems: uniqueItems.length
+    })
+    
+  } catch (error) {
+    console.error('❌ Error in items-data handler:', error)
+    
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    
+    if (errorMessage.includes('Failed to read blob data')) {
+      response.status(500).json({ 
+        error: 'Failed to read items data',
+        code: 'BLOB_READ_ERROR',
+        timestamp: new Date().toISOString()
+      })
+    } else if (errorMessage.includes('HTTP')) {
+      response.status(500).json({ 
+        error: 'External service error',
+        code: 'EXTERNAL_SERVICE_ERROR',
+        timestamp: new Date().toISOString()
+      })
+    } else {
+      response.status(500).json({ 
+        error: 'Internal server error',
+        code: 'INTERNAL_ERROR',
+        timestamp: new Date().toISOString()
+      })
     }
-    
-    response.status(200).json(mergedData)
-    
-  } catch {
-    response.status(500).json({ error: 'Failed to read blob data' })
   }
 }

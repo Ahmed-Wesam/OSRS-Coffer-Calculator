@@ -1,5 +1,5 @@
-import { readCache, writeCache } from './cache.js'
-import type { OsrsLatestResponse, OsrsMappingItem, OsrsVolumeResponse } from './types.js'
+import { readCache, writeCache } from './cache'
+import type { OsrsLatestResponse, OsrsMappingItem, OsrsVolumeResponse } from './types'
 import {
   DEFAULT_RATE_LIMIT_MS,
   DEFAULT_BACKOFF_MS,
@@ -14,7 +14,7 @@ import {
   OSRS_MAPPING_ENDPOINT,
   OSRS_LATEST_ENDPOINT,
   OSRS_VOLUME_ENDPOINT,
-} from './constants.js'
+} from './constants'
 
 let lastFetchAt = 0
 let fetchQueue: Promise<unknown> = Promise.resolve()

@@ -1,4 +1,4 @@
-name: OSRS Scraper
+name: OSRS Data Refresh
 
 on:
   schedule:
@@ -7,9 +7,9 @@ on:
   workflow_dispatch: # Allow manual triggering
 
 jobs:
-  scraper:
+  refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 120 # 2 hours timeout for scraper completion
+    timeout-minutes: 120 # 2 hours timeout for refresh completion
     
     steps:
       - name: Checkout code
@@ -24,12 +24,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run OSRS Scraper
-        run: npm run scraper
+      - name: Run OSRS Data Refresh
+        run: npm run refresh
         env:
           NODE_ENV: production
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

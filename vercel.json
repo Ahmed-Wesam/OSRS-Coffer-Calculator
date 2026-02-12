@@ -1,1 +1,1 @@
-{"functions": {"api/update-blob-config.js": {"maxDuration": 300}}, "crons": [{"path": "/api/update-blob-config", "schedule": "0 0 * * *"}]}
+﻿{"functions": {"api/items-data.js": {"maxDuration": 300}}}
