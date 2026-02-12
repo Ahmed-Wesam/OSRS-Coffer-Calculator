@@ -12,8 +12,9 @@ describe('lib/utils', () => {
 
   describe('formatPct', () => {
     it('formats percentages to 2 decimals', () => {
-      expect(formatPct(0.12345)).toBe('12.35%')
-      expect(formatPct(1)).toBe('100.00%')
+      expect(formatPct(0.12345)).toBe('0.12%')
+      expect(formatPct(1)).toBe('1.00%')
+      expect(formatPct(85.85)).toBe('85.85%')
       expect(formatPct(0)).toBe('0.00%')
     })
   })
