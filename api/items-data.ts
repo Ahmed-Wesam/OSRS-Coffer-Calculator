@@ -1,5 +1,6 @@
-import type { BlobStorageResponse } from '../src/lib/types'
+import type { BlobStorageResponse, DeathCofferRow } from '../src/lib/types'
 import { addSecurityHeaders } from '../src/lib/security'
+import { list, type ListBlobResultBlob } from '@vercel/blob'
 
 export const config = { maxDuration: 300 }
 
@@ -28,25 +29,16 @@ export default async function handler(
 
     console.log('🔧 Fetching items data from Vercel Blob Storage...')
     
-    // Read from Blob Storage
-    const blobResponse = await fetch(`https://api.vercel.com/v2/blob`, {
-      headers: {
-        'Authorization': `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`
-      }
+    // List blobs from Vercel Blob Storage
+    const { blobs } = await list({
+      token: process.env.BLOB_READ_WRITE_TOKEN
     })
     
-    if (!blobResponse.ok) {
-      console.error(`❌ Blob API failed: ${blobResponse.status} ${blobResponse.statusText}`)
-      response.status(404).json({ error: 'No items data available' })
-      return
-    }
-    
-    const blobData = await blobResponse.json()
-    console.log(`📊 Found ${blobData.blobs?.length || 0} blobs in storage`)
+    console.log(`📊 Found ${blobs?.length || 0} blobs in storage`)
     
     const today = new Date().toISOString().split('T')[0]
     
-    const itemsBlobs = blobData.blobs.filter((blob: {pathname: string, uploadedAt: string}) => 
+    const itemsBlobs = blobs.filter((blob: ListBlobResultBlob) => 
       (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
       blob.pathname.endsWith('.json') &&
       blob.pathname.includes(today)
@@ -56,7 +48,7 @@ export default async function handler(
     if (itemsBlobs.length === 0) {
       console.log(`⚠️  No items files found for today (${today}), searching for latest available day...`)
       
-      const allItemsBlobs = blobData.blobs.filter((blob: {pathname: string, uploadedAt: string}) => 
+      const allItemsBlobs = blobs.filter((blob: ListBlobResultBlob) => 
         (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
         blob.pathname.endsWith('.json')
       )
@@ -67,7 +59,7 @@ export default async function handler(
         return
       }
       
-      allItemsBlobs.sort((a: {uploadedAt: string}, b: {uploadedAt: string}) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
+      allItemsBlobs.sort((a: ListBlobResultBlob, b: ListBlobResultBlob) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
       
       const latestBlob = allItemsBlobs[0]
       const dateMatch = latestBlob.pathname.match(/(\d{4}-\d{2}-\d{2})/)
@@ -75,67 +67,84 @@ export default async function handler(
       
       console.log(`📅 Using fallback date: ${targetDate} (from file: ${latestBlob.pathname})`)
       
-      const fallbackBlobs = allItemsBlobs.filter((blob: {pathname: string}) => blob.pathname.includes(targetDate))
+      const fallbackBlobs = allItemsBlobs.filter((blob: ListBlobResultBlob) => blob.pathname.includes(targetDate))
       itemsBlobs.push(...fallbackBlobs)
     }
     
+    console.log(`📋 Processing ${itemsBlobs.length} items files for ${targetDate}`)
+    
     if (itemsBlobs.length === 0) {
-      response.status(404).json({ error: `No items files found for today (${today}) or fallback date` })
+      console.error('❌ No items files found after fallback logic')
+      response.status(404).json({ error: 'No data available' })
       return
     }
     
-    itemsBlobs.sort((a: {uploadedAt: string}, b: {uploadedAt: string}) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
-    
-    const allItems: unknown[] = []
-    const fileTimestamps: Array<{filename: string, timestamp: string, itemCount: number}> = []
-    
-    console.log(`📁 Found ${itemsBlobs.length} files for ${targetDate === today ? 'today' : `fallback date ${targetDate}`}, fetching all...`)
+    // Fetch and merge data from all relevant blobs
+    const allItems: DeathCofferRow[] = []
+    const processedFiles: string[] = []
     
     for (const blob of itemsBlobs) {
       try {
-        const contentResponse = await fetch(blob.url)
-        const data = await contentResponse.json()
+        console.log(`📄 Fetching ${blob.pathname}...`)
+        const fileResponse = await fetch(blob.url)
         
-        if (data.items && Array.isArray(data.items)) {
-          allItems.push(...data.items)
-          fileTimestamps.push({
-            filename: blob.pathname,
-            timestamp: (data as {timestamp?: string}).timestamp || blob.uploadedAt,
-            itemCount: data.items.length
-          })
-          console.log(`📄 Loaded ${blob.pathname}: ${data.items.length} items`)
+        if (!fileResponse.ok) {
+          console.log(`⚠️ Failed to fetch ${blob.pathname}: ${fileResponse.status}`)
+          continue
         }
-      } catch {
-        console.error(`❌ Failed to load ${blob.pathname}`)
+        
+        const fileData = await fileResponse.json()
+        
+        if (Array.isArray(fileData)) {
+          allItems.push(...fileData)
+          processedFiles.push(blob.pathname)
+          console.log(`✅ Added ${fileData.length} items from ${blob.pathname}`)
+        } else if (fileData.items && Array.isArray(fileData.items)) {
+          allItems.push(...fileData.items)
+          processedFiles.push(blob.pathname)
+          console.log(`✅ Added ${fileData.items.length} items from ${blob.pathname}`)
+        } else {
+          console.log(`⚠️ Invalid data format in ${blob.pathname}`)
+        }
+      } catch (error) {
+        console.error(`❌ Error processing ${blob.pathname}:`, error)
       }
     }
     
-    const uniqueItems: BlobStorageResponse['items'] = []
-    const seenIds = new Set()
-    
-    for (const item of allItems) {
-      if (!seenIds.has((item as {id: number}).id)) {
-        seenIds.add((item as {id: number}).id)
-        uniqueItems.push(item as BlobStorageResponse['items'][0])
-      }
+    if (allItems.length === 0) {
+      console.error('❌ No valid items data found in any files')
+      response.status(404).json({ error: 'No valid data available' })
+      return
     }
     
-    console.log(`📊 Total items from ${targetDate === today ? "today's" : "fallback date's"} files: ${allItems.length}`)
-    console.log(`📊 Unique items after deduplication: ${uniqueItems.length}`)
+    // Deduplicate items by ID
+    const uniqueItems = allItems.filter((item, index, self) => 
+      index === self.findIndex((i) => i.id === item.id)
+    )
     
-    response.status(200).json({
-      items: uniqueItems,
-      date: targetDate,
+    console.log(`📊 Total items: ${allItems.length}, Unique items: ${uniqueItems.length}`)
+    
+    // Sort by ROI descending
+    uniqueItems.sort((a, b) => (b.roi || 0) - (a.roi || 0))
+    
+    const responseData: BlobStorageResponse = {
       timestamp: new Date().toISOString(),
+      date: targetDate,
       isFallback: targetDate !== today,
-      fallbackDate: targetDate !== today ? targetDate : undefined,
-      sourceFiles: itemsBlobs.map((blob: {pathname: string, uploadedAt: string}) => ({
-        filename: blob.pathname,
-        timestamp: blob.uploadedAt,
-        itemCount: 0
+      sourceFiles: processedFiles.map((filename: string) => ({
+        filename,
+        timestamp: new Date().toISOString(),
+        itemCount: 0 // Would need to fetch file to get accurate count
       })),
-      totalItems: uniqueItems.length
-    })
+      totalItems: uniqueItems.length,
+      items: uniqueItems
+    }
+    
+    console.log(`🚀 Successfully returning ${uniqueItems.length} items`)
+    
+    // Add security headers and return response
+    addSecurityHeaders(response)
+    response.status(200).json(responseData)
     
   } catch (error) {
     console.error('❌ Error in items-data handler:', error)
@@ -146,12 +155,6 @@ export default async function handler(
       response.status(500).json({ 
         error: 'Failed to read items data',
         code: 'BLOB_READ_ERROR',
-        timestamp: new Date().toISOString()
-      })
-    } else if (errorMessage.includes('HTTP')) {
-      response.status(500).json({ 
-        error: 'External service error',
-        code: 'EXTERNAL_SERVICE_ERROR',
         timestamp: new Date().toISOString()
       })
     } else {
