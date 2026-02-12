@@ -217,8 +217,6 @@ async function cleanupOldBlobs(daysOld = CLEANUP_DAYS): Promise<number> {
       token: process.env.BLOB_READ_WRITE_TOKEN
     });
     
-    console.log(`🔍 DEBUG: Token available: ${process.env.BLOB_READ_WRITE_TOKEN ? 'YES' : 'NO'}`);
-    
     console.log(`� Found ${blobs.blobs.length} blobs total`);
     
     const cutoffTime = Date.now() - (daysOld * 24 * 60 * 60 * 1000);
@@ -262,19 +260,18 @@ async function uploadToDatabase(filename: string, content: string, type: string)
     }
     
     // Use the Vercel Blob SDK put method
-    const blob = await put(blobPath, content, {
+    await put(blobPath, content, {
       access: 'public',
       token: process.env.BLOB_READ_WRITE_TOKEN,
       contentType: 'application/json',
       addRandomSuffix: true
     });
     
-    console.log(`✅ Successfully uploaded ${filename} to blob: ${blob.url}`);
+    console.log(`✅ Successfully uploaded ${filename} to blob storage`);
     return true;
     
   } catch (error) {
     console.error(`❌ Failed to upload ${filename} to blob: ${(error as Error).message}`);
-    console.log(`🔍 DEBUG: Error stack: ${(error as Error).stack}`);
     return false;
   }
 }

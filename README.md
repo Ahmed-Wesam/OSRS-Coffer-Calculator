@@ -41,26 +41,30 @@ src/
 │   │   ├── errors.types.ts        # Error handling types
 │   │   └── index.ts              # Barrel exports
 │   ├── interfaces/               # Interface definitions
-│   ├── repositories.ts        # Data access interfaces
-│   ├── services.ts           # Business service interfaces
-│   ├── adapters.ts          # External system adapters
-│   └── index.ts              # Barrel exports
+│   ├── repositories/             # Data access interfaces
+│   ├── services/                 # Business service interfaces
+│   ├── adapters/                 # External system adapters
+│   └── index.ts                  # Barrel exports
 │   ├── constants/                # Application constants
 │   ├── api.endpoints.ts      # API endpoint definitions
 │   ├── app.constants.ts      # Application configuration
-│   ├── ui.constants.ts       # UI design constants
-│   └── index.ts              # Barrel export
-│   └── index.ts                  # Main barrel export
-├── lib/                          # Business logic and utilities
-│   ├── blobStorageApi.ts        # Blob storage API client
-│   ├── api.ts                   # External API integrations
-│   ├── security.ts              # Security middleware
-│   ├── types.ts                 # Shared type definitions
-│   ├── mockData.ts              # Development mock data
-│   └── utils.ts                 # Utility functions
-├── App.tsx                       # Main application component
-└── main.tsx                     # Application entry point
+├── lib/                           # Utility libraries
+│   ├── blobStorageApi.ts     # Vercel Blob Storage client
+│   ├── api.ts                 # External API integrations
+│   └── security.ts           # Security utilities
+├── components/                   # React components
+└── App.tsx                      # Main application
+api/
+└── items-data.ts               # Main API endpoint
+RefreshData.ts                   # Data processing script
 ```
+
+### Key Features
+- **Production-Ready**: Deployed on Vercel with automated cron jobs
+- **Robust API Integration**: 8 retries with exponential backoff, rate limiting
+- **Smart Processing**: Candidate filtering, top items prioritized
+- **Real-time Updates**: Progressive loading with timeout protection
+- **Clean Architecture**: Repository pattern, service layer, adapter pattern
 
 ### Key Architectural Patterns
 - **Repository Pattern**: Clean data access abstraction
