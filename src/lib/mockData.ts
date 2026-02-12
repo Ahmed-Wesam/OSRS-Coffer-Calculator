@@ -1,12 +1,14 @@
 // Mock data for local development
+const mockTimestamp = '2024-01-15T14:30:00.000Z' // Fixed timestamp for testing
+
 export const mockBlobStorageResponse = {
-  timestamp: new Date().toISOString(),
-  date: new Date().toISOString().split('T')[0],
+  timestamp: mockTimestamp,
+  date: '2024-01-15',
   isFallback: false,
   sourceFiles: [
     {
       filename: 'items-2024-01-15.json',
-      timestamp: new Date().toISOString(),
+      timestamp: mockTimestamp,
       itemCount: 100
     }
   ],

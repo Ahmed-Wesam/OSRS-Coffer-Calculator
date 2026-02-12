@@ -99,8 +99,13 @@ export default async function handler(request, response) {
     console.log(`📊 Total items from ${targetDate === today ? "today's" : "fallback date's"} files: ${allItems.length}`)
     console.log(`📊 Unique items after deduplication: ${uniqueItems.length}`)
     
+    // Use the latest source file timestamp instead of current time
+    const latestTimestamp = fileTimestamps.length > 0 
+      ? fileTimestamps[0].timestamp 
+      : new Date().toISOString()
+    
     const mergedData = {
-      timestamp: new Date().toISOString(),
+      timestamp: latestTimestamp,
       date: targetDate,
       isFallback: targetDate !== today,
       fallbackDate: targetDate !== today ? targetDate : undefined,
