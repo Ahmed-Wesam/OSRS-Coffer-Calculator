@@ -1,7 +1,9 @@
 import type { BlobStorageResponse } from '../src/lib/types'
 
 export default async function handler(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   request: any, 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   response: any
 ): Promise<void> {
   try {
@@ -34,7 +36,7 @@ export default async function handler(
     const today = new Date().toISOString().split('T')[0]
     
     // Find items-*.json files with today's date (with or without ob/ prefix)
-    const itemsBlobs = blobData.blobs.filter((blob: any) => 
+    const itemsBlobs = blobData.blobs.filter((blob: {pathname: string, uploadedAt: string}) => 
       (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
       blob.pathname.endsWith('.json') &&
       blob.pathname.includes(today)
@@ -46,7 +48,7 @@ export default async function handler(
       console.log(`⚠️  No items files found for today (${today}), searching for latest available day...`)
       
       // Find all items-*.json files and sort by date
-      const allItemsBlobs = blobData.blobs.filter((blob: any) => 
+      const allItemsBlobs = blobData.blobs.filter((blob: {pathname: string, uploadedAt: string}) => 
         (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
         blob.pathname.endsWith('.json')
       )
@@ -58,7 +60,7 @@ export default async function handler(
       }
       
       // Sort by upload date (newest first)
-      allItemsBlobs.sort((a: any, b: any) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
+      allItemsBlobs.sort((a: {uploadedAt: string}, b: {uploadedAt: string}) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
       
       // Extract date from the newest file's pathname
       const latestBlob = allItemsBlobs[0]
@@ -68,7 +70,7 @@ export default async function handler(
       console.log(`📅 Using fallback date: ${targetDate} (from file: ${latestBlob.pathname})`)
       
       // Filter files for the fallback date
-      const fallbackBlobs = allItemsBlobs.filter((blob: any) => blob.pathname.includes(targetDate))
+      const fallbackBlobs = allItemsBlobs.filter((blob: {pathname: string}) => blob.pathname.includes(targetDate))
       itemsBlobs.push(...fallbackBlobs)
     }
     
@@ -78,10 +80,10 @@ export default async function handler(
     }
     
     // Sort by date (newest first)
-    itemsBlobs.sort((a: any, b: any) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
+    itemsBlobs.sort((a: {uploadedAt: string}, b: {uploadedAt: string}) => new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime())
     
     // Fetch today's files and merge data
-    const allItems: any[] = []
+    const allItems: unknown[] = []
     const fileTimestamps: Array<{filename: string, timestamp: string, itemCount: number}> = []
     
     console.log(`📁 Found ${itemsBlobs.length} files for ${targetDate === today ? 'today' : `fallback date ${targetDate}`}, fetching all...`)
@@ -95,24 +97,24 @@ export default async function handler(
           allItems.push(...data.items)
           fileTimestamps.push({
             filename: blob.pathname,
-            timestamp: data.timestamp || blob.uploadedAt,
+            timestamp: (data as {timestamp?: string}).timestamp || blob.uploadedAt,
             itemCount: data.items.length
           })
           console.log(`📄 Loaded ${blob.pathname}: ${data.items.length} items`)
         }
-      } catch (error) {
-        console.error(`❌ Failed to load ${blob.pathname}:`, (error as Error).message)
+      } catch {
+        console.error(`❌ Failed to load ${blob.pathname}`)
       }
     }
     
     // Remove duplicates by item ID (keep latest data)
-    const uniqueItems: any[] = []
+    const uniqueItems: BlobStorageResponse['items'] = []
     const seenIds = new Set()
     
     for (const item of allItems) {
-      if (!seenIds.has(item.id)) {
-        seenIds.add(item.id)
-        uniqueItems.push(item)
+      if (!seenIds.has((item as {id: number}).id)) {
+        seenIds.add((item as {id: number}).id)
+        uniqueItems.push(item as BlobStorageResponse['items'][0])
       }
     }
     
@@ -136,7 +138,7 @@ export default async function handler(
     
     response.status(200).json(mergedData)
     
-  } catch (error) {
+  } catch {
     response.status(500).json({ error: 'Failed to read blob data' })
   }
 }

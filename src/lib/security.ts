@@ -1,6 +1,6 @@
 // Security middleware for API endpoints
 
-export function addSecurityHeaders(response: any): void {
+export function addSecurityHeaders(response: { setHeader: (name: string, value: string) => void }): void {
   // Add security headers
   response.setHeader('X-Content-Type-Options', 'nosniff')
   response.setHeader('X-Frame-Options', 'DENY')
@@ -9,7 +9,7 @@ export function addSecurityHeaders(response: any): void {
   response.setHeader('Content-Security-Policy', "default-src 'self'")
 }
 
-export function sanitizeInput(input: any): any {
+export function sanitizeInput(input: unknown): unknown {
   if (typeof input !== 'string') return input
   
   // Remove potentially dangerous characters
