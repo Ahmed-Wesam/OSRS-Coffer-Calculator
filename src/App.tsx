@@ -134,7 +134,7 @@ function App() {
   return (
     <div className="app">
       <div className="header">
-        <h1 className="title">OSRS Death&apos;s Coffer ROI Calculator</h1>
+        <h1 className="title">OSRS Death's Coffer Calculator</h1>
         <p className="subtitle">
           Calculate Return on Investment for Death&apos;s Coffer minigame. Data is precomputed and cached from OSRS Wiki and Jagex APIs.
         </p>
@@ -147,6 +147,7 @@ function App() {
                 {' '} (latest available - {dataInfo.fallbackDate})
               </span>
             )}
+            {' '} • {' '}Only analyzes items above 100k GP due to Jagex API rate limits
           </p>
         )}
 
