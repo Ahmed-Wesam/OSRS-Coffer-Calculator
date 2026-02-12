@@ -19,11 +19,28 @@ function formatDateForUser(dateString: string): string {
   }
 }
 
+// Format timestamp for user's timezone
+function formatTimestampForUser(timestamp: string): string {
+  try {
+    const date = new Date(timestamp)
+    return date.toLocaleString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    }).replace(',', '')
+  } catch {
+    return timestamp
+  }
+}
+
 function App() {
   const [rows, setRows] = useState<DeathCofferRow[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [dataInfo, setDataInfo] = useState<{date: string, isFallback?: boolean, fallbackDate?: string} | null>(null)
+  const [dataInfo, setDataInfo] = useState<{date: string, timestamp?: string, isFallback?: boolean, fallbackDate?: string} | null>(null)
 
   const [minRoiPct, setMinRoiPct] = useState('0')
   const [minBuyPrice, setMinBuyPrice] = useState('')
@@ -54,6 +71,7 @@ function App() {
           setRows(edgeConfigData.items)
           setDataInfo({
             date: edgeConfigData.date,
+            timestamp: edgeConfigData.timestamp,
             isFallback: edgeConfigData.isFallback,
             fallbackDate: edgeConfigData.fallbackDate
           })
@@ -112,7 +130,7 @@ function App() {
         
         {dataInfo && (
           <p className="data-info">
-            Data from {formatDateForUser(dataInfo.date)}
+            Data from {dataInfo.timestamp ? formatTimestampForUser(dataInfo.timestamp) : formatDateForUser(dataInfo.date)}
             {dataInfo.isFallback && (
               <span className="fallback-note">
                 {' '} (latest available - {dataInfo.fallbackDate})

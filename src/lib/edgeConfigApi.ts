@@ -1,10 +1,22 @@
 // Client-side API functions for Blob Storage
 import type { BlobStorageResponse } from './types'
+import { mockBlobStorageResponse } from './mockData'
 
 // Use deployed API for both development and production
 const API_BASE = '/api'
 
+// Check if we're in development mode
+const isDevelopment = import.meta.env.DEV
+
 export async function fetchBlobStorageDeathsCofferRows(): Promise<BlobStorageResponse> {
+  // Use mock data in development to avoid API issues
+  if (isDevelopment) {
+    console.log('🔧 Using mock data for development')
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    return mockBlobStorageResponse
+  }
+
   try {
     const response = await fetch(`${API_BASE}/blob-config`)
     if (!response.ok) {
