@@ -1,0 +1,54 @@
+name: OSRS Scraper
+
+on:
+  schedule:
+    # Run daily at 6:00 AM UTC (10:00 PM PST, 11:00 PM PDT)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  scraper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30 # Set timeout to prevent infinite runs
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run OSRS Scraper
+        run: npm run scraper
+        env:
+          NODE_ENV: production
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-logs
+          path: |
+            scraper-log.txt
+            scraper-output.txt
+          retention-days: 7
+
+      - name: Commit and push any data changes
+        if: success()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "Auto-update scraper data [$(date +'%Y-%m-%d %H:%M:%S')]"
+          git push

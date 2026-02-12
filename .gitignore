@@ -1,40 +1,84 @@
 # Logs
+
 logs
+
 *.log
+
 npm-debug.log*
+
 yarn-debug.log*
+
 yarn-error.log*
+
 pnpm-debug.log*
+
 lerna-debug.log*
 
+
+
 node_modules
+
 dist
+
 dist-ssr
+
 *.local
 
+
+
 # Editor directories and files
+
 .vscode/*
+
 !.vscode/extensions.json
+
 .idea
+
 .DS_Store
+
 *.suo
+
 *.ntvs*
+
 *.njsproj
+
 *.sln
 
+
+
 # Build artifacts
+
 *.min.js
+
 api.*.js
+
 system.*.js
 
+
+
 # Temporary reference files
+
 _*.js
+
 _*.txt
+
 run-local-cron-simple.mjs
 
+
+
 # Markdown files (except README.md and Roadmap.md)
+
 *.md
+
 !README.md
+
 !Roadmap.md
+
 .vercel
+
 .env*.local
+
+# Task management files
+run-scraper.bat
+scraper-log.txt
+
