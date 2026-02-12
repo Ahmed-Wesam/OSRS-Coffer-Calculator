@@ -1,6 +1,8 @@
 import type { BlobStorageResponse } from '../src/lib/types'
 import { addSecurityHeaders } from '../src/lib/security'
 
+export const config = { maxDuration: 300 }
+
 export default async function handler(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   request: any, 

@@ -1,11 +1,4 @@
 ﻿{
-  "functions": {
-    "api/items-data.ts": {
-      "maxDuration": 300,
-      "runtime": "nodejs18.x"
-    }
-  },
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install"
+  "outputDirectory": "dist"
 }
