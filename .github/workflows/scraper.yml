@@ -2,8 +2,8 @@ name: OSRS Scraper
 
 on:
   schedule:
-    # Run daily at 6:00 AM UTC (10:00 PM PST, 11:00 PM PDT)
-    - cron: '0 6 * * *'
+    # Run daily at 5:00 AM PST (1:00 PM UTC)
+    - cron: '0 13 * * *'
   workflow_dispatch: # Allow manual triggering
 
 jobs:
