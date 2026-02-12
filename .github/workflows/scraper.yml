@@ -9,7 +9,7 @@ on:
 jobs:
   scraper:
     runs-on: ubuntu-latest
-    timeout-minutes: 30 # Set timeout to prevent infinite runs
+    timeout-minutes: 120 # 2 hours timeout for scraper completion
     
     steps:
       - name: Checkout code
@@ -33,22 +33,3 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
-      - name: Upload logs on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: scraper-logs
-          path: |
-            scraper-log.txt
-            scraper-output.txt
-          retention-days: 7
-
-      - name: Commit and push any data changes
-        if: success()
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          git diff --staged --quiet || git commit -m "Auto-update scraper data [$(date +'%Y-%m-%d %H:%M:%S')]"
-          git push

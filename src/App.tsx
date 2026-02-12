@@ -4,6 +4,21 @@ import type { DeathCofferRow, BlobStorageResponse } from './lib/types'
 import { fetchEdgeConfigDeathsCofferRows } from './lib/edgeConfigApi'
 import { formatInt, formatPct, itemUrl, parseRoiInput, parsePriceInput } from './lib/utils'
 
+// Format date for user's timezone
+function formatDateForUser(dateString: string): string {
+  try {
+    const date = new Date(dateString + 'T00:00:00.000Z')
+    return date.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    })
+  } catch {
+    return dateString
+  }
+}
+
 function App() {
   const [rows, setRows] = useState<DeathCofferRow[]>([])
   const [loading, setLoading] = useState(true)
@@ -97,7 +112,12 @@ function App() {
         
         {dataInfo && (
           <p className="data-info">
-            Data from {dataInfo.date}
+            Data from {formatDateForUser(dataInfo.date)}
+            {dataInfo.isFallback && (
+              <span className="fallback-note">
+                {' '} (latest available - {dataInfo.fallbackDate})
+              </span>
+            )}
           </p>
         )}
 

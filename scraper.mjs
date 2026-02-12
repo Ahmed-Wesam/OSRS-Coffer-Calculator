@@ -134,8 +134,100 @@ async function fetchJagexPrice(itemId, maxRetries = 10) { // Increased retries t
   return null;
 }
 
+// Cleanup function to delete old blobs (older than 3 days)
+async function cleanupOldBlobs() {
+  try {
+    console.log('🧹 Starting cleanup of blobs older than 3 days...');
+    
+    const blobResponse = await fetch(`https://api.vercel.com/v2/blob`, {
+      headers: {
+        'Authorization': `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`
+      }
+    });
+    
+    if (!blobResponse.ok) {
+      throw new Error(`Failed to fetch blob list: ${blobResponse.status}`);
+    }
+    
+    const blobData = await blobResponse.json();
+    const cutoffDate = new Date(Date.now() - (3 * 24 * 60 * 60 * 1000)); // 3 days ago
+    let deletedCount = 0;
+    
+    for (const blob of blobData.blobs) {
+      const uploadDate = new Date(blob.uploadedAt);
+      
+      if (uploadDate < cutoffDate) {
+        try {
+          // Delete the old blob
+          const deleteResponse = await fetch(`https://api.vercel.com/v2/blob${blob.pathname}`, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`
+            }
+          });
+          
+          if (deleteResponse.ok) {
+            console.log(`🗑️ Deleted old blob: ${blob.pathname} (uploaded: ${uploadDate.toISOString()})`);
+            deletedCount++;
+          } else {
+            console.log(`⚠️ Failed to delete ${blob.pathname}: ${deleteResponse.status}`);
+          }
+        } catch (deleteError) {
+          console.log(`❌ Error deleting ${blob.pathname}: ${deleteError.message}`);
+        }
+      }
+    }
+    
+    console.log(`🧹 Cleanup completed. Deleted ${deletedCount} old blobs.`);
+    return deletedCount;
+    
+  } catch (error) {
+    console.error(`❌ Cleanup failed: ${error.message}`);
+    return 0;
+  }
+}
+
+// Database upload function
+async function uploadToDatabase(filename, content, type) {
+  try {
+    console.log(`📤 Uploading ${filename} to database as ${type}...`);
+    
+    // Upload to Vercel Blob Storage in logs directory (separate from items data)
+    const blobPath = `logs/${type}-${filename}-${new Date().toISOString().split('T')[0]}.json`;
+    
+    const response = await fetch(`https://api.vercel.com/v2/blob`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        pathname: blobPath,
+        content: content,
+        contentType: 'application/json'
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Blob upload failed: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    console.log(`✅ Successfully uploaded ${filename} to blob: ${blobPath}`);
+    return true;
+    
+  } catch (error) {
+    console.error(`❌ Failed to upload ${filename} to blob: ${error.message}`);
+    return false;
+  }
+}
+
 // Main scraping logic
 async function main() {
+  const startTime = new Date().toISOString();
+  let success = false;
+  let error = null;
+  
   try {
     console.log('🚀 Starting OSRS scraper...');
     
@@ -237,10 +329,55 @@ async function main() {
     });
     
     console.log(`\n✨ OSRS scraper completed successfully!`);
+    success = true;
     
   } catch (error) {
     console.error(`❌ Fatal error in scraper: ${error.message}`);
     console.error(error.stack);
+    error = error.message;
+    success = false;
+  }
+  
+  // Handle database uploads for both success and failure cases
+  const endTime = new Date().toISOString();
+  
+  try {
+    // Run cleanup first to remove old data
+    await cleanupOldBlobs();
+    
+    const fs = await import('fs');
+    
+    // Create and upload execution log
+    const executionLog = {
+      startTime: startTime,
+      endTime: endTime,
+      success: success,
+      error: error,
+      timestamp: new Date().toISOString()
+    };
+    
+    await uploadToDatabase('execution-log', JSON.stringify(executionLog, null, 2), 'execution');
+    
+    // Upload scraper output log if it exists
+    if (fs.existsSync('scraper-output.txt')) {
+      const outputContent = await fs.promises.readFile('scraper-output.txt', 'utf8');
+      await uploadToDatabase('scraper-output', outputContent, 'log');
+    }
+    
+    // Upload data file if it exists and scraper was successful
+    if (success && fs.existsSync('coffer-calculator-data.json')) {
+      const dataContent = await fs.promises.readFile('coffer-calculator-data.json', 'utf8');
+      await uploadToDatabase('scraper-data', dataContent, 'data');
+    }
+    
+    console.log(`📤 All uploads completed. Status: ${success ? 'SUCCESS' : 'FAILURE'}`);
+    
+  } catch (uploadError) {
+    console.error(`❌ Error during database uploads: ${uploadError.message}`);
+  }
+  
+  // Exit with appropriate code
+  if (!success) {
     process.exit(1);
   }
 }
