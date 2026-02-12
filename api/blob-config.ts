@@ -5,6 +5,15 @@ export default async function handler(
   response: any
 ): Promise<void> {
   try {
+    // Check if environment variables are set
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      console.error('❌ BLOB_READ_WRITE_TOKEN not set')
+      response.status(500).json({ error: 'Server configuration error' })
+      return
+    }
+
+    console.log('🔧 Fetching blob data from Vercel API...')
+    
     // Read from Blob Storage
     const blobResponse = await fetch(`https://api.vercel.com/v2/blob`, {
       headers: {
@@ -13,11 +22,13 @@ export default async function handler(
     })
     
     if (!blobResponse.ok) {
-      response.status(404).json({ error: 'No blob data' })
+      console.error(`❌ Blob API failed: ${blobResponse.status} ${blobResponse.statusText}`)
+      response.status(404).json({ error: 'No blob data available' })
       return
     }
     
     const blobData = await blobResponse.json()
+    console.log(`📊 Found ${blobData.blobs?.length || 0} blobs in storage`)
     
     // Get today's date in YYYY-MM-DD format
     const today = new Date().toISOString().split('T')[0]
@@ -41,7 +52,8 @@ export default async function handler(
       )
       
       if (allItemsBlobs.length === 0) {
-        response.status(404).json({ error: 'No items files found in storage' })
+        console.error('❌ No items files found in blob storage at all')
+        response.status(404).json({ error: 'No data available - cron job may not have run yet' })
         return
       }
       

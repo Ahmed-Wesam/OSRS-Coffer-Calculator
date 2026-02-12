@@ -13,7 +13,8 @@ export async function fetchBlobStorageDeathsCofferRows(): Promise<BlobStorageRes
   if (isDevelopment) {
     console.log('🔧 Using mock data for development')
     // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise(resolve => setTimeout(resolve, 500))
+    console.log('🔧 Mock data loaded:', mockBlobStorageResponse)
     return mockBlobStorageResponse
   }
 

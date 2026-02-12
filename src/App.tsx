@@ -59,10 +59,10 @@ function App() {
         // Set a timeout to prevent infinite loading
         timeoutId = window.setTimeout(() => {
           if (!cancelled) {
-            setError('Loading timeout - please refresh the page')
+            setError('Loading timeout - the server may be initializing or no data is available yet. Please try refreshing in a few minutes.')
             setLoading(false)
           }
-        }, 30000) // 30 seconds (shorter since Edge Config should be fast)
+        }, 15000) // 15 seconds timeout
 
         // Fetch data from Edge Config only - no API requests to Wiki
         const edgeConfigData: BlobStorageResponse = await fetchEdgeConfigDeathsCofferRows()
@@ -84,7 +84,9 @@ function App() {
           
           // Check if it's a 404 error (no data available yet)
           if (error instanceof Error && error.message.includes('HTTP 404')) {
-            setError('No data available yet. The cron job needs to run first to generate Death\'s Coffer data.')
+            setError('No data available yet. The cron job needs to run first to generate Death\'s Coffer data. This usually happens automatically every few hours.')
+          } else if (error instanceof Error && error.message.includes('No data available')) {
+            setError(error.message)
           } else {
             setError(error instanceof Error ? error.message : 'Failed to load data')
           }
