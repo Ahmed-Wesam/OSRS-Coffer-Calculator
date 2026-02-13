@@ -6,33 +6,13 @@ import config from './config/github-env';
 // Load environment variables from .env.local
 dotenv.config({ path: '.env.local' });
 
-// Comprehensive token debugging
-console.log('🔍 DEBUG: Environment Configuration');
-console.log(`🔍 NODE_ENV: ${process.env.NODE_ENV}`);
-console.log(`🔍 Config NODE_ENV: ${config.NODE_ENV}`);
-console.log(`🔍 BLOB_READ_WRITE_TOKEN from env: ${process.env.BLOB_READ_WRITE_TOKEN ? 'SET' : 'MISSING'}`);
-console.log(`🔍 VERCEL_TOKEN from config: ${config.VERCEL_TOKEN ? 'SET' : 'MISSING'}`);
-console.log(`🔍 VERCEL_ORG_ID from config: ${config.VERCEL_ORG_ID ? 'SET' : 'MISSING'}`);
-console.log(`🔍 VERCEL_PROJECT_ID from config: ${config.VERCEL_PROJECT_ID ? 'SET' : 'MISSING'}`);
-
 // Set environment variables from GitHub secrets or environment
 if (config.NODE_ENV === 'production') {
   // Use GitHub secrets in production
-  console.log('🔧 PRODUCTION MODE: Using GitHub secrets');
-  
-  // BLOB_READ_WRITE_TOKEN should be set directly in GitHub secrets
-  // Do NOT override it with VERCEL_TOKEN as they are different token types
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    console.error('❌ CRITICAL: BLOB_READ_WRITE_TOKEN is missing in GitHub secrets!');
-    console.error('🔍 Please add BLOB_READ_WRITE_TOKEN as a separate GitHub secret with a Vercel Blob read/write token');
+    console.error('❌ BLOB_READ_WRITE_TOKEN is missing in GitHub secrets!');
     process.exit(1);
   }
-  
-  console.log(`🔧 Using BLOB_READ_WRITE_TOKEN from GitHub secrets: ${process.env.BLOB_READ_WRITE_TOKEN ? 'AVAILABLE' : 'MISSING'}`);
-} else {
-  // Use local environment variables in development
-  console.log('🔧 DEVELOPMENT MODE: Using local environment variables');
-  console.log(`🔧 BLOB_READ_WRITE_TOKEN from .env.local: ${process.env.BLOB_READ_WRITE_TOKEN ? 'AVAILABLE' : 'MISSING'}`);
 }
 
 // Constants
@@ -265,7 +245,6 @@ async function cleanupOldBlobs(daysOld = CLEANUP_DAYS): Promise<number> {
     
   } catch (error) {
     console.error(`❌ Cleanup failed: ${(error as Error).message}`);
-    console.log(`🔍 DEBUG: Cleanup error stack: ${(error as Error).stack}`);
     return -1; // Return -1 to indicate failure
   }
 }
@@ -394,44 +373,15 @@ function getMinOfferPrice(): number {
 // Database connectivity check function
 async function checkDatabaseConnectivity(): Promise<boolean> {
   try {
-    console.log('🔍 Checking database connectivity...');
-    console.log(`🔍 Token being used: ${process.env.BLOB_READ_WRITE_TOKEN ? 'PRESENT' : 'MISSING'}`);
-    console.log(`🔍 Token length: ${process.env.BLOB_READ_WRITE_TOKEN?.length || 0} characters`);
-    console.log(`🔍 Token prefix: ${process.env.BLOB_READ_WRITE_TOKEN?.substring(0, 20) || 'NONE'}...`);
-    
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
-      console.error('❌ CRITICAL: BLOB_READ_WRITE_TOKEN is not set!');
-      console.error('🔍 DEBUG: Check your environment variables:');
-      console.error(`   - Local .env.local: ${process.env.NODE_ENV !== 'production' ? 'SHOULD BE USED' : 'IGNORED'}`);
-      console.error(`   - GitHub VERCEL_TOKEN: ${process.env.NODE_ENV === 'production' ? 'SHOULD BE USED' : 'IGNORED'}`);
-      return false;
-    }
-    
     // Try to list blobs to verify we have read access
-    console.log('🔍 Attempting to list blobs...');
-    const blobs = await list({
+    await list({
       token: process.env.BLOB_READ_WRITE_TOKEN
     });
     
-    console.log(`✅ Database connectivity check passed - found ${blobs.blobs.length} existing blobs`);
-    if (blobs.blobs.length > 0) {
-      console.log('🔍 Sample blobs:');
-      blobs.blobs.slice(0, 3).forEach((blob, index) => {
-        console.log(`   ${index + 1}. ${blob.pathname} (${blob.size} bytes, uploaded: ${blob.uploadedAt})`);
-      });
-    }
     return true;
     
   } catch (error) {
-    const err = error as Error;
-    console.error(`❌ Database connectivity check failed: ${err.message}`);
-    console.error('🔍 DEBUG: Token validation failed. Possible causes:');
-    console.error('   1. Token is expired');
-    console.error('   2. Token has insufficient permissions');
-    console.error('   3. Token is malformed');
-    console.error('   4. Blob storage is not properly configured');
-    console.error(`🔍 Current environment: ${process.env.NODE_ENV || 'undefined'}`);
-    console.error(`🔍 Token source: ${process.env.NODE_ENV === 'production' ? 'GitHub VERCEL_TOKEN' : 'Local .env.local'}`);
+    console.error(`❌ Database connectivity failed: ${(error as Error).message}`);
     return false;
   }
 }
@@ -522,7 +472,9 @@ async function main(): Promise<void> {
       const item = eligibleItems[i];
       const progress = ((i + 1) / eligibleItems.length * 100).toFixed(1);
       
-      console.log(`⏳ [${i + 1}/${eligibleItems.length}] ${item.name} (${progress}%) - Success: ${successCount}, Fail: ${failCount}`);
+      if (i % 10 === 0 || i === eligibleItems.length - 1) {
+        console.log(`⏳ Progress: ${i + 1}/${eligibleItems.length} (${progress}%) - Success: ${successCount}, Fail: ${failCount}`);
+      }
       
       try {
         const price = await fetchJagexPrice(item.id);
@@ -552,19 +504,14 @@ async function main(): Promise<void> {
               members: item.members,
               timestamp: new Date().toISOString()
             });
-            console.log(`✅ Added ${item.name} - ROI: ${roi.toFixed(2)}% - Volume: ${lowPriceVolume} - Success: ${successCount + 1}, Fail: ${failCount}`);
             successCount++;
           } else {
-            console.log(`❌ Skipped ${item.name} - Negative ROI: ${roi.toFixed(2)}% - Success: ${successCount}, Fail: ${failCount + 1}`);
             failCount++;
           }
         } else {
-          console.log(`❌ Failed to get price for ${item.name} - Success: ${successCount}, Fail: ${failCount + 1}`);
           failCount++;
         }
       } catch (error) {
-        const err = error as Error;
-        console.log(`⚠️ Error processing ${item.name}: ${err.message} - Success: ${successCount}, Fail: ${failCount + 1}`);
         failCount++;
       }
     }
