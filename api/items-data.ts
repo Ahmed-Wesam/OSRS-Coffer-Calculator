@@ -91,6 +91,9 @@ export default async function handler(
       blob.pathname.includes(today)
     )
     
+    // Sort by upload time to get the most recent file first
+    itemsBlobs.sort((a: { uploadedAt: Date }, b: { uploadedAt: Date }) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
+    
     let targetDate = today
     if (itemsBlobs.length === 0) {
       console.log(`⚠️  No items files found for today (${today}), searching for latest available day...`)
@@ -119,6 +122,14 @@ export default async function handler(
     }
     
     console.log(`📋 Processing ${itemsBlobs.length} items files for ${targetDate}`)
+    
+    if (itemsBlobs.length > 0) {
+      console.log(`📁 Files found (most recent first):`)
+      itemsBlobs.forEach((blob: { pathname: string; uploadedAt: Date }, index: number) => {
+        const hoursAgo = Math.round((Date.now() - blob.uploadedAt.getTime()) / (1000 * 60 * 60))
+        console.log(`  ${index + 1}. ${blob.pathname} (${hoursAgo} hours ago)`)
+      })
+    }
     
     if (itemsBlobs.length === 0) {
       console.error('❌ No items files found after fallback logic')
@@ -174,8 +185,10 @@ export default async function handler(
     // Transform data to match frontend expectations
     const transformedItems = transformBlobData(uniqueItems)
     
-    // Get the actual file timestamp instead of current time
-    const fileTimestamp = itemsBlobs.length > 0 ? itemsBlobs[0].uploadedAt.toISOString() : new Date().toISOString()
+    // Get the most recent file timestamp
+    const mostRecentBlob = itemsBlobs[0] // Already sorted by upload time
+    const fileTimestamp = mostRecentBlob.uploadedAt.toISOString()
+    console.log(`⏰ Using timestamp from most recent file: ${mostRecentBlob.pathname} (${fileTimestamp})`)
     
     const responseData: BlobStorageResponse = {
       timestamp: fileTimestamp,
