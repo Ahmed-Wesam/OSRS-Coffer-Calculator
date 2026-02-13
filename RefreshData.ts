@@ -511,7 +511,7 @@ async function main(): Promise<void> {
         } else {
           failCount++;
         }
-      } catch (error) {
+      } catch {
         failCount++;
       }
     }
