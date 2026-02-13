@@ -166,8 +166,17 @@ body {
   text-align: center;
 }
 
+/* Alternating row colors for better readability */
+.table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.table tbody tr:nth-child(even):hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .table td {
