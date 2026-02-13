@@ -221,7 +221,7 @@ function App() {
               <th>Buy price</th>
               <th>Official GE</th>
               <th>Coffer value</th>
-              <th>Volume</th>
+              <th>Volume (1 Day)</th>
               <th>ROI</th>
             </tr>
           </thead>

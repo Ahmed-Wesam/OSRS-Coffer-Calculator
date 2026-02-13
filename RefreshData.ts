@@ -17,6 +17,7 @@ if (config.NODE_ENV === 'production') {
 
 // Constants
 const OSRS_LATEST_ENDPOINT = 'https://prices.runescape.wiki/api/v1/osrs/latest';
+const OSRS_VOLUME_ENDPOINT = 'https://prices.runescape.wiki/api/v1/osrs/24h';
 const OSRS_MAPPING_ENDPOINT = 'https://prices.runescape.wiki/api/v1/osrs/mapping';
 const JAGEX_API_BASE = 'https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json';
 const MIN_OFFER_PRICE = 100000;
@@ -423,8 +424,8 @@ async function main(): Promise<void> {
     
     console.log('📊 Fetching volume data...');
     
-    // Fetch volume data from OSRS Wiki API
-    const volumeResponse = await fetch('https://prices.runescape.wiki/api/v1/osrs/5m');
+    // Fetch volume data from OSRS Wiki API (24h interval for better volume data)
+    const volumeResponse = await fetch(OSRS_VOLUME_ENDPOINT);
     const volumeData = await volumeResponse.json() as { data: Record<string, { highPriceVolume: number; lowPriceVolume: number }> };
     console.log(`✅ Fetched volume data for ${Object.keys(volumeData.data).length} items`);
     
