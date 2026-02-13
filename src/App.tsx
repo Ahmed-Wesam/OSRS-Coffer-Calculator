@@ -142,11 +142,6 @@ function App() {
         {dataInfo && (
           <p className="data-info">
             Data from {dataInfo.timestamp ? formatTimestampForUser(dataInfo.timestamp) : formatDateForUser(dataInfo.date)}
-            {dataInfo.isFallback && (
-              <span className="fallback-note">
-                {' '} (latest available - {dataInfo.fallbackDate})
-              </span>
-            )}
             {' '} • {' '}Only analyzes items above 100k GP due to Jagex API rate limits
           </p>
         )}
