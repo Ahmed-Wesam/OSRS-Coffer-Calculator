@@ -10,7 +10,7 @@ interface DeathCofferRow {
   officialGePrice: number
   cofferValue: number
   roi: number
-  volume: number
+  lowPriceVolume: number
 }
 
 interface BlobStorageResponse {
@@ -38,7 +38,7 @@ function transformBlobData(blobItems: unknown[]): DeathCofferRow[] {
       officialGePrice: Number(blobItem.gePrice || blobItem.officialGePrice) || 0,
       cofferValue: Number(blobItem.cofferValue) || 0,
       roi: Number(blobItem.roi) || 0,
-      volume: Number(blobItem.volume) || 0
+      lowPriceVolume: Number(blobItem.lowPriceVolume) || 0
     };
   });
 }

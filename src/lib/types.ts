@@ -39,7 +39,7 @@ export type DeathCofferRow = {
   officialGePrice: number
   cofferValue: number
   roi: number
-  volume: number
+  lowPriceVolume: number
 }
 
 export type BlobStorageResponse = {

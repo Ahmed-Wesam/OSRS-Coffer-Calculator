@@ -45,6 +45,7 @@ function App() {
   const [minRoiPct, setMinRoiPct] = useState('0')
   const [minBuyPrice, setMinBuyPrice] = useState('')
   const [maxBuyPrice, setMaxBuyPrice] = useState('')
+  const [minVolume, setMinVolume] = useState('')
 
   useEffect(() => {
     let cancelled = false
@@ -118,6 +119,7 @@ function App() {
 
     const minBuy = parsePriceInput(minBuyPrice)
     const maxBuy = parsePriceInput(maxBuyPrice)
+    const minVol = parsePriceInput(minVolume)
 
     let result = rows.filter((r) => r.roi >= minRoiDecimal)
 
@@ -127,9 +129,12 @@ function App() {
     if (typeof maxBuy === 'number') {
       result = result.filter((r) => r.buyPrice <= maxBuy)
     }
+    if (typeof minVol === 'number') {
+      result = result.filter((r) => r.lowPriceVolume >= minVol)
+    }
 
     return result
-  }, [rows, minRoiPct, minBuyPrice, maxBuyPrice])
+  }, [rows, minRoiPct, minBuyPrice, maxBuyPrice, minVolume])
 
   return (
     <div className="app">
@@ -168,6 +173,16 @@ function App() {
           </div>
 
           <div className="control">
+            <label htmlFor="minVolume">Min Volume</label>
+            <input
+              id="minVolume"
+              value={minVolume}
+              onChange={(e) => setMinVolume(e.target.value)}
+              placeholder="e.g. 10k"
+            />
+          </div>
+
+          <div className="control">
             <label htmlFor="minRoi">Min ROI (%)</label>
             <input
               id="minRoi"
@@ -184,6 +199,7 @@ function App() {
               setMinRoiPct('0')
               setMinBuyPrice('')
               setMaxBuyPrice('')
+              setMinVolume('')
             }}
           >
             Reset filters
@@ -205,6 +221,7 @@ function App() {
               <th>Buy price</th>
               <th>Official GE</th>
               <th>Coffer value</th>
+              <th>Volume</th>
               <th>ROI</th>
             </tr>
           </thead>
@@ -219,6 +236,7 @@ function App() {
                 <td>{formatInt(r.buyPrice)}</td>
                 <td>{formatInt(r.officialGePrice)}</td>
                 <td>{formatInt(r.cofferValue)}</td>
+                <td>{formatInt(r.lowPriceVolume)}</td>
                 <td className={r.roi > 0 ? "roi-positive" : ""}>{formatPct(r.roi)}</td>
               </tr>
             ))}

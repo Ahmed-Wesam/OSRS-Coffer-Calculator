@@ -22,7 +22,7 @@ export const mockBlobStorageResponse: BlobStorageResponse = {
       officialGePrice: 3200,
       cofferValue: 3360,
       roi: 0.344,
-      volume: 8000
+      lowPriceVolume: 4500
     },
     {
       id: 4151,
@@ -31,7 +31,7 @@ export const mockBlobStorageResponse: BlobStorageResponse = {
       officialGePrice: 3200,
       cofferValue: 3360,
       roi: 0.2,
-      volume: 8000
+      lowPriceVolume: 4500
     },
     {
       id: 536,
@@ -40,7 +40,7 @@ export const mockBlobStorageResponse: BlobStorageResponse = {
       officialGePrice: 3200,
       cofferValue: 3360,
       roi: 0.12,
-      volume: 8000
+      lowPriceVolume: 4500
     }
   ]
 }
