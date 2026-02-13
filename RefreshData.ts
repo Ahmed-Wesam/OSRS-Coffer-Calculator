@@ -61,6 +61,7 @@ interface ResultItem {
   offerPrice: number;
   cofferValue: number;
   roi: number;
+  lowPriceVolume: number;
   members: boolean;
   timestamp: string;
 }
@@ -370,12 +371,39 @@ function getMinOfferPrice(): number {
   return process.env.MIN_OFFER_PRICE ? parseInt(process.env.MIN_OFFER_PRICE) : MIN_OFFER_PRICE;
 }
 
+// Database connectivity check function
+async function checkDatabaseConnectivity(): Promise<boolean> {
+  try {
+    console.log('🔍 Checking database connectivity...');
+    
+    // Try to list blobs to verify we have read access
+    const blobs = await list({
+      token: process.env.BLOB_READ_WRITE_TOKEN
+    });
+    
+    console.log(`✅ Database connectivity check passed - found ${blobs.blobs.length} existing blobs`);
+    return true;
+    
+  } catch (error) {
+    console.error(`❌ Database connectivity check failed: ${(error as Error).message}`);
+    console.error('🚫 Cannot access blob storage. Please check your BLOB_READ_WRITE_TOKEN environment variable.');
+    return false;
+  }
+}
+
 // Main scraping logic
 async function main(): Promise<void> {
   let success = false;
   
   try {
     console.log('🚀 Starting OSRS data refresh...');
+    
+    // Check database connectivity first
+    const dbConnected = await checkDatabaseConnectivity();
+    if (!dbConnected) {
+      console.error('❌ Cannot proceed with data refresh - database connectivity failed');
+      process.exit(1);
+    }
     
     // Fetch ineligible items
     console.log('🚫 Fetching ineligible items...');
@@ -399,7 +427,11 @@ async function main(): Promise<void> {
     }
     
     console.log('📊 Fetching volume data...');
-    // Volume data fetching currently disabled
+    
+    // Fetch volume data from OSRS Wiki API
+    const volumeResponse = await fetch('https://prices.runescape.wiki/api/v1/osrs/5m');
+    const volumeData = await volumeResponse.json() as { data: Record<string, { highPriceVolume: number; lowPriceVolume: number }> };
+    console.log(`✅ Fetched volume data for ${Object.keys(volumeData.data).length} items`);
     
     // Filter eligible items
     const eligibleItems: ScrapedItem[] = mappingData.filter((item: MappingItem) => {
@@ -460,6 +492,10 @@ async function main(): Promise<void> {
           
           // Only include items with positive ROI
           if (profit > 0) {
+            // Get volume data for this item from OSRS Wiki
+            const volumeInfo = volumeData.data[String(item.id)];
+            const lowPriceVolume = volumeInfo ? (volumeInfo.lowPriceVolume || 0) : 0;
+            
             results.push({
               id: item.id,
               name: item.name,
@@ -467,10 +503,11 @@ async function main(): Promise<void> {
               offerPrice: buyPrice,
               cofferValue,
               roi,
+              lowPriceVolume,
               members: item.members,
               timestamp: new Date().toISOString()
             });
-            console.log(`✅ Added ${item.name} - ROI: ${roi.toFixed(2)}% - Success: ${successCount + 1}, Fail: ${failCount}`);
+            console.log(`✅ Added ${item.name} - ROI: ${roi.toFixed(2)}% - Volume: ${lowPriceVolume} - Success: ${successCount + 1}, Fail: ${failCount}`);
             successCount++;
           } else {
             console.log(`❌ Skipped ${item.name} - Negative ROI: ${roi.toFixed(2)}% - Success: ${successCount}, Fail: ${failCount + 1}`);
