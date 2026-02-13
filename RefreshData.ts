@@ -6,13 +6,29 @@ import config from './config/github-env';
 // Load environment variables from .env.local
 dotenv.config({ path: '.env.local' });
 
+// Comprehensive token debugging
+console.log('🔍 DEBUG: Environment Configuration');
+console.log(`🔍 NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`🔍 Config NODE_ENV: ${config.NODE_ENV}`);
+console.log(`🔍 BLOB_READ_WRITE_TOKEN from env: ${process.env.BLOB_READ_WRITE_TOKEN ? 'SET' : 'MISSING'}`);
+console.log(`🔍 VERCEL_TOKEN from config: ${config.VERCEL_TOKEN ? 'SET' : 'MISSING'}`);
+console.log(`🔍 VERCEL_ORG_ID from config: ${config.VERCEL_ORG_ID ? 'SET' : 'MISSING'}`);
+console.log(`🔍 VERCEL_PROJECT_ID from config: ${config.VERCEL_PROJECT_ID ? 'SET' : 'MISSING'}`);
+
 // Set environment variables from GitHub secrets or environment
 if (config.NODE_ENV === 'production') {
   // Use GitHub secrets in production
+  console.log('🔧 PRODUCTION MODE: Using GitHub secrets');
+  if (!config.VERCEL_TOKEN) {
+    console.error('❌ CRITICAL: VERCEL_TOKEN is missing in production mode!');
+    process.exit(1);
+  }
   process.env.BLOB_READ_WRITE_TOKEN = config.VERCEL_TOKEN;
+  console.log(`🔧 Set BLOB_READ_WRITE_TOKEN from VERCEL_TOKEN: ${process.env.BLOB_READ_WRITE_TOKEN ? 'SUCCESS' : 'FAILED'}`);
 } else {
   // Use local environment variables in development
-  // BLOB_READ_WRITE_TOKEN is already loaded by dotenv
+  console.log('🔧 DEVELOPMENT MODE: Using local environment variables');
+  console.log(`🔧 BLOB_READ_WRITE_TOKEN from .env.local: ${process.env.BLOB_READ_WRITE_TOKEN ? 'AVAILABLE' : 'MISSING'}`);
 }
 
 // Constants
@@ -375,18 +391,43 @@ function getMinOfferPrice(): number {
 async function checkDatabaseConnectivity(): Promise<boolean> {
   try {
     console.log('🔍 Checking database connectivity...');
+    console.log(`🔍 Token being used: ${process.env.BLOB_READ_WRITE_TOKEN ? 'PRESENT' : 'MISSING'}`);
+    console.log(`🔍 Token length: ${process.env.BLOB_READ_WRITE_TOKEN?.length || 0} characters`);
+    console.log(`🔍 Token prefix: ${process.env.BLOB_READ_WRITE_TOKEN?.substring(0, 20) || 'NONE'}...`);
+    
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      console.error('❌ CRITICAL: BLOB_READ_WRITE_TOKEN is not set!');
+      console.error('🔍 DEBUG: Check your environment variables:');
+      console.error(`   - Local .env.local: ${process.env.NODE_ENV !== 'production' ? 'SHOULD BE USED' : 'IGNORED'}`);
+      console.error(`   - GitHub VERCEL_TOKEN: ${process.env.NODE_ENV === 'production' ? 'SHOULD BE USED' : 'IGNORED'}`);
+      return false;
+    }
     
     // Try to list blobs to verify we have read access
+    console.log('🔍 Attempting to list blobs...');
     const blobs = await list({
       token: process.env.BLOB_READ_WRITE_TOKEN
     });
     
     console.log(`✅ Database connectivity check passed - found ${blobs.blobs.length} existing blobs`);
+    if (blobs.blobs.length > 0) {
+      console.log('🔍 Sample blobs:');
+      blobs.blobs.slice(0, 3).forEach((blob, index) => {
+        console.log(`   ${index + 1}. ${blob.pathname} (${blob.size} bytes, uploaded: ${blob.uploadedAt})`);
+      });
+    }
     return true;
     
   } catch (error) {
-    console.error(`❌ Database connectivity check failed: ${(error as Error).message}`);
-    console.error('🚫 Cannot access blob storage. Please check your BLOB_READ_WRITE_TOKEN environment variable.');
+    const err = error as Error;
+    console.error(`❌ Database connectivity check failed: ${err.message}`);
+    console.error('🔍 DEBUG: Token validation failed. Possible causes:');
+    console.error('   1. Token is expired');
+    console.error('   2. Token has insufficient permissions');
+    console.error('   3. Token is malformed');
+    console.error('   4. Blob storage is not properly configured');
+    console.error(`🔍 Current environment: ${process.env.NODE_ENV || 'undefined'}`);
+    console.error(`🔍 Token source: ${process.env.NODE_ENV === 'production' ? 'GitHub VERCEL_TOKEN' : 'Local .env.local'}`);
     return false;
   }
 }
