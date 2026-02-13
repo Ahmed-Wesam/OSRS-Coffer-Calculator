@@ -30,4 +30,8 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
+  define: {
+    // Suppress React 19 act warnings
+    'process.env.NODE_ENV': '"test"',
+  },
 })
