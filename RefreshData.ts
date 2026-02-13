@@ -19,12 +19,16 @@ console.log(`🔍 VERCEL_PROJECT_ID from config: ${config.VERCEL_PROJECT_ID ? 'S
 if (config.NODE_ENV === 'production') {
   // Use GitHub secrets in production
   console.log('🔧 PRODUCTION MODE: Using GitHub secrets');
-  if (!config.VERCEL_TOKEN) {
-    console.error('❌ CRITICAL: VERCEL_TOKEN is missing in production mode!');
+  
+  // BLOB_READ_WRITE_TOKEN should be set directly in GitHub secrets
+  // Do NOT override it with VERCEL_TOKEN as they are different token types
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    console.error('❌ CRITICAL: BLOB_READ_WRITE_TOKEN is missing in GitHub secrets!');
+    console.error('🔍 Please add BLOB_READ_WRITE_TOKEN as a separate GitHub secret with a Vercel Blob read/write token');
     process.exit(1);
   }
-  process.env.BLOB_READ_WRITE_TOKEN = config.VERCEL_TOKEN;
-  console.log(`🔧 Set BLOB_READ_WRITE_TOKEN from VERCEL_TOKEN: ${process.env.BLOB_READ_WRITE_TOKEN ? 'SUCCESS' : 'FAILED'}`);
+  
+  console.log(`🔧 Using BLOB_READ_WRITE_TOKEN from GitHub secrets: ${process.env.BLOB_READ_WRITE_TOKEN ? 'AVAILABLE' : 'MISSING'}`);
 } else {
   // Use local environment variables in development
   console.log('🔧 DEVELOPMENT MODE: Using local environment variables');
