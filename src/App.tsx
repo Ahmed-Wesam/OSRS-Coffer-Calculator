@@ -115,13 +115,12 @@ function App() {
 
   const filtered = useMemo(() => {
     const minRoi = parseRoiInput(minRoiPct)
-    const minRoiDecimal = (minRoi ?? 0) / 100
 
     const minBuy = parsePriceInput(minBuyPrice)
     const maxBuy = parsePriceInput(maxBuyPrice)
     const minVol = parsePriceInput(minVolume)
 
-    let result = rows.filter((r) => r.roi >= minRoiDecimal)
+    let result = rows.filter((r) => r.roi >= (minRoi ?? 0))
 
     if (typeof minBuy === 'number') {
       result = result.filter((r) => r.buyPrice >= minBuy)
