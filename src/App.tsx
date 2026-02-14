@@ -140,7 +140,7 @@ function App() {
       <div className="header">
         <h1 className="title">OSRS Death's Coffer Calculator</h1>
         <p className="subtitle">
-          Calculate Return on Investment for Death&apos;s Coffer minigame. Data is precomputed and cached from OSRS Wiki and Jagex APIs.
+          Calculate Return on Investment for Death&apos;s Coffer. Data is precomputed and cached from OSRS Wiki and Jagex APIs.
         </p>
         
         {dataInfo && (
