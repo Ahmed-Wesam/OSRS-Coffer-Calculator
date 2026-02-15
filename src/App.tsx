@@ -188,7 +188,7 @@ function App() {
               value={minRoiPct}
               onChange={(e) => setMinRoiPct(e.target.value)}
               inputMode="decimal"
-              placeholder="e.g. 50%"
+              placeholder="e.g. 50"
             />
           </div>
 
