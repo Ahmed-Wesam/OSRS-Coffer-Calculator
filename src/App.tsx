@@ -42,10 +42,28 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const [dataInfo, setDataInfo] = useState<{date: string, timestamp?: string, isFallback?: boolean, fallbackDate?: string} | null>(null)
 
-  const [minRoiPct, setMinRoiPct] = useState('')
-  const [minBuyPrice, setMinBuyPrice] = useState('')
-  const [maxBuyPrice, setMaxBuyPrice] = useState('')
-  const [minVolume, setMinVolume] = useState('')
+  // Initialize filter states from localStorage or default to empty strings
+  const [minRoiPct, setMinRoiPct] = useState(() => localStorage.getItem('minRoiPct') || '')
+  const [minBuyPrice, setMinBuyPrice] = useState(() => localStorage.getItem('minBuyPrice') || '')
+  const [maxBuyPrice, setMaxBuyPrice] = useState(() => localStorage.getItem('maxBuyPrice') || '')
+  const [minVolume, setMinVolume] = useState(() => localStorage.getItem('minVolume') || '')
+
+  // Save filter states to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('minRoiPct', minRoiPct)
+  }, [minRoiPct])
+
+  useEffect(() => {
+    localStorage.setItem('minBuyPrice', minBuyPrice)
+  }, [minBuyPrice])
+
+  useEffect(() => {
+    localStorage.setItem('maxBuyPrice', maxBuyPrice)
+  }, [maxBuyPrice])
+
+  useEffect(() => {
+    localStorage.setItem('minVolume', minVolume)
+  }, [minVolume])
 
   useEffect(() => {
     let cancelled = false
@@ -199,6 +217,11 @@ function App() {
               setMinBuyPrice('')
               setMaxBuyPrice('')
               setMinVolume('')
+              // Clear localStorage values
+              localStorage.removeItem('minRoiPct')
+              localStorage.removeItem('minBuyPrice')
+              localStorage.removeItem('maxBuyPrice')
+              localStorage.removeItem('minVolume')
             }}
           >
             Reset filters
