@@ -85,63 +85,39 @@ export default async function handler(
     
     const today = new Date().toISOString().split('T')[0]
     
-    const itemsBlobs = blobs.filter((blob: { pathname: string; uploadedAt: Date }) => 
+    // Always get the single most recent file by upload timestamp
+    const allItemsBlobs = blobs.filter((blob: { pathname: string; uploadedAt: Date }) => 
       (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
-      blob.pathname.endsWith('.json') &&
-      blob.pathname.includes(today)
+      blob.pathname.endsWith('.json')
     )
     
-    // Sort by upload time to get the most recent file first
-    itemsBlobs.sort((a: { uploadedAt: Date }, b: { uploadedAt: Date }) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
-    
-    let targetDate = today
-    if (itemsBlobs.length === 0) {
-      console.log(`⚠️  No items files found for today (${today}), searching for latest available day...`)
-      
-      const allItemsBlobs = blobs.filter((blob: { pathname: string; uploadedAt: Date }) => 
-        (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
-        blob.pathname.endsWith('.json')
-      )
-      
-      if (allItemsBlobs.length === 0) {
-        console.error('❌ No items files found in blob storage at all')
-        response.status(404).json({ error: 'No data available - cron job may not have run yet' })
-        return
-      }
-      
-      allItemsBlobs.sort((a: { uploadedAt: Date }, b: { uploadedAt: Date }) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
-      
-      const latestBlob = allItemsBlobs[0]
-      const dateMatch = latestBlob.pathname.match(/(\d{4}-\d{2}-\d{2})/)
-      targetDate = dateMatch ? dateMatch[1] : today
-      
-      console.log(`📅 Using fallback date: ${targetDate} (from file: ${latestBlob.pathname})`)
-      
-      const fallbackBlobs = allItemsBlobs.filter((blob: { pathname: string }) => blob.pathname.includes(targetDate))
-      itemsBlobs.push(...fallbackBlobs)
-    }
-    
-    console.log(`📋 Processing ${itemsBlobs.length} items files for ${targetDate}`)
-    
-    if (itemsBlobs.length > 0) {
-      console.log(`📁 Files found (most recent first):`)
-      itemsBlobs.forEach((blob: { pathname: string; uploadedAt: Date }, index: number) => {
-        const hoursAgo = Math.round((Date.now() - blob.uploadedAt.getTime()) / (1000 * 60 * 60))
-        console.log(`  ${index + 1}. ${blob.pathname} (${hoursAgo} hours ago)`)
-      })
-    }
-    
-    if (itemsBlobs.length === 0) {
-      console.error('❌ No items files found after fallback logic')
-      response.status(404).json({ error: 'No data available' })
+    if (allItemsBlobs.length === 0) {
+      console.error('❌ No items files found in blob storage at all')
+      response.status(404).json({ error: 'No data available - cron job may not have run yet' })
       return
     }
     
-    // Fetch and merge data from all relevant blobs
+    // Sort by upload time to get most recent file first
+    allItemsBlobs.sort((a: { uploadedAt: Date }, b: { uploadedAt: Date }) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
+    
+    const dateMatch = allItemsBlobs[0].pathname.match(/(\d{4}-\d{2}-\d{2})/)
+    const targetDate = dateMatch ? dateMatch[1] : today
+    
+    console.log(`📅 Target date: ${targetDate}`)
+    console.log(`📋 Processing up to ${allItemsBlobs.length} files in order of recency`)
+    
+    console.log(`📁 Files found (most recent first):`)
+    allItemsBlobs.forEach((blob: { pathname: string; uploadedAt: Date }, index: number) => {
+      const hoursAgo = Math.round((Date.now() - blob.uploadedAt.getTime()) / (1000 * 60 * 60))
+      console.log(`  ${index + 1}. ${blob.pathname} (${hoursAgo} hours ago)`)
+    })
+    
+    // Fetch and merge data from blobs, falling back to next file if one fails
     const allItems: DeathCofferRow[] = []
     const processedFiles: string[] = []
+    let successfulFileFound = false
     
-    for (const blob of itemsBlobs) {
+    for (const blob of allItemsBlobs) {
       try {
         const fileResponse = await fetch(blob.url)
         
@@ -155,9 +131,15 @@ export default async function handler(
         if (Array.isArray(fileData)) {
           allItems.push(...fileData)
           processedFiles.push(blob.pathname)
+          successfulFileFound = true
+          console.log(`✅ Successfully loaded ${fileData.length} items from ${blob.pathname}`)
+          break // Use only the first successful file
         } else if (fileData.items && Array.isArray(fileData.items)) {
           allItems.push(...fileData.items)
           processedFiles.push(blob.pathname)
+          successfulFileFound = true
+          console.log(`✅ Successfully loaded ${fileData.items.length} items from ${blob.pathname}`)
+          break // Use only the first successful file
         } else {
           console.log(`⚠️ Invalid data format in ${blob.pathname}`)
         }
@@ -166,7 +148,7 @@ export default async function handler(
       }
     }
     
-    if (allItems.length === 0) {
+    if (!successfulFileFound || allItems.length === 0) {
       console.error('❌ No valid items data found in any files')
       response.status(404).json({ error: 'No valid data available' })
       return
@@ -186,9 +168,9 @@ export default async function handler(
     const transformedItems = transformBlobData(uniqueItems)
     
     // Get the most recent file timestamp
-    const mostRecentBlob = itemsBlobs[0] // Already sorted by upload time
-    const fileTimestamp = mostRecentBlob.uploadedAt.toISOString()
-    console.log(`⏰ Using timestamp from most recent file: ${mostRecentBlob.pathname} (${fileTimestamp})`)
+    const sourceBlob = allItemsBlobs[0] // Already sorted by upload time
+    const fileTimestamp = sourceBlob.uploadedAt.toISOString()
+    console.log(`⏰ Using timestamp from most recent file: ${sourceBlob.pathname} (${fileTimestamp})`)
     
     const responseData: BlobStorageResponse = {
       timestamp: fileTimestamp,
