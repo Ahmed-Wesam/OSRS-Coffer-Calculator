@@ -42,7 +42,7 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const [dataInfo, setDataInfo] = useState<{date: string, timestamp?: string, isFallback?: boolean, fallbackDate?: string} | null>(null)
 
-  const [minRoiPct, setMinRoiPct] = useState('0')
+  const [minRoiPct, setMinRoiPct] = useState('')
   const [minBuyPrice, setMinBuyPrice] = useState('')
   const [maxBuyPrice, setMaxBuyPrice] = useState('')
   const [minVolume, setMinVolume] = useState('')
@@ -188,14 +188,14 @@ function App() {
               value={minRoiPct}
               onChange={(e) => setMinRoiPct(e.target.value)}
               inputMode="decimal"
-              placeholder="0"
+              placeholder="e.g. 50%"
             />
           </div>
 
           <button
             className="button"
             onClick={() => {
-              setMinRoiPct('0')
+              setMinRoiPct('')
               setMinBuyPrice('')
               setMaxBuyPrice('')
               setMinVolume('')
