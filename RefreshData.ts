@@ -25,6 +25,9 @@ const CLEANUP_DAYS = 3;
 const DEFAULT_MAX_RETRIES = 3;
 const DEFAULT_DELAY = 1000;
 
+// Hardcoded ineligible items not listed in wiki
+const HARDCODED_INELIGIBLE_ITEMS = new Set([31245]);
+
 // Type definitions
 interface PriceData {
   high: number;
@@ -431,9 +434,15 @@ async function main(): Promise<void> {
     
     // Filter eligible items
     const eligibleItems: ScrapedItem[] = mappingData.filter((item: MappingItem) => {
-      // Skip ineligible items
+      // Skip ineligible items from wiki
       if (ineligibleIds.has(item.id)) {
         console.log(`⏭️ Skipping ${item.name} (ID: ${item.id}) - ineligible item`);
+        return false;
+      }
+      
+      // Skip hardcoded ineligible items
+      if (HARDCODED_INELIGIBLE_ITEMS.has(item.id)) {
+        console.log(`⏭️ Skipping ${item.name} (ID: ${item.id}) - hardcoded ineligible item`);
         return false;
       }
       
