@@ -50,20 +50,21 @@ export default async function handler(
   response: any
 ): Promise<void> {
   try {
-    // Validate request method
-    if (request.method !== 'GET') {
-      response.status(405).json({ error: 'Method not allowed' })
-      return
-    }
-
     // Add CORS headers manually
     response.setHeader('Access-Control-Allow-Origin', '*')
     response.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS')
     response.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    response.setHeader('Cache-Control', 'no-store')
 
     // Handle OPTIONS preflight
     if (request.method === 'OPTIONS') {
       response.status(200).end()
+      return
+    }
+
+    // Validate request method
+    if (request.method !== 'GET') {
+      response.status(405).json({ error: 'Method not allowed' })
       return
     }
 
@@ -85,7 +86,7 @@ export default async function handler(
     
     const today = new Date().toISOString().split('T')[0]
     
-    // Always get the single most recent file by upload timestamp
+    // Always get single most recent file by upload timestamp
     const allItemsBlobs = blobs.filter((blob: { pathname: string; uploadedAt: Date }) => 
       (blob.pathname.startsWith('items-') || blob.pathname.startsWith('ob/items-')) && 
       blob.pathname.endsWith('.json')
@@ -100,24 +101,21 @@ export default async function handler(
     // Sort by upload time to get most recent file first
     allItemsBlobs.sort((a: { uploadedAt: Date }, b: { uploadedAt: Date }) => b.uploadedAt.getTime() - a.uploadedAt.getTime())
     
-    const dateMatch = allItemsBlobs[0].pathname.match(/(\d{4}-\d{2}-\d{2})/)
+    // Use only the single most recent file
+    const latestBlob = allItemsBlobs[0]
+    const itemsBlobs = [latestBlob]
+    
+    const dateMatch = latestBlob.pathname.match(/(\d{4}-\d{2}-\d{2})/)
     const targetDate = dateMatch ? dateMatch[1] : today
     
-    console.log(`📅 Target date: ${targetDate}`)
-    console.log(`📋 Processing up to ${allItemsBlobs.length} files in order of recency`)
+    console.log(`📅 Using most recent file: ${latestBlob.pathname} (${targetDate})`)
+    console.log(`📋 Processing 1 items file for ${targetDate}`)
     
-    console.log(`📁 Files found (most recent first):`)
-    allItemsBlobs.forEach((blob: { pathname: string; uploadedAt: Date }, index: number) => {
-      const hoursAgo = Math.round((Date.now() - blob.uploadedAt.getTime()) / (1000 * 60 * 60))
-      console.log(`  ${index + 1}. ${blob.pathname} (${hoursAgo} hours ago)`)
-    })
-    
-    // Fetch and merge data from blobs, falling back to next file if one fails
+    // Fetch and merge data from all relevant blobs
     const allItems: DeathCofferRow[] = []
     const processedFiles: string[] = []
-    let successfulFileFound = false
     
-    for (const blob of allItemsBlobs) {
+    for (const blob of itemsBlobs) {
       try {
         const fileResponse = await fetch(blob.url)
         
@@ -131,15 +129,9 @@ export default async function handler(
         if (Array.isArray(fileData)) {
           allItems.push(...fileData)
           processedFiles.push(blob.pathname)
-          successfulFileFound = true
-          console.log(`✅ Successfully loaded ${fileData.length} items from ${blob.pathname}`)
-          break // Use only the first successful file
         } else if (fileData.items && Array.isArray(fileData.items)) {
           allItems.push(...fileData.items)
           processedFiles.push(blob.pathname)
-          successfulFileFound = true
-          console.log(`✅ Successfully loaded ${fileData.items.length} items from ${blob.pathname}`)
-          break // Use only the first successful file
         } else {
           console.log(`⚠️ Invalid data format in ${blob.pathname}`)
         }
@@ -148,7 +140,7 @@ export default async function handler(
       }
     }
     
-    if (!successfulFileFound || allItems.length === 0) {
+    if (allItems.length === 0) {
       console.error('❌ No valid items data found in any files')
       response.status(404).json({ error: 'No valid data available' })
       return
@@ -168,7 +160,7 @@ export default async function handler(
     const transformedItems = transformBlobData(uniqueItems)
     
     // Get the most recent file timestamp
-    const sourceBlob = allItemsBlobs[0] // Already sorted by upload time
+    const sourceBlob = itemsBlobs[0] // Already sorted by upload time
     const fileTimestamp = sourceBlob.uploadedAt.toISOString()
     console.log(`⏰ Using timestamp from most recent file: ${sourceBlob.pathname} (${fileTimestamp})`)
     
@@ -179,7 +171,7 @@ export default async function handler(
       sourceFiles: processedFiles.map((filename: string) => ({
         filename,
         timestamp: fileTimestamp,
-        itemCount: 0 // Would need to fetch file to get accurate count
+        itemCount: transformedItems.length
       })),
       totalItems: transformedItems.length,
       items: transformedItems
