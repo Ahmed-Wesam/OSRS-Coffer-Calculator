@@ -3,6 +3,7 @@ import './App.css'
 import type { DeathCofferRow, BlobStorageResponse } from './lib/types'
 import { fetchBlobStorageDeathsCofferRows } from './lib/blobStorageApi'
 import { formatInt, formatPct, itemUrl, parseRoiInput, parsePriceInput } from './lib/utils'
+import { HARDCODED_INELIGIBLE_ITEMS } from './lib/hardcodedItems'
 
 // Format date for user's timezone
 function formatDateForUser(dateString: string): string {
@@ -139,6 +140,9 @@ function App() {
     const minVol = parsePriceInput(minVolume)
 
     let result = rows.filter((r) => r.roi >= (minRoi ?? 0))
+
+    // Filter out hardcoded ineligible items
+    result = result.filter((r) => !HARDCODED_INELIGIBLE_ITEMS.has(r.id))
 
     if (typeof minBuy === 'number') {
       result = result.filter((r) => r.buyPrice >= minBuy)

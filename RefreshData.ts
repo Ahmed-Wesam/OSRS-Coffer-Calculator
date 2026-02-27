@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 import { put, del, list } from '@vercel/blob';
 import config from './config/github-env';
+import { HARDCODED_INELIGIBLE_ITEMS } from './src/lib/hardcodedItems';
 
 // Load environment variables from .env.local
 dotenv.config({ path: '.env.local' });
@@ -24,9 +25,6 @@ const MIN_OFFER_PRICE = 100000;
 const CLEANUP_DAYS = 3;
 const DEFAULT_MAX_RETRIES = 3;
 const DEFAULT_DELAY = 1000;
-
-// Hardcoded ineligible items not listed in wiki
-const HARDCODED_INELIGIBLE_ITEMS = new Set([31245, 31585]);
 
 // Type definitions
 interface PriceData {
