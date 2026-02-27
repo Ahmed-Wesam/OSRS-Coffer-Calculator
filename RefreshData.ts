@@ -26,7 +26,7 @@ const DEFAULT_MAX_RETRIES = 3;
 const DEFAULT_DELAY = 1000;
 
 // Hardcoded ineligible items not listed in wiki
-const HARDCODED_INELIGIBLE_ITEMS = new Set([31245]);
+const HARDCODED_INELIGIBLE_ITEMS = new Set([31245, 31585]);
 
 // Type definitions
 interface PriceData {
